@@ -33,8 +33,8 @@ export default function Experience() {
           {experiences.map((experience, index) => (
             <div key={experience.id} className="relative mb-20 lg:mb-32">
               {/* Timeline dot */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-16 h-16 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center shadow-2xl z-10 hover:scale-110 transition-transform duration-300">
-                <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center shadow-2xl z-10 hover:scale-110 transition-transform duration-300">
+                <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
                   <span className="text-sm font-bold text-purple-600">{index + 1}</span>
                 </div>
               </div>
@@ -100,8 +100,8 @@ export default function Experience() {
                     <div className="w-64 h-64 lg:w-80 lg:h-80 bg-gradient-to-br from-purple-500 via-blue-500 to-purple-600 rounded-3xl flex items-center justify-center shadow-2xl group-hover:scale-105 transition-transform duration-500 relative overflow-hidden">
                       {/* Background pattern */}
                       <div className="absolute inset-0 bg-white/10 opacity-50">
-                        <div className="absolute top-4 left-4 w-16 h-16 border-2 border-white/30 rounded-xl"></div>
-                        <div className="absolute bottom-4 right-4 w-12 h-12 border-2 border-white/30 rounded-lg"></div>
+                        <div className="absolute top-4 left-4 w-12 h-12 border-2 border-white/30 rounded-xl"></div>
+                        <div className="absolute bottom-4 right-4 w-8 h-8 border-2 border-white/30 rounded-lg"></div>
                         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 border-2 border-white/20 rounded-2xl"></div>
                       </div>
                       
@@ -111,8 +111,8 @@ export default function Experience() {
                       </div>
                       
                       {/* Floating elements */}
-                      <div className="absolute -top-4 -right-4 w-12 h-12 bg-yellow-400 rounded-xl flex items-center justify-center animate-float">
-                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <div className="absolute -top-4 -right-4 w-10 h-10 bg-yellow-400 rounded-lg flex items-center justify-center animate-float">
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                         </svg>
                       </div>
