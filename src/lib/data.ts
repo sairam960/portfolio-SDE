@@ -6,8 +6,8 @@ export const projects: Project[] = [
     title: 'Inventory Management Application',
     description: 'A full-stack inventory management solution with user authentication, inventory tracking, and real-time inventory dashboard.',
     technologies: ['Next.js', 'TypeScript', 'PostgreSQL', 'Tailwind CSS','Tableau'],
-    githubUrl: 'https://github.com/username/ecommerce-platform',
-    liveUrl: 'https://ecommerce-demo.vercel.app',
+    githubUrl: '#',
+    liveUrl: '#',
     imageUrl: '/images/ecommerce-project.jpg'
   },
   {
@@ -16,7 +16,7 @@ export const projects: Project[] = [
     description: 'An AI-powered tool to assist with student admissions, featuring document analysis, chat support, and application tracking.',
     technologies: ['React', 'Node.js', 'OpenAI API', 'MongoDB', 'Express'],
     githubUrl: 'https://github.com/sairam960/advisor-app',
-    liveUrl: 'https://taskmanager-demo.vercel.app',
+    liveUrl: '#',
     imageUrl: '/images/task-manager.jpg'
   }
 ]
