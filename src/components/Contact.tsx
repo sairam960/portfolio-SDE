@@ -36,13 +36,25 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="section-padding bg-white dark:bg-slate-900">
-      <div className="container-custom">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Get In Touch
+    <section id="contact" className="section-padding-desktop bg-gradient-to-br from-gray-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-bl from-blue-50 to-transparent dark:from-blue-900/20 rounded-full filter blur-3xl"></div>
+      
+      <div className="desktop-container relative z-10">
+        <div className="text-center mb-16 lg:mb-24 animate-fade-in">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-sm font-medium mb-6">
+            <span className="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-pulse"></span>
+            Let&apos;s Connect
+          </div>
+          
+          <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+            Get In{' '}
+            <span className="text-gradient bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              Touch
+            </span>
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+          
+          <p className="text-xl lg:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
             Have a project in mind? Let&apos;s discuss how we can work together to bring your ideas to life.
           </p>
         </div>
