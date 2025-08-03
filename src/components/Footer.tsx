@@ -161,9 +161,9 @@ export default function Footer() {
 
             {/* CTA Section */}
             <div className="col-lg-3">
-              <h4 className="text-white fw-semibold mb-4">Let's Work Together</h4>
+              <h4 className="text-white fw-semibold mb-4">Let&apos;s Work Together</h4>
               <p className="text-light opacity-75 mb-4">
-                Ready to bring your ideas to life? Let's discuss your next project.
+                Ready to bring your ideas to life? Let&apos;s discuss your next project.
               </p>
               <a
                 href="mailto:ftjsearch@gmail.com"
