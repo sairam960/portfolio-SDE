@@ -20,9 +20,13 @@ export default function Hero() {
           {/* Left side - Text content */}
           <div className="order-2 lg:order-1 space-y-8">
             <div className="animate-slide-in-left">
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-sm font-medium mb-6">
-                <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-                Available for work
+              <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 text-green-800 dark:text-green-200 text-sm font-semibold mb-6 success-glow">
+                <span className="w-3 h-3 bg-green-500 rounded-full mr-3 animate-pulse"></span>
+                <span className="flex items-center gap-2">
+                  ✨ Available for new opportunities
+                  <span className="text-green-600 dark:text-green-400">•</span>
+                  <span className="text-xs bg-green-200 dark:bg-green-800 px-2 py-1 rounded-full">Open to work</span>
+                </span>
               </div>
               
               <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 dark:text-white leading-tight">
@@ -32,42 +36,55 @@ export default function Hero() {
                 </span>
               </h1>
               
-              <p className="text-xl lg:text-2xl text-gray-600 dark:text-gray-300 font-medium">
-                Full Stack Developer & Software Engineer
-              </p>
-              
-              <p className="text-lg lg:text-xl text-gray-600 dark:text-gray-400 leading-relaxed max-w-2xl">
-                I craft modern web applications with clean code and user-centered design. 
-                Passionate about creating scalable solutions that make a difference.
-              </p>
+              <div className="space-y-4">
+                <p className="text-xl lg:text-2xl font-semibold">
+                  <span className="text-gradient-gold">Full Stack Developer</span> & 
+                  <span className="text-gradient"> Software Engineer</span>
+                </p>
+                
+                <p className="text-lg lg:text-xl text-gray-600 dark:text-gray-400 leading-relaxed max-w-2xl">
+                  🚀 Transforming ideas into <span className="font-semibold text-blue-600 dark:text-blue-400">powerful digital solutions</span> with 
+                  modern technology and user-focused design. 
+                  <br />
+                  💡 Passionate about creating <span className="font-semibold text-purple-600 dark:text-purple-400">scalable applications</span> that drive business growth.
+                </p>
+                
+                {/* Key highlights for stakeholders */}
+                <div className="flex flex-wrap gap-3 pt-2">
+                  {['3+ Years Experience', '10+ Projects Delivered', 'Full-Stack Expertise', '100% Client Satisfaction'].map((highlight, index) => (
+                    <span key={highlight} className="px-3 py-1 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 text-blue-700 dark:text-blue-300 text-sm font-medium rounded-full border border-blue-200 dark:border-blue-800">
+                      {highlight}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
             
             {/* Action buttons - Desktop optimized */}
             <div className="flex flex-col sm:flex-row gap-4 animate-slide-in-left" style={{animationDelay: '0.3s'}}>
               <button
                 onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-                className="group relative overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-2xl transition-all duration-300 hover:scale-105"
+                className="group relative overflow-hidden bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 text-white px-10 py-5 rounded-2xl font-bold text-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 premium-glow"
               >
-                <span className="relative z-10 flex items-center gap-2">
-                  View My Work
-                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <span className="relative z-10 flex items-center gap-3">
+                  <span className="text-xl">🎯</span>
+                  <span>View My Portfolio</span>
+                  <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
               </button>
               
               <button
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="group relative overflow-hidden border-2 border-blue-600 text-blue-600 dark:text-blue-400 px-8 py-4 rounded-xl font-semibold text-lg hover:text-white dark:hover:text-white transition-all duration-300 hover:scale-105"
+                className="group relative overflow-hidden border-3 border-gradient-to-r from-emerald-500 to-teal-500 bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 text-emerald-700 dark:text-emerald-400 px-10 py-5 rounded-2xl font-bold text-lg hover:text-white dark:hover:text-white transition-all duration-300 hover:scale-105 success-glow"
               >
-                <span className="relative z-10 flex items-center gap-2">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                  </svg>
-                  Let&apos;s Talk
+                <span className="relative z-10 flex items-center gap-3">
+                  <span className="text-xl">💬</span>
+                  <span>Let&apos;s Discuss Your Project</span>
                 </span>
-                <div className="absolute inset-0 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
               </button>
             </div>
             
@@ -146,23 +163,42 @@ export default function Hero() {
           </div>
         </div>
         
-        {/* Stats section - Desktop layout */}
-        <div className="mt-20 lg:mt-32 grid grid-cols-2 lg:grid-cols-4 gap-8 animate-fade-in" style={{animationDelay: '0.9s'}}>
-          {[
-            { number: '3+', label: 'Years Experience' },
-            { number: '10+', label: 'Projects Completed' },
-            { number: '5+', label: 'Technologies' },
-            { number: '100%', label: 'Client Satisfaction' }
-          ].map((stat, index) => (
-            <div key={stat.label} className="text-center group">
-              <div className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
-                {stat.number}
+        {/* Enhanced Stats section for business impact */}
+        <div className="mt-20 lg:mt-32 animate-fade-in" style={{animationDelay: '0.9s'}}>
+          <h3 className="text-center text-lg font-semibold text-gray-700 dark:text-gray-300 mb-8">
+            📊 <span className="text-gradient">Proven Track Record</span>
+          </h3>
+          
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { number: '3+', label: 'Years Experience', icon: '🏆', color: 'text-yellow-600' },
+              { number: '10+', label: 'Projects Delivered', icon: '🚀', color: 'text-blue-600' },
+              { number: '15+', label: 'Technologies Mastered', icon: '⚡', color: 'text-purple-600' },
+              { number: '100%', label: 'Client Satisfaction', icon: '⭐', color: 'text-green-600' }
+            ].map((stat, index) => (
+              <div key={stat.label} className="text-center group">
+                <div className="card-premium rounded-2xl p-6 hover-lift premium-glow">
+                  <div className="text-3xl mb-2">{stat.icon}</div>
+                  <div className={`text-3xl lg:text-4xl font-bold mb-2 group-hover:scale-110 transition-transform duration-300 ${stat.color}`}>
+                    {stat.number}
+                  </div>
+                  <div className="text-sm lg:text-base text-gray-600 dark:text-gray-400 font-medium">
+                    {stat.label}
+                  </div>
+                </div>
               </div>
-              <div className="text-sm lg:text-base text-gray-600 dark:text-gray-400 font-medium">
-                {stat.label}
-              </div>
+            ))}
+          </div>
+          
+          {/* Business value proposition */}
+          <div className="mt-12 text-center">
+            <div className="inline-flex items-center gap-4 px-8 py-4 bg-gradient-to-r from-emerald-50 to-blue-50 dark:from-emerald-900/20 dark:to-blue-900/20 rounded-2xl border border-emerald-200 dark:border-emerald-800">
+              <span className="text-2xl">💡</span>
+              <span className="text-lg font-semibold text-gray-700 dark:text-gray-300">
+                Ready to deliver <span className="text-gradient">immediate business value</span> with proven technical expertise
+              </span>
             </div>
-          ))}
+          </div>
         </div>
       </div>
       

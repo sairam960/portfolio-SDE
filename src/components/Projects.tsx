@@ -11,9 +11,13 @@ export default function Projects() {
       
       <div className="desktop-container relative z-10">
         <div className="text-center mb-16 lg:mb-24">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-sm font-medium mb-6">
-            <span className="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-pulse"></span>
-            Portfolio
+          <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-blue-100 to-indigo-100 dark:from-blue-900/30 dark:to-indigo-900/30 text-blue-800 dark:text-blue-200 text-sm font-semibold mb-6 premium-glow">
+            <span className="w-3 h-3 bg-blue-500 rounded-full mr-3 animate-pulse"></span>
+            <span className="flex items-center gap-2">
+              🏆 Featured Work
+              <span className="text-blue-600 dark:text-blue-400">•</span>
+              <span className="text-xs bg-blue-200 dark:bg-blue-800 px-2 py-1 rounded-full">Production Ready</span>
+            </span>
           </div>
           
           <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 dark:text-white mb-6">
@@ -23,8 +27,10 @@ export default function Projects() {
             </span>
           </h2>
           
-          <p className="text-xl lg:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
-            Here are some of my recent projects that showcase my skills and experience in building modern web applications
+          <p className="text-xl lg:text-2xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto leading-relaxed">
+            🎨 <span className="font-semibold text-blue-600 dark:text-blue-400">Production-ready applications</span> that demonstrate technical expertise and business impact
+            <br />
+            💼 Each project showcases <span className="font-semibold text-purple-600 dark:text-purple-400">scalable architecture</span>, modern technologies, and user-centered design
           </p>
         </div>
 
@@ -33,26 +39,35 @@ export default function Projects() {
           {projects.map((project, index) => (
             <div
               key={project.id}
-              className="group relative bg-white dark:bg-slate-800 rounded-3xl overflow-hidden shadow-xl hover-lift border border-gray-100 dark:border-gray-700 animate-slide-up"
+              className="group relative card-premium rounded-3xl overflow-hidden shadow-xl hover-lift border border-gray-100 dark:border-gray-700 animate-slide-up premium-glow"
               style={{animationDelay: `${index * 0.2}s`}}
             >
               {/* Project image/header */}
-              <div className="relative h-64 lg:h-48 xl:h-64 bg-gradient-to-br from-blue-500 via-purple-600 to-blue-700 overflow-hidden">
+              <div className="relative h-64 lg:h-48 xl:h-64 bg-gradient-professional overflow-hidden">
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-500"></div>
+                
+                {/* Success indicator */}
+                <div className="absolute top-4 left-4 px-3 py-1 bg-green-500/90 text-white text-xs font-bold rounded-full backdrop-blur-sm">
+                  ✅ LIVE
+                </div>
                 
                 {/* Hover overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 
                 {/* Project title overlay */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <h3 className="text-2xl lg:text-3xl font-bold text-white text-center px-4 transform group-hover:scale-110 transition-transform duration-500">
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+                  <div className="text-4xl mb-3">🚀</div>
+                  <h3 className="text-2xl lg:text-3xl font-bold text-white transform group-hover:scale-110 transition-transform duration-500">
                     {project.title}
                   </h3>
+                  <p className="text-white/80 text-sm mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    Click to explore →
+                  </p>
                 </div>
                 
                 {/* Corner decoration */}
-                <div className="absolute top-4 right-4 w-8 h-8 bg-white/20 rounded-lg backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="absolute top-4 right-4 w-10 h-10 bg-white/20 rounded-xl backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300 premium-glow">
+                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>
                 </div>

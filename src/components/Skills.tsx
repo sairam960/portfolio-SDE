@@ -10,9 +10,13 @@ export default function Skills() {
       
       <div className="desktop-container relative z-10">
         <div className="text-center mb-16 lg:mb-24">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 text-sm font-medium mb-6">
-            <span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
-            Technical Expertise
+          <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 text-green-800 dark:text-green-200 text-sm font-semibold mb-6 success-glow">
+            <span className="w-3 h-3 bg-green-500 rounded-full mr-3 animate-pulse"></span>
+            <span className="flex items-center gap-2">
+              💻 Core Competencies
+              <span className="text-green-600 dark:text-green-400">•</span>
+              <span className="text-xs bg-green-200 dark:bg-green-800 px-2 py-1 rounded-full">Market-Ready Skills</span>
+            </span>
           </div>
           
           <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 dark:text-white mb-6">
@@ -22,8 +26,10 @@ export default function Skills() {
             </span>
           </h2>
           
-          <p className="text-xl lg:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
-            Technologies and tools I use to bring innovative ideas to life
+          <p className="text-xl lg:text-2xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto leading-relaxed">
+            🎯 <span className="font-semibold text-green-600 dark:text-green-400">Enterprise-grade technologies</span> and modern development practices
+            <br />
+            ⚡ Proven expertise in <span className="font-semibold text-blue-600 dark:text-blue-400">full-stack development</span> with focus on scalability and performance
           </p>
         </div>
 
