@@ -36,37 +36,37 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="section-padding-desktop bg-gradient-to-br from-gray-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 relative overflow-hidden">
+    <section id="contact" className="section-padding-desktop bg-gradient-to-br from-gray-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 position-relative overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-bl from-blue-50 to-transparent dark:from-blue-900/20 rounded-full filter blur-3xl"></div>
+      <div className="position-absolute top-0 end-0 w-33 h-33 bg-gradient-to-bl from-blue-50 to-transparent dark:from-blue-900/20 rounded-circle" style={{filter: 'blur(3rem)'}}></div>
       
-      <div className="desktop-container relative z-10">
-        <div className="text-center mb-16 lg:mb-24 animate-fade-in">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-sm font-medium mb-6">
-            <span className="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-pulse"></span>
+      <div className="desktop-container position-relative" style={{zIndex: 10}}>
+        <div className="text-center mb-5 animate-fade-in">
+          <div className="d-inline-flex align-items-center px-4 py-2 rounded-pill bg-light dark:bg-blue-900/30 text-primary dark:text-blue-200 fw-medium mb-4" style={{fontSize: '0.875rem'}}>
+            <span className="bg-primary rounded-circle animate-pulse me-2" style={{width: '8px', height: '8px'}}></span>
             Let&apos;s Connect
           </div>
           
-          <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+          <h2 className="display-2 fw-bold text-dark dark:text-white mb-4">
             Get In{' '}
             <span className="text-gradient bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               Touch
             </span>
           </h2>
           
-          <p className="text-xl lg:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+          <p className="fs-3 text-secondary dark:text-gray-400 mx-auto" style={{maxWidth: '48rem', lineHeight: '1.6'}}>
             Have a project in mind? Let&apos;s discuss how we can work together to bring your ideas to life.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div className="row g-5">
           {/* Contact Info */}
-          <div className="animate-slide-in-left">
-            <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
+          <div className="col-lg-6 animate-slide-in-left">
+            <h3 className="display-4 fw-bold text-dark dark:text-white mb-4">
               Let&apos;s Connect
             </h3>
             
-            <div className="space-y-8">
+            <div className="d-flex flex-column gap-4">
               {[
                 {
                   icon: (
@@ -99,21 +99,21 @@ export default function Contact() {
                   value: 'College Park, MD'
                 }
               ].map((item, index) => (
-                <div key={item.title} className="group flex items-center animate-slide-in-left" style={{animationDelay: `${index * 0.1}s`}}>
-                  <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center mr-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                <div key={item.title} className="group d-flex align-items-center animate-slide-in-left" style={{animationDelay: `${index * 0.1}s`}}>
+                  <div className="d-flex align-items-center justify-content-center me-4 shadow rounded-3" style={{width: '48px', height: '48px', background: 'linear-gradient(to right, #2563eb, #9333ea)'}}>
                     {item.icon}
                   </div>
                   <div>
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">{item.title}</h4>
+                    <h4 className="fs-5 fw-semibold text-dark dark:text-white mb-1">{item.title}</h4>
                     {item.href ? (
                       <a 
                         href={item.href}
-                        className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
+                        className="text-secondary dark:text-gray-400 text-decoration-none"
                       >
                         {item.value}
                       </a>
                     ) : (
-                      <p className="text-gray-600 dark:text-gray-400">{item.value}</p>
+                      <p className="text-secondary dark:text-gray-400">{item.value}</p>
                     )}
                   </div>
                 </div>
@@ -121,9 +121,9 @@ export default function Contact() {
             </div>
 
             {/* Social Links */}
-            <div className="mt-12 animate-slide-in-left" style={{animationDelay: '0.4s'}}>
-              <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">Follow Me</h4>
-              <div className="flex space-x-4">
+            <div className="mt-5 animate-slide-in-left" style={{animationDelay: '0.4s'}}>
+              <h4 className="fs-5 fw-semibold text-dark dark:text-white mb-3">Follow Me</h4>
+              <div className="d-flex gap-3">
                 {[
                   { href: 'https://github.com/sairam960', label: 'GitHub', icon: 'github' },
                   { href: 'https://www.linkedin.com/in/sairamnathk/', label: 'LinkedIn', icon: 'linkedin' },
@@ -134,9 +134,9 @@ export default function Contact() {
                     href={social.href}
                     target={social.href.startsWith('mailto:') ? undefined : '_blank'}
                     rel={social.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
-                    className="group w-10 h-10 bg-gray-100 dark:bg-slate-700 rounded-lg flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 hover:text-white transition-all duration-300 hover:scale-110 hover:-translate-y-1"
+                    className="group d-flex align-items-center justify-content-center bg-light dark:bg-slate-700 rounded text-secondary dark:text-gray-400 text-decoration-none"
+                    style={{width: '40px', height: '40px', animationDelay: `${index * 0.05}s`}}
                     aria-label={social.label}
-                    style={{animationDelay: `${index * 0.05}s`}}
                   >
                     {social.icon === 'github' && (
                       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -160,10 +160,10 @@ export default function Contact() {
           </div>
 
           {/* Contact Form */}
-          <div className="animate-slide-in-right">
-            <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="col-lg-6 animate-slide-in-right">
+            <form onSubmit={handleSubmit} className="d-flex flex-column gap-4">
               <div>
-                <label htmlFor="name" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
+                <label htmlFor="name" className="form-label fw-semibold text-dark dark:text-gray-300">
                   Name
                 </label>
                 <input
@@ -173,13 +173,14 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-6 py-4 border-2 border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent bg-white dark:bg-slate-800 text-gray-900 dark:text-white transition-all duration-300 hover:border-blue-300 dark:hover:border-blue-500"
+                  className="form-control border-2 rounded-3 bg-white dark:bg-slate-800 text-dark dark:text-white"
+                  style={{padding: '1rem 1.5rem'}}
                   placeholder="Your name"
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
+                <label htmlFor="email" className="form-label fw-semibold text-dark dark:text-gray-300">
                   Email
                 </label>
                 <input
@@ -189,13 +190,14 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-6 py-4 border-2 border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent bg-white dark:bg-slate-800 text-gray-900 dark:text-white transition-all duration-300 hover:border-blue-300 dark:hover:border-blue-500"
+                  className="form-control border-2 rounded-3 bg-white dark:bg-slate-800 text-dark dark:text-white"
+                  style={{padding: '1rem 1.5rem'}}
                   placeholder="your.email@example.com"
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
+                <label htmlFor="message" className="form-label fw-semibold text-dark dark:text-gray-300">
                   Message
                 </label>
                 <textarea
@@ -205,7 +207,8 @@ export default function Contact() {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  className="w-full px-6 py-4 border-2 border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent bg-white dark:bg-slate-800 text-gray-900 dark:text-white resize-none transition-all duration-300 hover:border-blue-300 dark:hover:border-blue-500"
+                  className="form-control border-2 rounded-3 bg-white dark:bg-slate-800 text-dark dark:text-white"
+                  style={{padding: '1rem 1.5rem', resize: 'none'}}
                   placeholder="Tell me about your project..."
                 />
               </div>
@@ -213,9 +216,10 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full btn-primary relative overflow-hidden group disabled:opacity-70 disabled:cursor-not-allowed"
+                className="w-100 btn-primary position-relative overflow-hidden"
+                style={{opacity: isSubmitting ? 0.7 : 1, cursor: isSubmitting ? 'not-allowed' : 'pointer'}}
               >
-                <span className={`relative z-10 flex items-center justify-center gap-2 transition-opacity duration-300 ${isSubmitting ? 'opacity-0' : 'opacity-100'}`}>
+                <span className={`position-relative d-flex align-items-center justify-content-center gap-2 ${isSubmitting ? 'opacity-0' : 'opacity-100'}`} style={{zIndex: 10}}>
                   {isSuccess ? (
                     <>
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -234,8 +238,10 @@ export default function Contact() {
                 </span>
                 
                 {isSubmitting && (
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                  <div className="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
+                    <div className="spinner-border spinner-border-sm text-white" role="status">
+                      <span className="visually-hidden">Loading...</span>
+                    </div>
                   </div>
                 )}
               </button>
@@ -244,18 +250,18 @@ export default function Contact() {
         </div>
         
         {/* Bottom CTA */}
-        <div className="mt-20 text-center animate-fade-in">
-          <div className="bg-gradient-to-r from-gray-50 to-blue-50 dark:from-slate-800 dark:to-blue-900/20 rounded-3xl p-8 md:p-12">
-            <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+        <div className="mt-5 text-center animate-fade-in">
+          <div className="rounded-3 p-5" style={{background: 'linear-gradient(to right, #f9fafb, #eff6ff)'}}>
+            <h3 className="display-4 fw-bold text-dark dark:text-white mb-3">
               Ready to Start Your Project?
             </h3>
-            <p className="text-xl text-gray-600 dark:text-gray-400 mb-8">
+            <p className="fs-4 text-secondary dark:text-gray-400 mb-4">
               Let&apos;s discuss your ideas and bring them to life together.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="d-flex flex-column flex-sm-row gap-3 justify-content-center">
               <a
                 href="mailto:ftjsearch@gmail.com"
-                className="btn-primary inline-flex items-center gap-2"
+                className="btn-primary d-inline-flex align-items-center gap-2 text-decoration-none"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -266,7 +272,7 @@ export default function Contact() {
                 href="https://www.linkedin.com/in/sairamnathk/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-secondary inline-flex items-center gap-2"
+                className="btn-secondary d-inline-flex align-items-center gap-2 text-decoration-none"
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
