@@ -6,7 +6,7 @@ export default function Hero() {
   const { ref: heroRef, isVisible: heroVisible } = useScrollAnimation(0.2)
   const { ref: statsRef, visibleItems: visibleStats } = useStaggeredAnimation(4, 150)
   return (
-    <section ref={heroRef} id="home" className="position-relative vh-100 d-flex align-items-center overflow-hidden bg-gradient-professional smooth-scroll">
+    <section ref={heroRef} id="home" className="position-relative d-flex align-items-center overflow-hidden bg-gradient-professional smooth-scroll" style={{minHeight: '100vh', paddingTop: '100px', paddingBottom: '50px'}}>
       {/* Enhanced background elements for desktop */}
       <div className="position-absolute top-0 start-0 w-100 h-100">
         <div className={`position-absolute animate-float ${heroVisible ? 'animate-fade-in' : ''}`} 
@@ -236,11 +236,20 @@ export default function Hero() {
           </div>
           
           {/* Business value proposition */}
-          <div className="mt-4 text-center">
-            <div className="d-inline-flex align-items-center gap-3 px-4 py-3 bg-gradient-success rounded-4 border border-success border-opacity-25">
-              <span className="fs-3">💡</span>
-              <span className="fs-5 fw-semibold text-white">
-                Ready to deliver <span className="text-warning">immediate business value</span> with proven technical expertise
+          <div className="mt-5 text-center">
+            <div className={`d-inline-flex align-items-center gap-3 px-5 py-4 bg-gradient-success rounded-4 border border-success border-opacity-25 shadow-lg animate-magnetic-hover ${
+              visibleStats.includes(3) ? 'animate-bounce-in' : ''
+            }`} style={{
+              opacity: visibleStats.includes(3) ? 1 : 0,
+              transform: visibleStats.includes(3) ? 'translateY(0)' : 'translateY(30px)',
+              transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+              animationDelay: '0.5s',
+              maxWidth: '90%',
+              margin: '0 auto'
+            }}>
+              <span className="fs-2">💡</span>
+              <span className="fs-4 fw-semibold text-white text-center" style={{lineHeight: '1.4'}}>
+                Ready to deliver <span className="text-warning fw-bold">immediate business value</span> with proven technical expertise
               </span>
             </div>
           </div>

@@ -216,31 +216,70 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-100 btn-primary position-relative overflow-hidden"
-                style={{opacity: isSubmitting ? 0.7 : 1, cursor: isSubmitting ? 'not-allowed' : 'pointer'}}
+                className="w-100 position-relative overflow-hidden rounded-4 fw-bold py-4 border-0 animate-magnetic-hover"
+                style={{
+                  background: isSuccess 
+                    ? 'linear-gradient(135deg, #10b981 0%, #059669 100%)' 
+                    : 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #2563eb 100%)',
+                  color: 'white',
+                  fontSize: '1.1rem',
+                  opacity: isSubmitting ? 0.8 : 1, 
+                  cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                  transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                  boxShadow: isSuccess 
+                    ? '0 10px 30px rgba(16, 185, 129, 0.3)' 
+                    : '0 10px 30px rgba(79, 70, 229, 0.3)'
+                }}
+                onMouseEnter={(e) => {
+                  if (!isSubmitting) {
+                    e.currentTarget.style.transform = 'translateY(-3px) scale(1.02)';
+                    e.currentTarget.style.boxShadow = isSuccess 
+                      ? '0 20px 50px rgba(16, 185, 129, 0.4)' 
+                      : '0 20px 50px rgba(79, 70, 229, 0.4)';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!isSubmitting) {
+                    e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                    e.currentTarget.style.boxShadow = isSuccess 
+                      ? '0 10px 30px rgba(16, 185, 129, 0.3)' 
+                      : '0 10px 30px rgba(79, 70, 229, 0.3)';
+                  }
+                }}
               >
-                <span className={`position-relative d-flex align-items-center justify-content-center gap-2 ${isSubmitting ? 'opacity-0' : 'opacity-100'}`} style={{zIndex: 10}}>
+                <span className={`position-relative d-flex align-items-center justify-content-center gap-3 ${isSubmitting ? 'opacity-0' : 'opacity-100'}`} style={{zIndex: 10}}>
                   {isSuccess ? (
                     <>
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      Message Sent!
+                      <span>Message Sent Successfully!</span>
+                      <div className="position-absolute top-0 start-0 w-100 h-100 rounded-4" style={{
+                        background: 'linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%)',
+                        animation: 'shimmer 2s ease-in-out infinite'
+                      }}></div>
                     </>
                   ) : (
                     <>
-                      <svg className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" 
+                           style={{ transition: 'transform 0.3s ease' }}>
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                       </svg>
-                      Send Message
+                      <span>Send Message</span>
+                      <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
                     </>
                   )}
                 </span>
                 
                 {isSubmitting && (
                   <div className="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
-                    <div className="spinner-border spinner-border-sm text-white" role="status">
-                      <span className="visually-hidden">Loading...</span>
+                    <div className="d-flex align-items-center gap-3">
+                      <div className="spinner-border text-white" role="status" style={{width: '1.5rem', height: '1.5rem'}}>
+                        <span className="visually-hidden">Loading...</span>
+                      </div>
+                      <span className="text-white fw-semibold">Sending...</span>
                     </div>
                   </div>
                 )}
@@ -258,26 +297,64 @@ export default function Contact() {
             <p className="fs-4 text-secondary dark:text-gray-400 mb-4">
               Let&apos;s discuss your ideas and bring them to life together.
             </p>
-            <div className="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+            <div className="d-flex flex-column flex-sm-row gap-4 justify-content-center">
               <a
                 href="mailto:ftjsearch@gmail.com"
-                className="btn-primary d-inline-flex align-items-center gap-2 text-decoration-none"
+                className="d-inline-flex align-items-center justify-content-center gap-3 text-decoration-none px-6 py-4 rounded-4 fw-bold animate-magnetic-hover"
+                style={{
+                  background: 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)',
+                  color: 'white',
+                  fontSize: '1rem',
+                  transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                  boxShadow: '0 10px 25px rgba(79, 70, 229, 0.3)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-3px) scale(1.05)';
+                  e.currentTarget.style.boxShadow = '0 15px 35px rgba(79, 70, 229, 0.4)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 10px 25px rgba(79, 70, 229, 0.3)';
+                }}
               >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                Email Me
+                <span>Email Me</span>
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
               </a>
               <a
                 href="https://www.linkedin.com/in/sairamnathk/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-secondary d-inline-flex align-items-center gap-2 text-decoration-none"
+                className="d-inline-flex align-items-center justify-content-center gap-3 text-decoration-none px-6 py-4 rounded-4 fw-bold animate-magnetic-hover"
+                style={{
+                  background: 'rgba(79, 70, 229, 0.1)',
+                  border: '2px solid rgba(79, 70, 229, 0.3)',
+                  color: '#4f46e5',
+                  fontSize: '1rem',
+                  backdropFilter: 'blur(10px)',
+                  transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'rgba(79, 70, 229, 0.2)';
+                  e.currentTarget.style.borderColor = 'rgba(79, 70, 229, 0.5)';
+                  e.currentTarget.style.transform = 'translateY(-3px) scale(1.05)';
+                  e.currentTarget.style.boxShadow = '0 15px 35px rgba(79, 70, 229, 0.2)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'rgba(79, 70, 229, 0.1)';
+                  e.currentTarget.style.borderColor = 'rgba(79, 70, 229, 0.3)';
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = 'none';
+                }}
               >
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                 </svg>
-                Connect on LinkedIn
+                <span>Connect on LinkedIn</span>
               </a>
             </div>
           </div>
