@@ -1,13 +1,20 @@
 'use client'
 
+import { useScrollAnimation, useStaggeredAnimation } from '../hooks/useScrollAnimation'
+
 export default function Hero() {
+  const { ref: heroRef, isVisible: heroVisible } = useScrollAnimation(0.2)
+  const { ref: statsRef, visibleItems: visibleStats } = useStaggeredAnimation(4, 150)
   return (
-    <section id="home" className="position-relative vh-100 d-flex align-items-center overflow-hidden bg-gradient-professional">
+    <section ref={heroRef} id="home" className="position-relative vh-100 d-flex align-items-center overflow-hidden bg-gradient-professional smooth-scroll">
       {/* Enhanced background elements for desktop */}
       <div className="position-absolute top-0 start-0 w-100 h-100">
-        <div className="position-absolute animate-float" style={{top: '25%', left: '25%', width: '24rem', height: '24rem', background: 'rgba(96, 165, 250, 0.3)', borderRadius: '50%', filter: 'blur(40px)'}}></div>
-        <div className="position-absolute animate-float" style={{top: '33%', right: '25%', width: '24rem', height: '24rem', background: 'rgba(168, 85, 247, 0.3)', borderRadius: '50%', filter: 'blur(40px)', animationDelay: '2s'}}></div>
-        <div className="position-absolute animate-float" style={{bottom: '25%', left: '33%', width: '24rem', height: '24rem', background: 'rgba(251, 113, 133, 0.3)', borderRadius: '50%', filter: 'blur(40px)', animationDelay: '4s'}}></div>
+        <div className={`position-absolute animate-float ${heroVisible ? 'animate-fade-in' : ''}`} 
+             style={{top: '25%', left: '25%', width: '24rem', height: '24rem', background: 'rgba(96, 165, 250, 0.4)', borderRadius: '50%', filter: 'blur(50px)', animationDelay: '0.5s'}}></div>
+        <div className={`position-absolute animate-float ${heroVisible ? 'animate-fade-in' : ''}`} 
+             style={{top: '33%', right: '25%', width: '24rem', height: '24rem', background: 'rgba(168, 85, 247, 0.4)', borderRadius: '50%', filter: 'blur(50px)', animationDelay: '1s'}}></div>
+        <div className={`position-absolute animate-float ${heroVisible ? 'animate-fade-in' : ''}`} 
+             style={{bottom: '25%', left: '33%', width: '24rem', height: '24rem', background: 'rgba(251, 113, 133, 0.4)', borderRadius: '50%', filter: 'blur(50px)', animationDelay: '1.5s'}}></div>
       </div>
       
       {/* Main content - optimized for landscape viewing */}
@@ -16,8 +23,8 @@ export default function Hero() {
           
           {/* Left side - Text content */}
           <div className="col-lg-6 order-2 order-lg-1">
-            <div className="animate-slide-in-left mb-4">
-              <div className="d-inline-flex align-items-center px-4 py-2 rounded-pill bg-gradient-success text-white fw-semibold mb-4 success-glow">
+            <div className={`mb-4 ${heroVisible ? 'animate-slide-in-left' : ''}`}>
+              <div className="d-inline-flex align-items-center px-4 py-2 rounded-pill bg-gradient-success text-white fw-semibold mb-4 success-glow animate-magnetic-hover">
                 <span className="badge bg-success rounded-pill me-3 animate-pulse" style={{width: '12px', height: '12px'}}></span>
                 <span className="d-flex align-items-center gap-2">
                   ✨ Available for new opportunities
@@ -58,15 +65,29 @@ export default function Hero() {
             </div>
             
             {/* Action buttons - Desktop optimized */}
-            <div className="d-flex flex-column flex-sm-row gap-3 animate-slide-in-left" style={{animationDelay: '0.3s'}}>
+            <div className={`d-flex flex-column flex-sm-row gap-3 ${heroVisible ? 'animate-slide-in-left' : ''}`} style={{animationDelay: '0.6s'}}>
               <button
                 onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-                className="btn btn-primary btn-lg px-5 py-3 rounded-4 fw-bold fs-5 shadow-lg premium-glow"
+                className="btn btn-primary btn-lg px-5 py-3 rounded-4 fw-bold fs-5 shadow-lg premium-glow animate-magnetic-hover"
+                style={{
+                  background: 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #2563eb 100%)',
+                  border: 'none',
+                  transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-6px) scale(1.05)';
+                  e.currentTarget.style.boxShadow = '0 25px 60px rgba(79, 70, 229, 0.4)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 10px 30px rgba(79, 70, 229, 0.3)';
+                }}
               >
                 <span className="d-flex align-items-center gap-3">
                   <span className="fs-4">🎯</span>
                   <span>View My Portfolio</span>
-                  <svg className="icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" 
+                       style={{ transition: 'transform 0.3s ease' }}>
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </span>
@@ -74,7 +95,26 @@ export default function Hero() {
               
               <button
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="btn btn-outline-success btn-lg px-5 py-3 rounded-4 fw-bold fs-5 shadow-lg success-glow"
+                className="btn btn-outline-success btn-lg px-5 py-3 rounded-4 fw-bold fs-5 shadow-lg success-glow animate-magnetic-hover"
+                style={{
+                  background: 'rgba(16, 185, 129, 0.1)',
+                  border: '2px solid rgba(16, 185, 129, 0.3)',
+                  color: '#059669',
+                  backdropFilter: 'blur(10px)',
+                  transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'rgba(16, 185, 129, 0.2)';
+                  e.currentTarget.style.borderColor = 'rgba(16, 185, 129, 0.5)';
+                  e.currentTarget.style.transform = 'translateY(-6px) scale(1.05)';
+                  e.currentTarget.style.boxShadow = '0 25px 60px rgba(16, 185, 129, 0.3)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'rgba(16, 185, 129, 0.1)';
+                  e.currentTarget.style.borderColor = 'rgba(16, 185, 129, 0.3)';
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 10px 30px rgba(16, 185, 129, 0.2)';
+                }}
               >
                 <span className="d-flex align-items-center gap-3">
                   <span className="fs-4">💬</span>
@@ -160,8 +200,8 @@ export default function Hero() {
         </div>
         
         {/* Enhanced Stats section for business impact */}
-        <div className="mt-5 animate-fade-in" style={{animationDelay: '0.9s'}}>
-          <h3 className="text-center fs-5 fw-semibold text-secondary mb-4">
+        <div ref={statsRef} className="mt-5">
+          <h3 className={`text-center fs-5 fw-semibold text-secondary mb-4 ${visibleStats.includes(0) ? 'animate-fade-in' : ''}`}>
             📊 <span className="text-gradient">Proven Track Record</span>
           </h3>
           
@@ -173,8 +213,17 @@ export default function Hero() {
               { number: '100%', label: 'Client Satisfaction', icon: '⭐', color: 'text-success' }
             ].map((stat, index) => (
               <div key={stat.label} className="col-6 col-lg-3">
-                <div className="card card-premium rounded-4 p-4 text-center hover-lift premium-glow">
-                  <div className="fs-2 mb-2">{stat.icon}</div>
+                <div className={`card card-premium rounded-4 p-4 text-center animate-magnetic-hover premium-glow ${
+                  visibleStats.includes(index) ? 'animate-bounce-in' : ''
+                }`} style={{
+                  opacity: visibleStats.includes(index) ? 1 : 0,
+                  transform: visibleStats.includes(index) ? 'translateY(0)' : 'translateY(30px)',
+                  transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                  animationDelay: `${index * 0.1}s`
+                }}>
+                  <div className="fs-2 mb-2" style={{ animation: visibleStats.includes(index) ? 'float 3s ease-in-out infinite' : 'none' }}>
+                    {stat.icon}
+                  </div>
                   <div className={`display-6 fw-bold mb-2 ${stat.color}`}>
                     {stat.number}
                   </div>
@@ -199,11 +248,32 @@ export default function Hero() {
       </div>
       
       {/* Scroll indicator - positioned for desktop */}
-      <div className="position-absolute bottom-0 start-50 translate-middle-x d-none d-lg-block" style={{marginBottom: '2rem'}}>
+      <div className={`position-absolute bottom-0 start-50 translate-middle-x d-none d-lg-block animate-magnetic-hover ${heroVisible ? 'animate-fade-in' : ''}`} 
+           style={{marginBottom: '2rem', animationDelay: '1.2s'}}>
         <div className="border border-2 border-secondary rounded-pill d-flex justify-content-center cursor-pointer"
-             style={{width: '24px', height: '40px'}}
-             onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
-          <div className="bg-secondary rounded-pill mt-2" style={{width: '4px', height: '12px', animation: 'pulse 2s infinite'}}></div>
+             style={{
+               width: '28px', 
+               height: '45px', 
+               transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+               background: 'rgba(255, 255, 255, 0.1)',
+               backdropFilter: 'blur(10px)'
+             }}
+             onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+             onMouseEnter={(e) => {
+               e.currentTarget.style.transform = 'translateY(-5px) scale(1.1)';
+               e.currentTarget.style.borderColor = '#4f46e5';
+             }}
+             onMouseLeave={(e) => {
+               e.currentTarget.style.transform = 'translateY(0) scale(1)';
+               e.currentTarget.style.borderColor = '#6b7280';
+             }}>
+          <div className="bg-secondary rounded-pill mt-2" 
+               style={{
+                 width: '4px', 
+                 height: '14px', 
+                 animation: 'magneticPull 2s ease-in-out infinite',
+                 background: 'linear-gradient(135deg, #4f46e5, #7c3aed)'
+               }}></div>
         </div>
       </div>
     </section>
