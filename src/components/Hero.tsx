@@ -130,7 +130,7 @@ export default function Hero() {
               >
                 <span className="d-flex align-items-center gap-3">
                   <span className="fs-4">💬</span>
-                  <span>Let's chat</span>
+                  <span>Let&apos;s chat</span>
                 </span>
               </button>
             </div>
