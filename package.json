@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "homepage": "https://sairam960.github.io/portfolio-SDE/",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
