@@ -413,8 +413,37 @@ p {
   }
 }
 
+@keyframes twinkle {
+  0% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+}
+
 .fade-in-up {
   animation: fadeInUp 0.6s ease-out;
+}
+
+/* Particle Background Styles */
+.particle-bg {
+  z-index: -1;
+}
+
+.particle {
+  transition: opacity 0.3s ease;
+}
+
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform, opacity;
 }
 
 /* Smooth scroll behavior */

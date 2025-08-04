@@ -1,7 +1,6 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
 
 interface Particle {
   x: number;
@@ -110,7 +109,7 @@ export default function ParticleBackground({
         animation: twinkle ${twinkleSpeed}s ease-in-out infinite alternate;
       `;
 
-      gsap.set(particle, { x, y });
+      particle.style.transform = `translate(${x}px, ${y}px)`;
       container.appendChild(particle);
 
       particles.push({
@@ -162,12 +161,9 @@ export default function ParticleBackground({
       particle.x += particle.vx;
       particle.y += particle.vy;
 
-      // Update DOM element with GSAP for better performance
-      gsap.set(particle.element, {
-        x: particle.x,
-        y: particle.y,
-        opacity: particle.opacity * (1 - Math.min(distance / maxDistance, 1) * 0.3)
-      });
+      // Update DOM element with CSS transforms for better performance
+      particle.element.style.transform = `translate(${particle.x}px, ${particle.y}px)`;
+      particle.element.style.opacity = `${particle.opacity * (1 - Math.min(distance / maxDistance, 1) * 0.3)}`;
     });
 
     animationRef.current = requestAnimationFrame(animate);
@@ -224,24 +220,31 @@ export default function ParticleBackground({
     };
   }, [mounted, animate, createParticles, handleResize]);
 
-  // Floating animation for subtle movement
+  // Floating animation for subtle movement using CSS animations
   useEffect(() => {
     if (!mounted || particlesRef.current.length === 0) return;
 
     const particles = particlesRef.current;
     
     particles.forEach((particle, index) => {
-      // Add subtle floating animation to base positions
-      gsap.to(particle, {
-        baseX: particle.baseX + Math.sin(Date.now() * 0.001 + index) * 20,
-        baseY: particle.baseY + Math.cos(Date.now() * 0.001 + index) * 15,
-        duration: 4 + index * 0.2,
-        ease: "sine.inOut",
-        repeat: -1,
-        yoyo: true,
-        delay: index * 0.1
-      });
+      // Add subtle floating movement by updating base positions periodically
+      const floatInterval = setInterval(() => {
+        const time = Date.now() * 0.001;
+        particle.baseX = particle.baseX + Math.sin(time + index) * 0.5;
+        particle.baseY = particle.baseY + Math.cos(time + index) * 0.3;
+      }, 100);
+
+      // Store interval for cleanup
+      (particle as any).floatInterval = floatInterval;
     });
+
+    return () => {
+      particles.forEach((particle) => {
+        if ((particle as any).floatInterval) {
+          clearInterval((particle as any).floatInterval);
+        }
+      });
+    };
   }, [mounted]);
 
   if (!mounted) {
