@@ -56,7 +56,7 @@ export default function Hero() {
           <div className="col-lg-4 text-center">
             <div className="fade-in-up" style={{ animationDelay: '0.2s' }}>
               {/* Portfolio Image */}
-              <div className="mx-auto mb-4 profile-img-wrapper"
+              <div className="mx-auto mb-4"
                 style={{
                 width: '100%',
                 aspectRatio: '1 / 1',
@@ -65,7 +65,6 @@ export default function Hero() {
                 display: 'flex',
                 alignItems: 'center',
                 boxShadow: 'var(--shadow-xl)',
-                transition: 'transform 0.3s cubic-bezier(0.4,0,0.2,1)',
                 overflow: 'hidden',
                 border: '4px solid white'
               }}>         
