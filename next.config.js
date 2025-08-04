@@ -6,8 +6,9 @@ const nextConfig = {
   assetPrefix: '/portfolio-SDE',
   trailingSlash: true,
   images: {
-    unoptimized: true
+    unoptimized: true,
   }
+  
 }
 
 module.exports = nextConfig
