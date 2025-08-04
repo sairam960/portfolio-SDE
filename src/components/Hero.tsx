@@ -67,7 +67,7 @@ export default function Hero() {
               <div className="hero-image-container animate-fade-in-up delay-200">
                 <div className="profile-image">
                   <Image
-                    src="/images/DSC_6481.jpg"
+                    src="portfolio-SDE/images/DSC_6481.jpg"
                     alt="Sai Krishnan"
                     fill
                     className="profile-img"
