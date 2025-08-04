@@ -56,27 +56,19 @@ export default function Hero() {
           <div className="col-lg-4 text-center">
             <div className="fade-in-up" style={{ animationDelay: '0.2s' }}>
               {/* Portfolio Image */}
-              <div 
-                className="mx-auto mb-4"
+              <div className="mx-auto mb-4 profile-img-wrapper"
                 style={{
-                   width: '100%',
-                  aspectRatio: '1 / 1',
-                  borderRadius: '50%',
-                  background: 'linear-gradient(135deg, var(--primary-color), var(--accent-color))',
-                  display: 'flex',
-                  alignItems: 'center',
-                  boxShadow: 'var(--shadow-xl)',
-                  transition: 'all var(--transition-base)',
-                  overflow: 'hidden',
-                  border: '4px solid white'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'scale(1.05)'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'scale(1)'
-                }}
-              >         
+                width: '100%',
+                aspectRatio: '1 / 1',
+                borderRadius: '50%',
+                background: 'linear-gradient(135deg, var(--primary-color), var(--accent-color))',
+                display: 'flex',
+                alignItems: 'center',
+                boxShadow: 'var(--shadow-xl)',
+                transition: 'transform 0.3s cubic-bezier(0.4,0,0.2,1)',
+                overflow: 'hidden',
+                border: '4px solid white'
+              }}>         
 
                 <Image
                   src="/portfolio-SDE/images/DSC_6481.jpg"
