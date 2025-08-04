@@ -1,52 +1,7 @@
-'use client';
-
-import { useEffect, useRef, useState } from 'react';
-
 export default function ParticleBackground() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-    
-    if (!containerRef.current) return;
-
-    const container = containerRef.current;
-    const particleCount = 20;
-    
-    // Create simple particles
-    for (let i = 0; i < particleCount; i++) {
-      const particle = document.createElement('div');
-      particle.className = 'particle';
-      
-      const x = Math.random() * window.innerWidth;
-      const y = Math.random() * window.innerHeight;
-      const size = Math.random() * 3 + 1;
-      const opacity = Math.random() * 0.5 + 0.2;
-      
-      particle.style.cssText = `
-        position: absolute;
-        width: ${size}px;
-        height: ${size}px;
-        background: #3b82f6;
-        border-radius: 50%;
-        opacity: ${opacity};
-        left: ${x}px;
-        top: ${y}px;
-        animation: float ${Math.random() * 3 + 2}s ease-in-out infinite alternate;
-      `;
-
-      container.appendChild(particle);
-    }
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
-
   return (
     <div
-      ref={containerRef}
+      className="particle-background"
       style={{
         position: 'fixed',
         top: 0,
@@ -55,7 +10,14 @@ export default function ParticleBackground() {
         height: '100%',
         pointerEvents: 'none',
         zIndex: -1,
-        opacity: 0.3
+        opacity: 0.3,
+        background: `
+          radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+          radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+          radial-gradient(circle at 40% 70%, rgba(59, 130, 246, 0.05) 0%, transparent 30%),
+          radial-gradient(circle at 90% 10%, rgba(59, 130, 246, 0.05) 0%, transparent 30%),
+          radial-gradient(circle at 10% 90%, rgba(59, 130, 246, 0.05) 0%, transparent 30%)
+        `
       }}
       aria-hidden="true"
     />

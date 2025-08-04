@@ -1,5 +1,4 @@
-/* Import Bootstrap CSS */
-@import 'bootstrap/dist/css/bootstrap.css';
+/* Bootstrap removed for performance - using custom CSS instead */
 
 :root {
   /* Clean Minimalist Color Palette */
