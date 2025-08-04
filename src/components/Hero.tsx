@@ -70,14 +70,12 @@ export default function Hero() {
               }}>         
 
                 <Image
-                  src="/portfolio-SDE/images/DSC_6481.jpg"
+                  src="/images/DSC_6481.jpg"
                   alt="Sai"
                   fill
                   className="object-cover"
                   unoptimized
                   priority
-                  placeholder="blur"
-                  blurDataURL="/portfolio-SDE/images/DSC_6481.jpg"
                   style={{ objectFit: 'cover' }}
                 />
 
