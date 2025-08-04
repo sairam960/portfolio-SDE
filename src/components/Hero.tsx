@@ -81,13 +81,13 @@ export default function Hero() {
 
                 <Image
                   src="/portfolio-SDE/images/DSC_6481.jpg"
-                  width={300}
-                  height={300}
+                  fill
                   alt="Sai"
                   unoptimized
                   priority
                   placeholder="blur"
                   blurDataURL="/portfolio-SDE/images/DSC_6481.jpg"
+                  style={{ objectFit: 'contain' }}
                 />
 
               </div>

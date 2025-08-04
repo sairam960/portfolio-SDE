@@ -25,13 +25,13 @@ export default function Projects() {
                 {project.imageUrl ? (
                   <Image
                     src={project.imageUrl}
-                    width={300}
-                    height={300}
+                    fill
+                    style={{ objectFit: 'cover' }}
                     alt="Sai"
                     unoptimized
                     priority
                     placeholder="blur"
-                    blurDataURL="/portfolio-SDE/images/DSC_6481.jpg"
+                    blurDataURL={project.imageUrl}
                   />
                 ) : (
                   <div 
