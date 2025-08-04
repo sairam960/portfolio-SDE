@@ -1,4 +1,5 @@
 'use client'
+ import Image from 'next/image'
 
 export default function Hero() {
   return (
@@ -76,17 +77,19 @@ export default function Hero() {
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'scale(1)'
                 }}
-              >
-                <img
+              >         
+
+                <Image
                   src="/images/DSC_6481.jpg"
-                  alt="Sai Krishnan"
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    borderRadius: "50%"
-                  }}
+                  width={300}
+                  height={300}
+                  alt="Sai"
+                  unoptimized
+                  priority
+                  placeholder="blur"
+                  blurDataURL="/images/DSC_6481.jpg"
                 />
+
               </div>
               
               {/* Social Links */}
