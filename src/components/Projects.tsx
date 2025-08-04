@@ -1,6 +1,7 @@
 'use client'
 
 import { projects } from '@/lib/data'
+import Image from 'next/image'
 
 export default function Projects() {
 
@@ -22,14 +23,15 @@ export default function Projects() {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {project.imageUrl ? (
-                  <img
+                  <Image
                     src={project.imageUrl}
-                    alt={project.title}
-                    className="project-image"
-                    onError={(e) => {
-                      // Hide the image if it fails to load
-                      e.currentTarget.style.display = 'none'
-                    }}
+                    width={300}
+                    height={300}
+                    alt="Sai"
+                    unoptimized
+                    priority
+                    placeholder="blur"
+                    blurDataURL="/out/images/DSC_6481.jpg"
                   />
                 ) : (
                   <div 

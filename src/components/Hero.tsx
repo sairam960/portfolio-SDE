@@ -80,7 +80,7 @@ export default function Hero() {
               >         
 
                 <Image
-                  src="/images/DSC_6481.jpg"
+                  src="/out/images/DSC_6481.jpg"
                   width={300}
                   height={300}
                   alt="Sai"
