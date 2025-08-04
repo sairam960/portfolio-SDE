@@ -4,19 +4,9 @@
 export default function Hero() {
   return (
     <section id="home" className="hero-clean" style={{
-      position: 'relative'
+      position: 'relative',
+      background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)'
     }}>
-      <div 
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(255, 255, 255, 0.9)',
-          backdropFilter: 'blur(2px)'
-        }}
-      />
       <div className="container-custom" style={{ position: 'relative', zIndex: 1 }}>
         <div className="row align-items-center">
           <div className="col-lg-8">

@@ -27,11 +27,9 @@ export default function Projects() {
                     src={project.imageUrl}
                     fill
                     style={{ objectFit: 'cover' }}
-                    alt="Sai"
+                    alt={project.title}
                     unoptimized
                     priority
-                    placeholder="blur"
-                    blurDataURL="/portfolio-SDE/images/project.jpg"
                   />
                 ) : (
                   <div 
