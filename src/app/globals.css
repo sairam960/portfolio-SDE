@@ -169,34 +169,6 @@ p {
   padding: 0 var(--container-padding);
 }
 
-/* Navigation */
-.navbar-clean {
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border-color);
-  padding: 1rem 0;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  transition: all var(--transition-base);
-}
-
-.nav-link-clean {
-  color: var(--text-secondary);
-  text-decoration: none;
-  font-weight: 500;
-  padding: 0.5rem 1rem;
-  border-radius: var(--border-radius);
-  transition: all var(--transition-base);
-}
-
-.nav-link-clean:hover,
-.nav-link-clean.active {
-  color: var(--primary-color);
-  background-color: var(--gray-100);
-}
 
 /* Hero Section */
 .hero-clean {
@@ -220,29 +192,6 @@ p {
   max-width: 600px;
 }
 
-/* Skills */
-.skill-icon {
-  width: 60px;
-  height: 60px;
-  margin-bottom: 1rem;
-  transition: all var(--transition-base);
-}
-
-.skill-icon:hover {
-  transform: scale(1.1);
-}
-
-.skill-card {
-  text-align: center;
-  padding: 2rem 1rem;
-  border-radius: var(--border-radius-lg);
-  transition: all var(--transition-base);
-}
-
-.skill-card:hover {
-  background-color: var(--gray-50);
-  transform: translateY(-4px);
-}
 
 /* Projects */
 .project-card {
@@ -349,24 +298,6 @@ p {
   min-height: 120px;
 }
 
-/* Utilities */
-.text-center { text-align: center; }
-.text-left { text-align: left; }
-.text-right { text-align: right; }
-
-.mb-0 { margin-bottom: 0; }
-.mb-1 { margin-bottom: 0.5rem; }
-.mb-2 { margin-bottom: 1rem; }
-.mb-3 { margin-bottom: 1.5rem; }
-.mb-4 { margin-bottom: 2rem; }
-.mb-5 { margin-bottom: 3rem; }
-
-.mt-0 { margin-top: 0; }
-.mt-1 { margin-top: 0.5rem; }
-.mt-2 { margin-top: 1rem; }
-.mt-3 { margin-top: 1.5rem; }
-.mt-4 { margin-top: 2rem; }
-.mt-5 { margin-top: 3rem; }
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -413,18 +344,12 @@ p {
   }
 }
 
-@keyframes twinkle {
+@keyframes float {
   0% {
-    opacity: 0.2;
-    transform: scale(0.8);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.2);
+    transform: translateY(0px);
   }
   100% {
-    opacity: 0.2;
-    transform: scale(0.8);
+    transform: translateY(-20px);
   }
 }
 
@@ -432,19 +357,6 @@ p {
   animation: fadeInUp 0.6s ease-out;
 }
 
-/* Particle Background Styles */
-.particle-bg {
-  z-index: -1;
-}
-
-.particle {
-  transition: opacity 0.3s ease;
-}
-
-.gpu-accelerated {
-  transform: translateZ(0);
-  will-change: transform, opacity;
-}
 
 /* Smooth scroll behavior */
 html {
