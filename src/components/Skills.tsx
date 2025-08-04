@@ -57,7 +57,7 @@ export default function Skills() {
                 <h4 className="mb-4 text-center">{category.title}</h4>
                 
                 <div className="row g-3">
-                  {category.skills.map((skill, skillIndex) => (
+                  {category.skills.map((skill) => (
                     <div key={skill.name} className="col-12">
                       <div className="d-flex align-items-center mb-2">
                         <div className="d-flex align-items-center">

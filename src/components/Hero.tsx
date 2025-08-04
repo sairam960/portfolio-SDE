@@ -66,7 +66,7 @@ export default function Hero() {
               >
               <img
                 src="/images/DSC_6481.JPG" 
-                alt="Your Name"
+                alt="Sairamnath Krishnan"
                 style={{
                   width: "100%",
                   height: "100%",
@@ -106,7 +106,7 @@ export default function Hero() {
                       </svg>
                     )
                   }
-                ].map((social, index) => (
+                ].map((social) => (
                   <a
                     key={social.label}
                     href={social.href}

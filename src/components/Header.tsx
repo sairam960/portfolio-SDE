@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -23,13 +22,10 @@ export default function Header() {
       <div className="container">
         <div className="d-flex justify-content-between align-items-center w-100" style={{minHeight: '75px'}}>
           <div className="navbar-brand d-flex align-items-center gap-3 animate-magnetic-hover">
-            {/*
-            
             <div className="bg-gradient-professional rounded-3 d-flex align-items-center justify-content-center shadow-sm" 
                  style={{width: '42px', height: '42px', transition: 'all 0.3s ease'}}>
               <span className="text-white fw-bold fs-5">SK</span>
             </div>
-            
             
             <span className="fs-3 fw-bold text-gradient" style={{
               background: 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #2563eb 100%)',
@@ -40,9 +36,6 @@ export default function Header() {
             }}>
               Sairamnath
             </span>
-            
-            
-            */}
           </div>
           
           <div className="d-none d-md-block">
