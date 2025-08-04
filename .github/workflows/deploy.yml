@@ -48,18 +48,6 @@ jobs:
 
     - name: Set base path env
       run: echo "NEXT_PUBLIC_BASE_PATH=/portfolio‑SDE" >> $GITHUB_ENV
-
-    - name: Build
-      run: npm run build && npm run export
-
-    - name: Deploy to Pages
-      uses: peaceiris/actions-gh-pages@v4
-      with:
-        publish_dir: ./out
-        publish_branch: gh-pages
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-
-
     
 
   deploy:
