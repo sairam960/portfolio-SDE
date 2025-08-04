@@ -2,8 +2,25 @@
 
 export default function Hero() {
   return (
-    <section id="home" className="hero-clean">
-      <div className="container-custom">
+    <section id="home" className="hero-clean" style={{
+      backgroundImage: 'url(/images/DSC_6481.JPG)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      position: 'relative'
+    }}>
+      <div 
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(255, 255, 255, 0.9)',
+          backdropFilter: 'blur(2px)'
+        }}
+      />
+      <div className="container-custom" style={{ position: 'relative', zIndex: 1 }}>
         <div className="row align-items-center">
           <div className="col-lg-8">
             <div className="fade-in-up">
@@ -41,40 +58,6 @@ export default function Hero() {
           
           <div className="col-lg-4 text-center">
             <div className="fade-in-up" style={{ animationDelay: '0.2s' }}>
-              <div 
-                className="mx-auto mb-4"
-                style={{
-                  width: '280px',
-                  height: '280px',
-                  borderRadius: '50%',
-                  background: 'linear-gradient(135deg, var(--primary-color), var(--accent-color))',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '4rem',
-                  fontWeight: 'bold',
-                  color: 'white',
-                  boxShadow: 'var(--shadow-xl)',
-                  transition: 'all var(--transition-base)'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'scale(1.05)'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'scale(1)'
-                }}
-              >
-              <img
-                src="/images/DSC_6481.JPG" 
-                alt="Sairamnath Krishnan"
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  borderRadius: "50%"
-                }}
-              />
-              </div>
               
               {/* Social Links */}
               <div className="d-flex justify-content-center gap-3">
