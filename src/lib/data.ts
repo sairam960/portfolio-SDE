@@ -8,7 +8,7 @@ export const projects: Project[] = [
     technologies: ['Next.js', 'TypeScript', 'PostgreSQL', 'Tailwind CSS','Tableau'],
     githubUrl: 'https://github.com/mfongpanera',
     liveUrl: '#',
-    imageUrl: '/portfolio-SDE/images/project1.png'
+    imageUrl: '/images/project1.png'
   },
   {
     id: '2',
@@ -17,7 +17,7 @@ export const projects: Project[] = [
     technologies: ['React', 'Node.js', 'OpenAI API', 'MongoDB', 'Express'],
     githubUrl: 'https://github.com/sairam960/advisor-app',
     liveUrl: '#',
-    imageUrl: '/portfolio-SDE/images/ai-app.png'
+    imageUrl: '/images/ai-app.png'
   }
 ]
 

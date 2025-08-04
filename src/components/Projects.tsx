@@ -23,14 +23,16 @@ export default function Projects() {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {project.imageUrl ? (
-                  <Image
-                    src={project.imageUrl}
-                    fill
-                    style={{ objectFit: 'cover' }}
-                    alt={project.title}
-                    unoptimized
-                    priority
-                  />
+                  <div className="project-image" style={{ position: 'relative' }}>
+                    <Image
+                      src={project.imageUrl}
+                      fill
+                      style={{ objectFit: 'cover' }}
+                      alt={project.title}
+                      unoptimized
+                      priority
+                    />
+                  </div>
                 ) : (
                   <div 
                     className="project-image d-flex align-items-center justify-content-center"
