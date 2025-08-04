@@ -2,6 +2,8 @@
 const nextConfig = {
   output: 'export',
   trailingSlash: true,
+  basePath: '/portfolio-SDE',
+  assetPrefix: '/portfolio-SDE/',
   images: {
     unoptimized: true
   }
