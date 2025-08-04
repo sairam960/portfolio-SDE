@@ -31,7 +31,7 @@ export default function Projects() {
                     unoptimized
                     priority
                     placeholder="blur"
-                    blurDataURL={project.imageUrl}
+                    blurDataURL="/portfolio-SDE/images/project.jpg"
                   />
                 ) : (
                   <div 

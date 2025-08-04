@@ -59,13 +59,12 @@ export default function Hero() {
               <div 
                 className="mx-auto mb-4"
                 style={{
-                  width: '280px',
-                  height: '280px',
+                   width: '100%',
+                  aspectRatio: '1 / 1',
                   borderRadius: '50%',
                   background: 'linear-gradient(135deg, var(--primary-color), var(--accent-color))',
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'center',
                   boxShadow: 'var(--shadow-xl)',
                   transition: 'all var(--transition-base)',
                   overflow: 'hidden',
@@ -81,13 +80,14 @@ export default function Hero() {
 
                 <Image
                   src="/portfolio-SDE/images/DSC_6481.jpg"
-                  fill
                   alt="Sai"
+                  fill
+                  className="object-cover"
                   unoptimized
                   priority
                   placeholder="blur"
                   blurDataURL="/portfolio-SDE/images/DSC_6481.jpg"
-                  style={{ objectFit: 'contain' }}
+                  style={{ objectFit: 'cover' }}
                 />
 
               </div>
