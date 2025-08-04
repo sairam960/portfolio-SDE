@@ -78,7 +78,7 @@ export default function Hero() {
                 }}
               >
                 <img
-                  src="/public/images/DSC_6481.jpg"
+                  src="/images/DSC_6481.jpg"
                   alt="Sai Krishnan"
                   style={{
                     width: "100%",
