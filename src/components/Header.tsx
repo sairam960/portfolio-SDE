@@ -22,9 +22,7 @@ export default function Header() {
       <div className="container">
         <div className="d-flex justify-content-between align-items-center w-100" style={{minHeight: '75px'}}>
           <div className="navbar-brand d-flex align-items-center gap-3 animate-magnetic-hover">
-            <div className="bg-gradient-professional rounded-3 d-flex align-items-center justify-content-center shadow-sm" 
-                 style={{width: '42px', height: '42px', transition: 'all 0.3s ease'}}>
-            </div>
+            
           </div>
           
           <div className="d-none d-md-block">
