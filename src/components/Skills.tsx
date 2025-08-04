@@ -59,7 +59,7 @@ export default function Skills() {
                 <div className="row g-3">
                   {category.skills.map((skill, skillIndex) => (
                     <div key={skill.name} className="col-12">
-                      <div className="d-flex align-items-center justify-content-between mb-2">
+                      <div className="d-flex align-items-center mb-2">
                         <div className="d-flex align-items-center">
                           <div 
                             className="me-3 d-flex align-items-center justify-content-center"
@@ -128,7 +128,6 @@ export default function Skills() {
                           </div>
                           <span className="fw-medium">{skill.name}</span>
                         </div>
-                        <small className="text-muted">{skill.level}%</small>
                       </div>
                       
                       <div 
@@ -143,7 +142,11 @@ export default function Skills() {
                           className="progress-bar"
                           style={{
                             width: `${skill.level}%`,
-                            backgroundColor: skill.color,
+                            background: category.title === 'Frontend' 
+                              ? 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+                              : category.title === 'Backend'
+                              ? 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'
+                              : 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
                             borderRadius: '3px',
                             transition: 'width 1s ease-in-out'
                           }}
@@ -162,9 +165,8 @@ export default function Skills() {
           <h4 className="text-center mb-4">Other Technologies</h4>
           <div className="d-flex flex-wrap justify-content-center gap-3">
             {[
-              'React Native', 'Redux', 'GraphQL', 'REST APIs', 'Microservices',
-              'Jest', 'Cypress', 'Webpack', 'Babel', 'ESLint', 'Prettier',
-              'Figma', 'Adobe XD', 'Postman', 'Jenkins', 'GitHub Actions'
+              'React Native', 'REST APIs', 'Microservices',
+              'ESLint', 'Figma', 'Postman', 'Jenkins', 'GitHub Actions'
             ].map((tech, index) => (
               <span
                 key={tech}

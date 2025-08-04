@@ -8,9 +8,8 @@ export default function Experience() {
       
       <div className="desktop-container position-relative" style={{zIndex: 10}}>
         <div className="text-center mb-5">
-          <div className="d-inline-flex align-items-center px-4 py-2 rounded-pill bg-light dark:bg-purple-900/30 text-primary dark:text-purple-200 fw-medium mb-4" style={{fontSize: '0.875rem'}}>
-            <span className="bg-primary rounded-circle animate-pulse me-2" style={{width: '8px', height: '8px'}}></span>
-            Career Journey
+          <div> 
+
           </div>
           
           <h2 className="display-2 fw-bold text-dark dark:text-white mb-4">
@@ -125,9 +124,10 @@ export default function Experience() {
         </div>
         
         {/* Career highlights - Desktop optimized */}
+        {/* 
         <div className="mt-5">
           <div className="rounded-3 p-5 position-relative overflow-hidden" style={{background: 'linear-gradient(to right, #faf5ff, #eff6ff)'}}>
-            {/* Background decorations */}
+            
             <div className="position-absolute top-0 start-0 bg-primary rounded-circle" style={{width: '160px', height: '160px', opacity: 0.1, filter: 'blur(2rem)'}}></div>
             <div className="position-absolute bottom-0 end-0 bg-info rounded-circle" style={{width: '224px', height: '224px', opacity: 0.1, filter: 'blur(2rem)'}}></div>
             
@@ -163,7 +163,7 @@ export default function Experience() {
               </div>
             </div>
           </div>
-        </div>
+        </div>*/}
       </div>
     </section>
   )
