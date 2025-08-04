@@ -7,7 +7,7 @@ export default function About() {
         <div className="text-center mb-5">
           <h2 className="mb-3">About Me</h2>
           <p className="text-muted fs-5 mx-auto" style={{ maxWidth: '600px' }}>
-            Passionate software engineer with 3+ years of experience building scalable applications. In my free time I enjoy exploring new cuisines and watching NBA games.
+            Passionate software engineer with 3+ years of experience building scalable applications. In my free time I play chess, watch NBA.
           </p>
         </div>
 

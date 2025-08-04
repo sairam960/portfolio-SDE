@@ -21,7 +21,16 @@ export default function Hero() {
                   className="btn-primary"
                   onClick={(e) => {
                     e.preventDefault()
-                    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
+                    const element = document.getElementById('projects')
+                    if (element) {
+                      const headerOffset = 100
+                      const elementPosition = element.offsetTop
+                      const offsetPosition = elementPosition - headerOffset
+                      window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                      })
+                    }
                   }}
                 >
                   View My Work
@@ -31,7 +40,16 @@ export default function Hero() {
                   className="btn-outline"
                   onClick={(e) => {
                     e.preventDefault()
-                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+                    const element = document.getElementById('contact')
+                    if (element) {
+                      const headerOffset = 100
+                      const elementPosition = element.offsetTop
+                      const offsetPosition = elementPosition - headerOffset
+                      window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                      })
+                    }
                   }}
                 >
                   Get In Touch
@@ -57,7 +75,7 @@ export default function Hero() {
               }}>         
 
                 <Image
-                  src="/images/DSC_6481.jpg"
+                  src="/portfolio-SDE/images/DSC_6481.jpg"
                   alt="Sai"
                   fill
                   className="object-cover"
