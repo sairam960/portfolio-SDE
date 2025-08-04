@@ -3,10 +3,7 @@
 
 export default function Hero() {
   return (
-    <section id="home" className="hero-clean" style={{
-      position: 'relative',
-      background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)'
-    }}>
+    <section id="home" className="hero-clean">
       <div className="container-custom" style={{ position: 'relative', zIndex: 1 }}>
         <div className="row align-items-center">
           <div className="col-lg-8">
