@@ -65,7 +65,7 @@ export default function Hero() {
                 }}
               >
               <img
-                src="public/images/DSC_6481.JPG" 
+                src="/images/DSC_6481.JPG" 
                 alt="Your Name"
                 style={{
                   width: "100%",

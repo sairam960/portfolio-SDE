@@ -9,7 +9,7 @@ export default function Projects() {
       technologies: ['React', 'Node.js', 'PostgreSQL', 'AWS' ],
       liveUrl: '#',
       githubUrl: 'https://github.com/mfongpanera',
-      image: 'public/images/project1.png'
+      image: '/images/project1.png'
     },
     {
       id: 2,
