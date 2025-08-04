@@ -6,12 +6,10 @@ import Projects from '@/components/Projects'
 import Experience from '@/components/Experience'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
-import ParticleBackground from '@/components/ParticleBackground'
 
 export default function Home() {
   return (
-    <main className="bg-white">
-      <ParticleBackground />
+    <main className="min-h-screen">
       <Header />
       <Hero />
       <About />
