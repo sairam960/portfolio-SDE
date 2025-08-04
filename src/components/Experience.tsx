@@ -11,7 +11,8 @@ export default function Experience() {
           <div> 
 
           </div>
-          
+          <br/>  
+          <br/>
           <h2 className="display-2 fw-bold text-dark dark:text-white mb-4">
             Work{' '}
             <span className="text-gradient bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">

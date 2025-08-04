@@ -4,12 +4,12 @@ export default function Projects() {
   const projects = [
     {
       id: 1,
-      title: 'Task Management System',
-      description: 'A full-stack task management application built with React, Node.js, and PostgreSQL. Features real-time updates, user authentication, and project collaboration.',
-      technologies: ['React', 'Node.js', 'PostgreSQL', 'Socket.io', 'JWT'],
-      liveUrl: 'https://example.com',
-      githubUrl: 'https://github.com/sairam960/task-manager',
-      image: '/api/placeholder/400/250'
+      title: 'Inventory Management Application',
+      description: 'A full-stack inventory management application built with React, Node.js, and PostgreSQL. Features real-time inventory updates, user authentication, and role-based access control.',
+      technologies: ['React', 'Node.js', 'PostgreSQL', 'AWS' ],
+      liveUrl: '#',
+      githubUrl: 'https://github.com/mfongpanera',
+      image: 'public/images/project1.png'
     },
     {
       id: 2,

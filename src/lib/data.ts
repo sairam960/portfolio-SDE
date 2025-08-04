@@ -68,7 +68,7 @@ export const experiences: Experience[] = [
     description: [ 
       'Architected an OpenTelemetry-based observability and diagnostics platform for cloud-native microservices, enabling real-time distributed tracing and anomaly detection, reducing MTTR by 25%.'
     ],
-    technologies: ['React', 'Node.js', 'PostgreSQL', 'Github Actions','Python']
+    technologies: ['JavaScript', 'OpenTelemetry', 'Code Instrumentation', 'Cloud','Microservices']
   }
 ]
 

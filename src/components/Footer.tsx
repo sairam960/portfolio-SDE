@@ -158,30 +158,11 @@ export default function Footer() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                 </div>
-                <span className="text-light" style={{ opacity: 0.7 }}>College Park, MD</span>
+                <span className="text-light" style={{ opacity: 0.7 }}>US</span>
               </div>
             </div>
           </div>
-
-          {/* Additional Info */}
-          <div className="col-lg-3">
-            <h6 className="text-white fw-semibold mb-3">Technologies</h6>
-            <div className="d-flex flex-wrap gap-2">
-              {['React', 'Node.js', 'Python', 'AWS', 'TypeScript', 'Docker'].map((tech) => (
-                <span
-                  key={tech}
-                  className="px-2 py-1 rounded text-light"
-                  style={{
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                    fontSize: '0.75rem',
-                    opacity: 0.7
-                  }}
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
+          {/* Newsletter Signup */}
         </div>
 
         {/* Bottom Bar */}

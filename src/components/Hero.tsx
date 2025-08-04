@@ -64,7 +64,16 @@ export default function Hero() {
                   e.currentTarget.style.transform = 'scale(1)'
                 }}
               >
-                SK
+              <img
+                src="public/images/DSC_6481.JPG" 
+                alt="Your Name"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  borderRadius: "50%"
+                }}
+              />
               </div>
               
               {/* Social Links */}

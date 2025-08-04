@@ -52,7 +52,7 @@ export default function Contact() {
               <h4 className="mb-4">Let&apos;s Connect</h4>
               <p className="text-muted mb-4">
                 I&apos;m always interested in new opportunities and exciting projects. 
-                Whether you have a question or just want to say hello, feel free to reach out.
+                Whether you have a question or agree Max is the best driver in the grid, drop a hello.
               </p>
 
               <div className="mb-4">

@@ -7,7 +7,7 @@ export default function About() {
         <div className="text-center mb-5">
           <h2 className="mb-3">About Me</h2>
           <p className="text-muted fs-5 mx-auto" style={{ maxWidth: '600px' }}>
-            Passionate software engineer with 3+ years of experience building scalable applications
+            Passionate software engineer with 3+ years of experience building scalable applications. In my free time I enjoy exploring new cuisines and watching NBA games.
           </p>
         </div>
 
@@ -16,9 +16,10 @@ export default function About() {
             <div className="fade-in-up">
               <h3 className="mb-4">My Journey</h3>
               <p className="mb-3">
-                I&apos;m a full-stack software engineer with a passion for creating efficient, scalable, 
-                and user-friendly applications. With over 3 years of experience in the industry, 
-                I&apos;ve worked on various projects ranging from web applications to complex enterprise systems.
+                I&apos;m a software engineer with a passion for turning complexity into clarity. 
+                I&apos;ve led projects across AI, building a RAG admissions chatbot and engineered a openAI powered chat agent to handle customer complaints. 
+                I&apos;ve worked closely with ground teams to take products from 0→1 and thrive in fast-paced, high-impact environments.
+
               </p>
               <p className="mb-4">
                 My expertise spans across modern technologies including React, Node.js, Python, 
@@ -60,11 +61,11 @@ export default function About() {
                         color: 'white'
                       }}
                     >
-                      <strong>10+</strong>
+                      <strong>30x</strong>
                     </div>
                     <div>
-                      <h6 className="mb-0">Projects Completed</h6>
-                      <small className="text-muted">Web & Mobile Apps</small>
+                      <h6 className="mb-0"> Saved in Operational cost</h6>
+                      <small className="text-muted">in previous role</small>
                     </div>
                   </div>
                 </div>
