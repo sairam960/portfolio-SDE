@@ -24,18 +24,7 @@ export default function Header() {
           <div className="navbar-brand d-flex align-items-center gap-3 animate-magnetic-hover">
             <div className="bg-gradient-professional rounded-3 d-flex align-items-center justify-content-center shadow-sm" 
                  style={{width: '42px', height: '42px', transition: 'all 0.3s ease'}}>
-              <span className="text-white fw-bold fs-5"></span>
             </div>
-            
-            <span className="fs-3 fw-bold text-gradient" style={{
-              background: 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #2563eb 100%)',
-              backgroundSize: '200% 200%',
-              animation: 'gradientShift 3s ease infinite',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent'
-            }}>
-              
-            </span>
           </div>
           
           <div className="d-none d-md-block">
