@@ -80,14 +80,14 @@ export default function Hero() {
               >         
 
                 <Image
-                  src="/images/DSC_6481.jpg"
+                  src="/portfolio-SDE/images/DSC_6481.jpg"
                   width={300}
                   height={300}
                   alt="Sai"
                   unoptimized
                   priority
                   placeholder="blur"
-                  blurDataURL="/images/DSC_6481.jpg"
+                  blurDataURL="/portfolio-SDE/images/DSC_6481.jpg"
                 />
 
               </div>
