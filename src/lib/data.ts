@@ -6,9 +6,9 @@ export const projects: Project[] = [
     title: 'Inventory Management Application',
     description: 'A full-stack inventory management solution with user authentication, inventory tracking, and real-time inventory dashboard.',
     technologies: ['Next.js', 'TypeScript', 'PostgreSQL', 'Tailwind CSS','Tableau'],
-    githubUrl: '#',
+    githubUrl: 'https://github.com/mfongpanera',
     liveUrl: '#',
-    imageUrl: '/images/ecommerce-project.jpg'
+    imageUrl: '/images/project1.png'
   },
   {
     id: '2',
@@ -17,7 +17,7 @@ export const projects: Project[] = [
     technologies: ['React', 'Node.js', 'OpenAI API', 'MongoDB', 'Express'],
     githubUrl: 'https://github.com/sairam960/advisor-app',
     liveUrl: '#',
-    imageUrl: '/images/task-manager.jpg'
+    imageUrl: '/images/ai-app.png'
   }
 ]
 

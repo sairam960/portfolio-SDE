@@ -24,7 +24,7 @@ export default function Header() {
           <div className="navbar-brand d-flex align-items-center gap-3 animate-magnetic-hover">
             <div className="bg-gradient-professional rounded-3 d-flex align-items-center justify-content-center shadow-sm" 
                  style={{width: '42px', height: '42px', transition: 'all 0.3s ease'}}>
-              <span className="text-white fw-bold fs-5">SK</span>
+              <span className="text-white fw-bold fs-5"></span>
             </div>
             
             <span className="fs-3 fw-bold text-gradient" style={{
@@ -34,7 +34,7 @@ export default function Header() {
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent'
             }}>
-              Sairamnath
+              
             </span>
           </div>
           
