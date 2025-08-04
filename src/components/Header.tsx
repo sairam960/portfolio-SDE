@@ -22,24 +22,9 @@ export default function Header() {
       <div className="container">
         <div className="d-flex justify-content-between align-items-center w-100" style={{minHeight: '75px'}}>
           <div className="navbar-brand d-flex align-items-center gap-3 animate-magnetic-hover">
-            <div className="rounded-3 d-flex align-items-center justify-content-center shadow-sm" 
-                 style={{
-                   width: '42px', 
-                   height: '42px', 
-                   transition: 'all 0.3s ease',
-                   overflow: 'hidden',
-                   background: 'linear-gradient(135deg, var(--primary-color), var(--accent-color))'
-                 }}>
-              <img
-                src="/images/DSC_6481.JPG"
-                alt="Sairamnath Krishnan"
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  borderRadius: '12px'
-                }}
-              />
+            <div className="bg-gradient-professional rounded-3 d-flex align-items-center justify-content-center shadow-sm" 
+                 style={{width: '42px', height: '42px', transition: 'all 0.3s ease'}}>
+              <span className="text-white fw-bold fs-5">SK</span>
             </div>
             
             <span className="fs-3 fw-bold text-gradient" style={{
