@@ -21,12 +21,31 @@ export default function Projects() {
                 className="project-card fade-in-up"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                {project.imageUrl && (
+                {project.imageUrl ? (
                   <img
                     src={project.imageUrl}
                     alt={project.title}
                     className="project-image"
+                    onError={(e) => {
+                      // Hide the image if it fails to load
+                      e.currentTarget.style.display = 'none'
+                    }}
                   />
+                ) : (
+                  <div 
+                    className="project-image d-flex align-items-center justify-content-center"
+                    style={{
+                      backgroundColor: 'var(--gray-100)',
+                      color: 'var(--text-muted)'
+                    }}
+                  >
+                    <div className="text-center">
+                      <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                      <p className="mt-2 mb-0 small">Project Image</p>
+                    </div>
+                  </div>
                 )}
 
                 <div className="project-content">

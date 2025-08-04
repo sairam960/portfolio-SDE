@@ -54,6 +54,40 @@ export default function Hero() {
           
           <div className="col-lg-4 text-center">
             <div className="fade-in-up" style={{ animationDelay: '0.2s' }}>
+              {/* Portfolio Image */}
+              <div 
+                className="mx-auto mb-4"
+                style={{
+                  width: '280px',
+                  height: '280px',
+                  borderRadius: '50%',
+                  background: 'linear-gradient(135deg, var(--primary-color), var(--accent-color))',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  boxShadow: 'var(--shadow-xl)',
+                  transition: 'all var(--transition-base)',
+                  overflow: 'hidden',
+                  border: '4px solid white'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'scale(1.05)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'scale(1)'
+                }}
+              >
+                <img
+                  src="/images/DSC_6481.JPG" 
+                  alt="Sai Krishnan"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    borderRadius: "50%"
+                  }}
+                />
+              </div>
               
               {/* Social Links */}
               <div className="d-flex justify-content-center gap-3">

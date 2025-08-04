@@ -21,10 +21,6 @@ export default function Header() {
             }}>
       <div className="container">
         <div className="d-flex justify-content-between align-items-center w-100" style={{minHeight: '75px'}}>
-          <div className="navbar-brand d-flex align-items-center gap-3 animate-magnetic-hover">
-            
-          </div>
-          
           <div className="d-none d-md-block">
             <div className="d-flex gap-1">
               {[
