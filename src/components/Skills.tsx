@@ -563,7 +563,7 @@ export default function Skills() {
 
   return (
     <section id="skills" ref={sectionRef} className="skills-section-modern">
-      <div className="container-custom">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div 
           className="skills-header"
@@ -597,9 +597,9 @@ export default function Skills() {
           onCategoryChange={setActiveCategory}
         />
 
-        {/* Skills Grid */}
+        {/* Skills Grid - Enhanced with better alignment */}
         <motion.div 
-          className="skills-grid"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16 items-start"
           layout
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
@@ -629,8 +629,8 @@ export default function Skills() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 1 }}
         >
-          <h3>Other Technologies & Tools</h3>
-          <div className="tech-tags-container">
+          <h3 className="text-center text-2xl md:text-3xl font-bold text-gray-800 mb-8">Other Technologies & Tools</h3>
+          <div className="flex flex-wrap justify-center gap-3 md:gap-4">
             {otherTechnologies.map((tech, index) => (
               <motion.span
                 key={tech}

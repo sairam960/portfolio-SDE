@@ -362,7 +362,7 @@ export default function About() {
         style={{ y: parallaxY }}
       />
 
-      <div className="container-custom">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero Introduction */}
         <motion.div 
           className="about-hero"
@@ -399,8 +399,8 @@ export default function About() {
           </motion.p>
         </motion.div>
 
-        {/* Main Content Grid */}
-        <div className="about-content-grid">
+        {/* Main Content Grid - Enhanced with Tailwind responsive classes */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 relative z-10 items-start">
           {/* Journey Section */}
           <motion.div 
             className="about-journey-section"
@@ -410,7 +410,7 @@ export default function About() {
           >
             <div className="glassmorphism-card">
               <div className="section-header">
-                <h3>My Journey</h3>
+                <h3 className="text-2xl md:text-3xl">My Journey</h3>
                 <div className="section-divider" />
               </div>
 
@@ -420,7 +420,7 @@ export default function About() {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 1 }}
               >
-                <p>
+                <p className="text-sm md:text-base">
                   I'm a software engineer with a passion for turning complexity into clarity. 
                   I've led projects across AI, building a RAG admissions chatbot and engineered 
                   OpenAI powered chat agents to handle customer complaints.
@@ -434,7 +434,7 @@ export default function About() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.4 }}
                     >
-                      <p>
+                      <p className="text-sm md:text-base">
                         I've worked closely with ground teams to take products from 0→1 and thrive 
                         in fast-paced, high-impact environments. My expertise spans modern 
                         technologies including React, Node.js, Python, and cloud platforms.
@@ -470,7 +470,7 @@ export default function About() {
 
               {/* Stats */}
               <motion.div 
-                className="stats-container"
+                className="flex flex-col sm:flex-row gap-4 sm:gap-8 mt-8 justify-center"
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: 1.2 }}
@@ -506,11 +506,11 @@ export default function About() {
           >
             <div className="glassmorphism-card">
               <div className="section-header">
-                <h3>What I Do</h3>
+                <h3 className="text-2xl md:text-3xl">What I Do</h3>
                 <div className="section-divider" />
               </div>
 
-              <div className="flip-cards-grid">
+              <div className="grid grid-cols-1 gap-4">
                 {flipCards.map((card, index) => (
                   <FlipCard
                     key={index}
