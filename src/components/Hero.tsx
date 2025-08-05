@@ -332,7 +332,7 @@ export default function Hero() {
             >
               <div className="profile-image-wrapper">
                 <Image
-                  src="/images/DSC_6481.jpg"
+                  src="/portfolio-SDE/images/DSC_6481.jpg"
                   alt="Sai Krishnan"
                   fill
                   className="profile-image"
