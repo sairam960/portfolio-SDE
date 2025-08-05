@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef } from 'react'
-import { motion, useInView, AnimatePresence } from 'framer-motion'
+import { motion, useInView, AnimatePresence, Variants } from 'framer-motion'
 import { experiences } from '@/lib/data'
 
 // Timeline Item Component
@@ -14,8 +14,12 @@ const TimelineItem: React.FC<{
   const itemRef = useRef(null)
   const isInView = useInView(itemRef, { once: true, amount: 0.3 })
 
-  const itemVariants = {
-    hidden: { opacity: 0, x: index % 2 === 0 ? -50 : 50, y: 50 },
+  const itemVariants: Variants = {
+    hidden: { 
+      opacity: 0, 
+      x: index % 2 === 0 ? -50 : 50, 
+      y: 50 
+    },
     visible: {
       opacity: 1,
       x: 0,
