@@ -49,7 +49,7 @@ const TypewriterText: React.FC<{ text: string; delay?: number }> = ({ text, dela
         setDisplayedText(prev => prev + text[currentIndex])
         setCurrentIndex(prev => prev + 1)
       }
-    }, delay + currentIndex * 100)
+    }, delay + currentIndex * 50)
 
     return () => clearTimeout(timer)
   }, [currentIndex, text, delay])
@@ -174,7 +174,7 @@ const FlipCard: React.FC<{
       <motion.div
         className="flip-card"
         animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
+        transition={{ duration: 0.3, type: "spring", stiffness: 200 }}
       >
         {/* Front Face */}
         <div className="flip-card-front">

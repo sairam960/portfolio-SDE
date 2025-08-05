@@ -1,69 +1,67 @@
 'use client'
 
+import { motion } from 'framer-motion'
+
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
+  const socialLinks = [
+    { href: 'https://github.com/sairam960', label: 'GitHub', icon: 'github' },
+    { href: 'https://www.linkedin.com/in/sairamnathk/', label: 'LinkedIn', icon: 'linkedin' },
+    { href: 'mailto:ftjsearch@gmail.com', label: 'Email', icon: 'email' }
+  ]
+
+  const navLinks = [
+    { label: 'Home', href: '#home' },
+    { label: 'About', href: '#about' },
+    { label: 'Skills', href: '#skills' },
+    { label: 'Projects', href: '#projects' },
+    { label: 'Contact', href: '#contact' }
+  ]
+
   return (
-    <footer className="section" style={{
-      backgroundColor: 'var(--gray-900)',
-      color: 'white'
-    }}>
-      <div className="container-custom">
-        <div className="row g-4">
+    <footer className="footer-modern">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Brand Section */}
-          <div className="col-lg-4">
-            <div className="d-flex align-items-center gap-3 mb-4">
-              <div 
-                className="d-flex align-items-center justify-content-center"
-                style={{
-                  width: '50px',
-                  height: '50px',
-                  backgroundColor: 'var(--primary-color)',
-                  borderRadius: 'var(--border-radius)',
-                  color: 'white'
-                }}
-              >
-                <span className="fw-bold fs-4">SK</span>
+          <motion.div 
+            className="footer-brand-section"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <div className="footer-brand">
+              <div className="brand-logo">
+                <span>SK</span>
               </div>
-              <div>
-                <h5 className="text-white fw-bold mb-0">Sairamnath Krishnan</h5>
-                <p className="text-light mb-0" style={{ opacity: 0.7 }}>Full Stack Developer</p>
+              <div className="brand-info">
+                <h5>Sairamnath Krishnan</h5>
+                <p>Full Stack Developer</p>
               </div>
             </div>
-            <p className="text-light mb-4" style={{ opacity: 0.7, lineHeight: '1.6' }}>
+            <p className="footer-description">
               Passionate about creating innovative digital solutions that drive business growth 
               and deliver exceptional user experiences.
             </p>
             
             {/* Social Links */}
-            <div className="d-flex gap-3">
-              {[
-                { href: 'https://github.com/sairam960', label: 'GitHub', icon: 'github' },
-                { href: 'https://www.linkedin.com/in/sairamnathk/', label: 'LinkedIn', icon: 'linkedin' },
-                { href: 'mailto:ftjsearch@gmail.com', label: 'Email', icon: 'email' }
-              ].map((social) => (
-                <a
+            <div className="footer-social-links">
+              {socialLinks.map((social, index) => (
+                <motion.a
                   key={social.label}
                   href={social.href}
                   target={social.href.startsWith('mailto:') ? undefined : '_blank'}
                   rel={social.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
-                  className="d-flex align-items-center justify-content-center text-white text-decoration-none"
-                  style={{
-                    width: '40px', 
-                    height: '40px',
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                    borderRadius: 'var(--border-radius)',
-                    transition: 'all var(--transition-base)'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = 'var(--primary-color)'
-                    e.currentTarget.style.transform = 'translateY(-2px)'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'
-                    e.currentTarget.style.transform = 'translateY(0)'
-                  }}
+                  className="social-link-footer"
                   aria-label={social.label}
+                  whileHover={{ y: -2, scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: index * 0.1, duration: 0.3 }}
+                  viewport={{ once: true }}
                 >
                   {social.icon === 'github' && (
                     <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
@@ -80,105 +78,112 @@ export default function Footer() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                   )}
-                </a>
+                </motion.a>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Quick Links */}
-          <div className="col-lg-2 col-md-6">
-            <h6 className="text-white fw-semibold mb-3">Quick Links</h6>
-            <div className="d-flex flex-column gap-2">
-              {[
-                { label: 'Home', href: '#home' },
-                { label: 'About', href: '#about' },
-                { label: 'Skills', href: '#skills' },
-                { label: 'Projects', href: '#projects' },
-                { label: 'Contact', href: '#contact' }
-              ].map((link) => (
-                <a
+          <motion.div 
+            className="footer-links-section"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <h6 className="footer-section-title">Quick Links</h6>
+            <div className="footer-links">
+              {navLinks.map((link, index) => (
+                <motion.a
                   key={link.label}
                   href={link.href}
-                  className="text-light text-decoration-none"
-                  style={{ 
-                    opacity: 0.7,
-                    transition: 'all var(--transition-base)'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.opacity = '1'
-                    e.currentTarget.style.paddingLeft = '8px'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.opacity = '0.7'
-                    e.currentTarget.style.paddingLeft = '0'
-                  }}
+                  className="footer-link"
                   onClick={(e) => {
                     e.preventDefault()
                     document.getElementById(link.href.substring(1))?.scrollIntoView({ behavior: 'smooth' })
                   }}
+                  whileHover={{ x: 8 }}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.3 }}
+                  viewport={{ once: true }}
                 >
                   {link.label}
-                </a>
+                </motion.a>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Contact Info */}
-          <div className="col-lg-3 col-md-6">
-            <h6 className="text-white fw-semibold mb-3">Contact Info</h6>
-            <div className="d-flex flex-column gap-3">
-              <div className="d-flex align-items-center gap-3">
-                <div 
-                  className="d-flex align-items-center justify-content-center"
-                  style={{
-                    width: '32px', 
-                    height: '32px', 
-                    backgroundColor: 'var(--primary-color)', 
-                    borderRadius: 'var(--border-radius)'
-                  }}
-                >
+          <motion.div 
+            className="footer-contact-section"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <h6 className="footer-section-title">Contact Info</h6>
+            <div className="footer-contact-info">
+              <div className="contact-item">
+                <div className="contact-icon-small">
                   <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
-                <span className="text-light" style={{ opacity: 0.7 }}>ftjsearch@gmail.com</span>
+                <span>ftjsearch@gmail.com</span>
               </div>
-              <div className="d-flex align-items-center gap-3">
-                <div 
-                  className="d-flex align-items-center justify-content-center"
-                  style={{
-                    width: '32px', 
-                    height: '32px', 
-                    backgroundColor: 'var(--primary-color)', 
-                    borderRadius: 'var(--border-radius)'
-                  }}
-                >
+              <div className="contact-item">
+                <div className="contact-icon-small">
                   <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                 </div>
-                <span className="text-light" style={{ opacity: 0.7 }}>US</span>
+                <span>United States</span>
               </div>
             </div>
-          </div>
-          {/* Newsletter Signup */}
+          </motion.div>
+
+          {/* Newsletter/CTA Section */}
+          <motion.div 
+            className="footer-cta-section"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h6 className="footer-section-title">Let&apos;s Connect</h6>
+            <p className="footer-cta-text">
+              Ready to bring your ideas to life? Let&apos;s start a conversation.
+            </p>
+            <motion.a
+              href="#contact"
+              className="footer-cta-button"
+              onClick={(e) => {
+                e.preventDefault()
+                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+              }}
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Get In Touch
+            </motion.a>
+          </motion.div>
         </div>
 
         {/* Bottom Bar */}
-        <hr className="border-light my-4" style={{ opacity: 0.3 }} />
-        <div className="row align-items-center">
-          <div className="col-md-6">
-            <p className="text-light mb-0" style={{ opacity: 0.7 }}>
-              © {currentYear} Sairamnath Krishnan. All rights reserved.
-            </p>
+        <motion.div 
+          className="footer-bottom"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <div className="footer-bottom-content">
+            <p>© {currentYear} Sairamnath Krishnan. All rights reserved.</p>
+            <p>Built with Next.js & Modern Design</p>
           </div>
-          <div className="col-md-6 text-md-end">
-            <p className="text-light mb-0" style={{ opacity: 0.7 }}>
-              Built with Next.js & Clean Design
-            </p>
-          </div>
-        </div>
+        </motion.div>
       </div>
     </footer>
   )
