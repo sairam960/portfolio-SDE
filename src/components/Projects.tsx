@@ -1,118 +1,533 @@
 'use client'
 
-import { projects } from '@/lib/data'
+import { useState, useEffect, useRef, useCallback } from 'react'
+import { motion, AnimatePresence, useInView, useAnimation, useScroll, useTransform, Variants } from 'framer-motion'
 import Image from 'next/image'
+import { projects } from '@/lib/data'
 
-export default function Projects() {
+// Enhanced project type with additional features
+interface ProjectCardProps {
+  project: typeof projects[0]
+  index: number
+  onOpenModal: (project: typeof projects[0]) => void
+  isLoading: boolean
+}
+
+// Skeleton Loader Component
+const ProjectSkeleton = () => (
+  <div className="project-skeleton">
+    <div className="skeleton-image"></div>
+    <div className="skeleton-content">
+      <div className="skeleton-title"></div>
+      <div className="skeleton-description"></div>
+      <div className="skeleton-tech">
+        <div className="skeleton-badge"></div>
+        <div className="skeleton-badge"></div>
+        <div className="skeleton-badge"></div>
+      </div>
+    </div>
+  </div>
+)
+
+// Project Card Component with Glassmorphism
+const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, onOpenModal, isLoading }) => {
+  const [imageLoaded, setImageLoaded] = useState(false)
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const cardRef = useRef<HTMLDivElement>(null)
+  const isInView = useInView(cardRef, { once: true, amount: 0.3 })
+  const controls = useAnimation()
+
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    if (!cardRef.current) return
+    const rect = cardRef.current.getBoundingClientRect()
+    setMousePosition({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    })
+  }, [])
+
+  useEffect(() => {
+    if (isInView) {
+      controls.start('visible')
+    }
+  }, [isInView, controls])
+
+  if (isLoading) {
+    return <ProjectSkeleton />
+  }
+
+  const cardVariants: Variants = {
+    hidden: { 
+      opacity: 0, 
+      y: 50, 
+      scale: 0.9 
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.6,
+        delay: index * 0.1,
+        type: "spring",
+        stiffness: 100
+      }
+    }
+  }
 
   return (
-    <section id="projects" className="section section-bg">
-      <div className="container-custom">
-        <div className="text-center mb-5">
-          <h2 className="mb-3">Featured Projects</h2>
-          <p className="text-muted fs-5 mx-auto" style={{ maxWidth: '600px' }}>
-            A collection of projects that showcase my technical skills and problem-solving abilities
-          </p>
-        </div>
+    <motion.div
+      ref={cardRef}
+      className={`project-card-modern ${index % 2 === 0 ? 'project-card-large' : 'project-card-small'}`}
+      variants={cardVariants}
+      initial="hidden"
+      animate={controls}
+      whileHover={{ 
+        scale: 1.02,
+        transition: { duration: 0.3 }
+      }}
+      onMouseMove={handleMouseMove}
+      onClick={() => onOpenModal(project)}
+    >
+      {/* Spotlight Effect */}
+      <div 
+        className="spotlight-effect"
+        style={{
+          background: `radial-gradient(600px at ${mousePosition.x}px ${mousePosition.y}px, rgba(14, 165, 233, 0.15), transparent 40%)`,
+        }}
+      />
+      
+      {/* Glass Background */}
+      <div className="card-glass-bg" />
+      
+      {/* Image Section */}
+      <div className="project-image-container">
+        {project.imageUrl ? (
+          <>
+            {!imageLoaded && (
+              <div className="image-placeholder">
+                <div className="loading-spinner"></div>
+              </div>
+            )}
+            <Image
+              src={project.imageUrl}
+              alt={project.title}
+              fill
+              className={`project-image-modern ${imageLoaded ? 'image-loaded' : 'image-loading'}`}
+              onLoad={() => setImageLoaded(true)}
+              unoptimized
+              style={{ objectFit: 'cover' }}
+            />
+            {/* Image Overlay */}
+            <div className="image-overlay" />
+          </>
+        ) : (
+          <div className="placeholder-container">
+            <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
+        )}
+        
+        {/* Hover Details Overlay */}
+        <motion.div 
+          className="hover-details"
+          initial={{ opacity: 0 }}
+          whileHover={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+        >
+          <div className="hover-content">
+            <h4>View Project</h4>
+            <p>Click to explore details</p>
+          </div>
+        </motion.div>
+      </div>
 
-        <div className="row g-4">
-          {projects.map((project, index) => (
-            <div key={project.id} className="col-lg-6 col-xl-4">
-              <div 
-                className="project-card fade-in-up"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                {project.imageUrl ? (
-                  <div className="project-image" style={{ position: 'relative' }}>
-                    <Image
-                      src={project.imageUrl}
-                      fill
-                      style={{ objectFit: 'cover' }}
-                      alt={project.title}
-                      unoptimized
-                      priority
-                    />
-                  </div>
-                ) : (
-                  <div 
-                    className="project-image d-flex align-items-center justify-content-center"
-                    style={{
-                      backgroundColor: 'var(--gray-100)',
-                      color: 'var(--text-muted)'
-                    }}
-                  >
-                    <div className="text-center">
-                      <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
-                      <p className="mt-2 mb-0 small">Project Image</p>
-                    </div>
-                  </div>
-                )}
+      {/* Content Section */}
+      <div className="project-content-modern">
+        <motion.h3 
+          className="project-title-modern"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.2 + index * 0.1 }}
+        >
+          {project.title}
+        </motion.h3>
+        
+        <motion.p 
+          className="project-description-modern"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.3 + index * 0.1 }}
+        >
+          {project.description}
+        </motion.p>
 
-                <div className="project-content">
-                  <h5 className="project-title">{project.title}</h5>
-                  <p className="project-description">{project.description}</p>
+        {/* Technologies */}
+        <motion.div 
+          className="project-tech-modern"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.4 + index * 0.1 }}
+        >
+          {project.technologies.slice(0, 3).map((tech, techIndex) => (
+            <motion.span
+              key={tech}
+              className="tech-badge-modern"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ delay: 0.5 + index * 0.1 + techIndex * 0.1 }}
+            >
+              {tech}
+            </motion.span>
+          ))}
+          {project.technologies.length > 3 && (
+            <span className="tech-more">+{project.technologies.length - 3}</span>
+          )}
+        </motion.div>
 
-                  {/* Technologies */}
-                  <div className="project-tech">
-                    {project.technologies.map((tech) => (
-                      <span key={tech} className="tech-badge">
-                        {tech}
-                      </span>
+        {/* Quick Links */}
+        <motion.div 
+          className="project-links-modern"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.5 + index * 0.1 }}
+        >
+          {project.liveUrl && project.liveUrl !== '#' && (
+            <motion.a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="project-link-modern"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </motion.a>
+          )}
+          {project.githubUrl && project.githubUrl !== '#' && (
+            <motion.a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="project-link-modern"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </motion.a>
+          )}
+        </motion.div>
+      </div>
+    </motion.div>
+  )
+}
+
+// Project Modal Component
+const ProjectModal: React.FC<{
+  project: typeof projects[0] | null
+  isOpen: boolean
+  onClose: () => void
+}> = ({ project, isOpen, onClose }) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+
+  if (!project) return null
+
+  // For demo purposes, create multiple images (in real app, these would come from project data)
+  const projectImages = [
+    project.imageUrl,
+    project.imageUrl, // In real app, these would be different images
+    project.imageUrl
+  ].filter(Boolean) as string[]
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          className="modal-overlay"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={onClose}
+        >
+          <motion.div
+            className="modal-content"
+            initial={{ opacity: 0, scale: 0.8, y: 50 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: 50 }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button className="modal-close" onClick={onClose}>
+              <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Image Carousel */}
+            <div className="modal-image-section">
+              {projectImages.length > 0 && (
+                <div className="image-carousel">
+                  <div className="carousel-container">
+                    {projectImages.map((img, index) => (
+                      <div
+                        key={index}
+                        className={`carousel-image ${index === currentImageIndex ? 'active' : ''}`}
+                      >
+                        <Image
+                          src={img}
+                          alt={`${project.title} - Image ${index + 1}`}
+                          fill
+                          style={{ objectFit: 'cover' }}
+                          unoptimized
+                        />
+                      </div>
                     ))}
                   </div>
+                  
+                  {projectImages.length > 1 && (
+                    <div className="carousel-dots">
+                      {projectImages.map((_, index) => (
+                        <button
+                          key={index}
+                          className={`carousel-dot ${index === currentImageIndex ? 'active' : ''}`}
+                          onClick={() => setCurrentImageIndex(index)}
+                        />
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
 
-                  {/* Project Links */}
-                  <div className="project-links">
-                    {project.liveUrl && project.liveUrl !== '#' && (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="project-link d-flex align-items-center gap-1"
-                      >
-                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                        </svg>
-                        Live Demo
-                      </a>
-                    )}
-                    {project.githubUrl && project.githubUrl !== '#' && (
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="project-link d-flex align-items-center gap-1"
-                      >
-                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                        View Code
-                      </a>
-                    )}
-                  </div>
+            {/* Content Section */}
+            <div className="modal-info-section">
+              <h2>{project.title}</h2>
+              <p className="modal-description">{project.description}</p>
+              
+              <div className="modal-tech-section">
+                <h4>Technologies Used</h4>
+                <div className="modal-tech-grid">
+                  {project.technologies.map((tech) => (
+                    <span key={tech} className="modal-tech-badge">
+                      {tech}
+                    </span>
+                  ))}
                 </div>
               </div>
+
+              <div className="modal-actions">
+                {project.liveUrl && project.liveUrl !== '#' && (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="modal-btn modal-btn-primary"
+                  >
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                    Live Demo
+                  </a>
+                )}
+                {project.githubUrl && project.githubUrl !== '#' && (
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="modal-btn modal-btn-secondary"
+                  >
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    View Code
+                  </a>
+                )}
+              </div>
             </div>
-          ))}
-        </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  )
+}
+
+// Main Projects Component
+export default function Projects() {
+  const [searchTerm, setSearchTerm] = useState('')
+  const [selectedTech, setSelectedTech] = useState('All')
+  const [filteredProjects, setFilteredProjects] = useState(projects)
+  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
+
+  const sectionRef = useRef(null)
+  const isInView = useInView(sectionRef, { once: true, amount: 0.1 })
+
+  // Get all unique technologies
+  const allTechnologies = ['All', ...new Set(projects.flatMap(p => p.technologies))]
+
+  // Filter projects based on search and technology
+  useEffect(() => {
+    let filtered = projects
+
+    if (searchTerm) {
+      filtered = filtered.filter(project =>
+        project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        project.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        project.technologies.some(tech => 
+          tech.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+      )
+    }
+
+    if (selectedTech !== 'All') {
+      filtered = filtered.filter(project =>
+        project.technologies.includes(selectedTech)
+      )
+    }
+
+    setFilteredProjects(filtered)
+  }, [searchTerm, selectedTech])
+
+  // Simulate loading
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 1000)
+    return () => clearTimeout(timer)
+  }, [])
+
+  const openModal = (project: typeof projects[0]) => {
+    setSelectedProject(project)
+    setIsModalOpen(true)
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+    setTimeout(() => setSelectedProject(null), 300)
+  }
+
+  return (
+    <section id="projects" ref={sectionRef} className="projects-section-modern">
+      <div className="container-custom">
+        {/* Header */}
+        <motion.div 
+          className="projects-header"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className="projects-title">Featured Projects</h2>
+          <p className="projects-subtitle">
+            A showcase of my technical expertise and creative problem-solving abilities
+          </p>
+        </motion.div>
+
+        {/* Search and Filter Bar */}
+        <motion.div 
+          className="projects-filters"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          {/* Search Bar */}
+          <div className="search-container">
+            <svg className="search-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <input
+              type="text"
+              placeholder="Search projects..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="search-input"
+            />
+          </div>
+
+          {/* Technology Filter */}
+          <div className="tech-filter">
+            {allTechnologies.map((tech) => (
+              <motion.button
+                key={tech}
+                className={`filter-btn ${selectedTech === tech ? 'active' : ''}`}
+                onClick={() => setSelectedTech(tech)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {tech}
+              </motion.button>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Projects Grid */}
+        <motion.div 
+          className="projects-grid"
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <AnimatePresence mode="wait">
+            {filteredProjects.map((project, index) => (
+              <ProjectCard
+                key={project.id}
+                project={project}
+                index={index}
+                onOpenModal={openModal}
+                isLoading={isLoading}
+              />
+            ))}
+          </AnimatePresence>
+          
+          {filteredProjects.length === 0 && !isLoading && (
+            <motion.div 
+              className="no-results"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+            >
+              <svg width="64" height="64" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.29-1.64-6.71-3.58M6.343 6.343A8 8 0 1021.657 21.657 8 8 0 006.343 6.343z" />
+              </svg>
+              <h3>No projects found</h3>
+              <p>Try adjusting your search or filter criteria</p>
+            </motion.div>
+          )}
+        </motion.div>
 
         {/* View All Projects Button */}
-        <div className="text-center mt-5">
-          <a
-            href="https://github.com/sairam960"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary d-inline-flex align-items-center gap-2"
+        {!isLoading && filteredProjects.length > 0 && (
+          <motion.div 
+            className="projects-cta"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.8 }}
           >
-            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-            </svg>
-            View All Projects
-          </a>
-        </div>
+            <a
+              href="https://github.com/sairam960"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cta-button"
+            >
+              <span>Explore All Projects</span>
+              <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </a>
+          </motion.div>
+        )}
       </div>
+
+      {/* Project Modal */}
+      <ProjectModal
+        project={selectedProject}
+        isOpen={isModalOpen}
+        onClose={closeModal}
+      />
     </section>
   )
 }
