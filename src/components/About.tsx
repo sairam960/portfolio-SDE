@@ -421,8 +421,8 @@ export default function About() {
                 transition={{ duration: 0.6, delay: 1 }}
               >
                 <p className="text-sm md:text-base">
-                  I'm a software engineer with a passion for turning complexity into clarity. 
-                  I've led projects across AI, building a RAG admissions chatbot and engineered 
+                  I&apos;m a software engineer with a passion for turning complexity into clarity. 
+                  I&apos;ve led projects across AI, building a RAG admissions chatbot and engineered 
                   OpenAI powered chat agents to handle customer complaints.
                 </p>
                 
@@ -435,7 +435,7 @@ export default function About() {
                       transition={{ duration: 0.4 }}
                     >
                       <p className="text-sm md:text-base">
-                        I've worked closely with ground teams to take products from 0→1 and thrive 
+                        I&apos;ve worked closely with ground teams to take products from 0→1 and thrive 
                         in fast-paced, high-impact environments. My expertise spans modern 
                         technologies including React, Node.js, Python, and cloud platforms.
                       </p>
