@@ -3266,11 +3266,11 @@ p {
 
 /* Timeline dot positioning for alternating layout */
 .timeline-item:nth-child(even) .timeline-dot {
-  left: calc(50% - 1000px);
+  left: calc(50% );
 }
 
 .timeline-item:nth-child(odd) .timeline-dot {
-  left: calc(50% + 100px);
+  left: calc(50% );
 }
 
 .timeline-dot-inner {
