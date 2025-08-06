@@ -429,23 +429,22 @@ const SkillCard: React.FC<{
   return (
     <motion.div
       ref={cardRef}
-      className="skill-card-hexagonal"
-      initial={{ opacity: 0, y: 50, scale: 0.9, rotate: -10 }}
-      animate={isInView ? { opacity: 1, y: 0, scale: 1, rotate: 0 } : {}}
+      className="skill-card-rectangular"
+      initial={{ opacity: 0, y: 30, scale: 0.95 }}
+      animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
       transition={{ 
-        duration: 0.8, 
-        delay: index * 0.15,
+        duration: 0.6, 
+        delay: index * 0.1,
         type: "spring",
-        stiffness: 120
+        stiffness: 150
       }}
       onMouseMove={handleMouseMove}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       whileHover={{ 
-        y: -15,
-        scale: 1.05,
-        rotate: 2,
-        transition: { duration: 0.4, type: "spring", stiffness: 200 }
+        y: -8,
+        scale: 1.03,
+        transition: { duration: 0.3, type: "spring", stiffness: 200 }
       }}
     >
       {/* Spotlight Effect */}
@@ -465,7 +464,7 @@ const SkillCard: React.FC<{
         {/* Icon Section */}
         <motion.div 
           className="skill-icon-container"
-          whileHover={{ scale: 1.2, rotate: 5 }}
+          whileHover={{ scale: 1.1 }}
           transition={{ type: "spring", stiffness: 300 }}
         >
           {skill.icon}
@@ -475,37 +474,31 @@ const SkillCard: React.FC<{
         <div className="skill-info">
           <motion.h4 
             className="skill-name"
-            animate={isHovered ? { scale: 1.05 } : { scale: 1 }}
+            animate={isHovered ? { scale: 1.02 } : { scale: 1 }}
           >
             {skill.name}
           </motion.h4>
-          <motion.p 
-            className="skill-description"
-            initial={{ opacity: 0.7 }}
-            animate={isHovered ? { opacity: 1 } : { opacity: 0.7 }}
-          >
-            {skill.description}
-          </motion.p>
         </div>
 
-        {/* Hexagonal Progress */}
+        {/* Circular Progress */}
         <div className="skill-progress">
-          <HexagonalProgress
-            percentage={skill.level}
-            color={skill.color}
-            size={70}
-            strokeWidth={4}
-          />
+          <div className="circular-progress" style={{ 
+            background: `conic-gradient(${skill.color} ${skill.level * 3.6}deg, rgba(255,255,255,0.3) 0deg)`
+          }}>
+            <div className="progress-center">
+              <span className="progress-percentage">{skill.level}%</span>
+            </div>
+          </div>
         </div>
 
-        {/* Skill Level Bar (Additional Visual) */}
+        {/* Skill Level Bar */}
         <div className="skill-level-bar">
           <motion.div
             className="skill-level-fill"
             style={{ backgroundColor: skill.color }}
             initial={{ width: 0 }}
             animate={isInView ? { width: `${skill.level}%` } : { width: 0 }}
-            transition={{ duration: 2, delay: index * 0.1 }}
+            transition={{ duration: 1.5, delay: index * 0.05 }}
           />
         </div>
       </div>
@@ -564,7 +557,7 @@ const CategoryFilter: React.FC<{
       {categories.map((category, index) => (
         <motion.button
           key={category}
-          className={`filter-btn-hexagonal ${activeCategory === category ? 'active' : ''}`}
+          className={`filter-btn-rectangular ${activeCategory === category ? 'active' : ''}`}
           onClick={() => onCategoryChange(category)}
           onHoverStart={() => setHoveredCategory(category)}
           onHoverEnd={() => setHoveredCategory(null)}
@@ -687,9 +680,9 @@ export default function Skills() {
           onCategoryChange={setActiveCategory}
         />
 
-        {/* Hexagonal Skills Grid */}
+        {/* Skills Grid - Compact Rectangular Layout */}
         <motion.div 
-          className="skills-hexagonal-grid"
+          className="skills-rectangular-grid"
           layout
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}

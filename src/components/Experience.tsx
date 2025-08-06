@@ -268,20 +268,6 @@ const TimelineItem: React.FC<{
           )}
         </AnimatePresence>
 
-        {/* Modern Badge Elements */}
-        <motion.div 
-          className="modern-badge-container"
-          initial={{ opacity: 0, scale: 0 }}
-          animate={isInView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ delay: index * 0.2 + 0.8 }}
-        >
-          <div className="modern-badge">
-            <div className="badge-backdrop" />
-            <span className="badge-text">
-              {experience.company}
-            </span>
-          </div>
-        </motion.div>
         </div> {/* Close card-content-wrapper */}
       </motion.div>
     </motion.div>

@@ -2719,13 +2719,15 @@ p {
   opacity: 1;
 }
 
-/* Hexagonal Skills Grid */
-.skills-hexagonal-grid {
+/* Rectangular Skills Grid - Compact Design */
+.skills-rectangular-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-bottom: 4rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 2.5rem;
   align-items: start;
+  max-height: 60vh;
+  overflow-y: auto;
 }
 
 /* Hexagonal Skill Cards */
@@ -2747,6 +2749,86 @@ p {
 .skill-card-hexagonal:hover {
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
   border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* Rectangular Skill Cards - Compact Design */
+.skill-card-rectangular {
+  position: relative;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 12px;
+  padding: 1.25rem;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  cursor: pointer;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.skill-card-rectangular:hover {
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+  border-color: rgba(14, 165, 233, 0.3);
+  transform: translateY(-4px);
+}
+
+/* Circular Progress for Skills */
+.circular-progress {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.75rem 0;
+}
+
+.progress-center {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-percentage {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+/* Rectangular Filter Buttons */
+.filter-btn-rectangular {
+  position: relative;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid rgba(14, 165, 233, 0.3);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  color: #6b7280;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  cursor: pointer;
+  margin: 0 0.5rem;
+}
+
+.filter-btn-rectangular.active {
+  background: linear-gradient(135deg, #0ea5e9, #8b5cf6);
+  color: white;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.filter-btn-rectangular:hover:not(.active) {
+  border-color: rgba(14, 165, 233, 0.6);
+  color: #0ea5e9;
+  background: rgba(255, 255, 255, 0.95);
 }
 
 /* Hexagonal Progress Styles */
@@ -3513,11 +3595,11 @@ p {
 
 .experience-card-enhanced.experience-card-left {
   margin-left: auto;
-  margin-right: 120px;
+  margin-right: 180px;
 }
 
 .experience-card-enhanced.experience-card-right {
-  margin-left: 120px;
+  margin-left: 180px;
   margin-right: auto;
 }
 
@@ -3620,9 +3702,9 @@ p {
     left: 30px;
   }
   
-  .experience-card-left,
-  .experience-card-right {
-    margin-left: 80px;
+  .experience-card-enhanced.experience-card-left,
+  .experience-card-enhanced.experience-card-right {
+    margin-left: 100px;
     margin-right: 0;
     max-width: none;
   }
@@ -3656,9 +3738,9 @@ p {
     font-size: 1rem;
   }
   
-  .experience-card-left,
-  .experience-card-right {
-    margin-left: 70px;
+  .experience-card-enhanced.experience-card-left,
+  .experience-card-enhanced.experience-card-right {
+    margin-left: 80px;
     margin-right: 0;
   }
   
@@ -3711,9 +3793,9 @@ p {
     font-size: 0.8rem;
   }
   
-  .experience-card-left,
-  .experience-card-right {
-    margin-left: 60px;
+  .experience-card-enhanced.experience-card-left,
+  .experience-card-enhanced.experience-card-right {
+    margin-left: 65px;
     margin-right: 0;
   }
   

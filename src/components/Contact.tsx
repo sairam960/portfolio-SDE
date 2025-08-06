@@ -480,17 +480,7 @@ export default function Contact() {
                           </motion.span>
                         </>
                       ) : (
-                        <>
-                          <motion.div
-                            whileHover={{ x: 5 }}
-                            transition={{ type: "spring", stiffness: 200 }}
-                          >
-                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ transform: 'rotate(-45deg)' }}>
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="m5 12 14 0m-4-8 4 4-4 4" />
-                            </svg>
-                          </motion.div>
-                          <span>Send Message</span>
-                        </>
+                        <span>Send Message</span>
                       )}
                     </div>
                     
