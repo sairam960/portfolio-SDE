@@ -3270,7 +3270,7 @@ p {
 }
 
 .timeline-item:nth-child(odd) .timeline-dot {
-  left: calc(50% + 1000px);
+  left: calc(50% + 100px);
 }
 
 .timeline-dot-inner {
