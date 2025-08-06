@@ -202,7 +202,7 @@ export default function Header() {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <span>Let's Talk</span>
+                <span>Let&apos;s Talk</span>
                 <motion.div 
                   className="cta-glow"
                   animate={{ 

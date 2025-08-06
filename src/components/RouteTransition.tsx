@@ -43,7 +43,7 @@ export default function RouteTransition({
       scale: 1,
       transition: {
         duration: 0.6,
-        ease: [0.43, 0.13, 0.23, 0.96],
+        ease: [0.43, 0.13, 0.23, 0.96] as [number, number, number, number],
         staggerChildren: 0.1
       }
     },
@@ -53,7 +53,7 @@ export default function RouteTransition({
       scale: 1.02,
       transition: {
         duration: 0.4,
-        ease: [0.43, 0.13, 0.23, 0.96]
+        ease: [0.43, 0.13, 0.23, 0.96] as [number, number, number, number]
       }
     }
   }
@@ -76,7 +76,7 @@ export default function RouteTransition({
       y: 0,
       transition: {
         duration: 0.7,
-        ease: "easeOut",
+        ease: "easeOut" as const,
         delay: 0.1
       }
     }

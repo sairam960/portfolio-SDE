@@ -1,7 +1,6 @@
-/* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap');
+/* Import Google Fonts - Research-Backed Typography Pairing */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&display=swap');
 
 /* Tailwind Directives */
 @tailwind base;
@@ -19,17 +18,22 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Utility Classes */
+.smooth-scroll {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: var(--font-body);
   line-height: 1.6;
   color: #1f2937;
   background-color: #ffffff;
-  font-size: 16px;
+  font-size: var(--text-base);
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Playfair Display', serif;
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-semibold);
   line-height: 1.3;
   margin-bottom: 1rem;
   color: #111827;
@@ -38,6 +42,147 @@ h1, h2, h3, h4, h5, h6 {
 p {
   margin-bottom: 1rem;
   color: #4b5563;
+}
+
+/* Typography System - Research-Based Font Hierarchy */
+:root {
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  
+  /* Font Weight Scale */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-black: 800;
+  
+  /* Font Size Scale - Accessible & Responsive */
+  --text-xs: 0.75rem;    /* 12px */
+  --text-sm: 0.875rem;   /* 14px */
+  --text-base: 1rem;     /* 16px - Base accessibility standard */
+  --text-lg: 1.125rem;   /* 18px - Optimal readability */
+  --text-xl: 1.25rem;    /* 20px */
+  --text-2xl: 1.5rem;    /* 24px */
+  --text-3xl: 1.875rem;  /* 30px */
+  --text-4xl: 2.25rem;   /* 36px */
+  --text-5xl: 3rem;      /* 48px */
+  --text-6xl: 3.75rem;   /* 60px */
+  --text-7xl: 4.5rem;    /* 72px */
+}
+
+/* Display Font Classes - For Headings & Accent Text */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+/* Heading Typography Classes */
+.h1 {
+  font-family: var(--font-display);
+  font-size: var(--text-6xl);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-5xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.25rem;
+}
+
+.h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.25;
+  margin-bottom: 1rem;
+}
+
+.h4 {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.3;
+  margin-bottom: 0.875rem;
+}
+
+.h5 {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.35;
+  margin-bottom: 0.75rem;
+}
+
+.h6 {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+}
+
+/* Body Text Classes */
+.body-large {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.7;
+  color: #4b5563;
+}
+
+.body-regular {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.6;
+  color: #4b5563;
+}
+
+.body-small {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.5;
+  color: #6b7280;
+}
+
+.body-xs {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.4;
+  color: #9ca3af;
+}
+
+/* Weight Utilities */
+.font-light { font-weight: var(--font-weight-light); }
+.font-regular { font-weight: var(--font-weight-regular); }
+.font-medium { font-weight: var(--font-weight-medium); }
+.font-semibold { font-weight: var(--font-weight-semibold); }
+.font-bold { font-weight: var(--font-weight-bold); }
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  :root {
+    --text-6xl: 3rem;      /* 48px on mobile */
+    --text-5xl: 2.5rem;    /* 40px on mobile */
+    --text-4xl: 2rem;      /* 32px on mobile */
+    --text-3xl: 1.5rem;    /* 24px on mobile */
+  }
+  
+  .h1, .h2, .h3, .h4, .h5, .h6 {
+    margin-bottom: 1rem;
+  }
 }
 
 /* Component Classes */
@@ -84,7 +229,7 @@ p {
 }
 
 .hero-title {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-display);
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 700;
   color: #1f2937;
@@ -112,7 +257,7 @@ p {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   font-weight: 600;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
 }
 
 .hero-subtitle {
@@ -444,7 +589,7 @@ p {
 }
 
 .projects-title {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-display);
   font-size: clamp(2.5rem, 4vw, 3.5rem);
   font-weight: 700;
   color: #1f2937;
@@ -856,7 +1001,7 @@ p {
 }
 
 .project-title-modern {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-display);
   font-size: 1.5rem;
   font-weight: 600;
   color: #1f2937;
@@ -1092,7 +1237,7 @@ p {
 }
 
 .modal-info-section h2 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-display);
   font-size: 2rem;
   font-weight: 600;
   color: #1f2937;
@@ -1286,7 +1431,7 @@ p {
 }
 
 .brand-text-modern {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-display);
   font-weight: 700;
   position: relative;
   z-index: 2;
@@ -1574,7 +1719,7 @@ p {
 }
 
 .hero-title-modern {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-display);
   font-size: clamp(3rem, 8vw, 6rem);
   font-weight: 800;
   margin-bottom: 1.5rem;
@@ -1613,7 +1758,7 @@ p {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   font-weight: 700;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
   background-size: 200% 200%;
   animation: gradientShift 4s ease-in-out infinite;
 }
@@ -2097,7 +2242,7 @@ p {
 }
 
 .about-title-gradient {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-display);
   font-size: clamp(3rem, 5vw, 4.5rem);
   font-weight: 700;
   margin-bottom: 1.5rem;
@@ -2189,7 +2334,7 @@ p {
 }
 
 .section-header h3 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-display);
   font-size: 2rem;
   font-weight: 600;
   color: #1f2937;
@@ -2467,7 +2612,7 @@ p {
 }
 
 .skills-title-gradient {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-display);
   font-size: clamp(3rem, 5vw, 4.5rem);
   font-weight: 700;
   margin-bottom: 1.5rem;
@@ -2803,7 +2948,7 @@ p {
 }
 
 .other-technologies h3 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-display);
   font-size: 2rem;
   font-weight: 600;
   color: #1f2937;
@@ -2954,7 +3099,7 @@ p {
 }
 
 .experience-title-gradient {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-display);
   font-size: clamp(3rem, 5vw, 4.5rem);
   font-weight: 700;
   margin-bottom: 1.5rem;
@@ -3112,7 +3257,7 @@ p {
 }
 
 .experience-company {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-display);
   font-size: 1.5rem;
   font-weight: 600;
   color: #1f2937;
@@ -3624,7 +3769,7 @@ p {
 }
 
 .contact-title-gradient {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-display);
   font-size: clamp(3rem, 5vw, 4.5rem);
   font-weight: 700;
   margin-bottom: 1.5rem;
@@ -4631,7 +4776,7 @@ p {
 }
 
 .brand-info h5 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-display);
   font-size: 1.25rem;
   font-weight: 600;
   color: white;

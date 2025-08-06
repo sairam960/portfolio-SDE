@@ -226,7 +226,7 @@ export default function Contact() {
                   </div>
                 </motion.div>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
 
           {/* Enhanced Contact Form */}
@@ -525,7 +525,7 @@ export default function Contact() {
                   </motion.button>
                 </motion.div>
               </form>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>

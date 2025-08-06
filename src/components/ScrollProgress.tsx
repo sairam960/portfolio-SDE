@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 interface ScrollProgressProps {
@@ -12,14 +12,14 @@ export default function ScrollProgress({ showSectionIndicator = true }: ScrollPr
   const [activeSection, setActiveSection] = useState('home')
   const [isVisible, setIsVisible] = useState(false)
 
-  const sections = [
+  const sections = useMemo(() => [
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
     { id: 'skills', label: 'Skills' },
     { id: 'projects', label: 'Projects' },
     { id: 'experience', label: 'Experience' },
     { id: 'contact', label: 'Contact' }
-  ]
+  ], [])
 
   useEffect(() => {
     const handleScroll = () => {
