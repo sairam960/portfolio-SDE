@@ -143,6 +143,10 @@ p {
   --color-slate-700: #334155;
   --color-slate-800: #1e293b;
   --color-slate-900: #0f172a;
+  --color-purple-600: #9333ea;
+  --color-cyan-400: #22d3ee;
+  --color-orange-500: #f97316;
+  --color-red-500: #ef4444;
   
   /* Extended Color Palette */
   --color-primary-light-2: var(--color-primary-light-2);
@@ -794,9 +798,44 @@ p {
 }
 
 .filter-btn.active {
-  background: var(--color-primary);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
   color: white;
+  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4);
   border-color: var(--color-primary);
+}
+
+/* Specific filter button colors */
+.filter-btn[data-filter="all"].active {
+  background: linear-gradient(135deg, var(--color-purple-600), var(--color-pink-500));
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+}
+
+.filter-btn[data-filter="frontend"].active,
+.filter-btn-skills[data-filter="frontend"].active,
+.filter-btn-rectangular[data-filter="frontend"].active,
+.filter-btn-hexagonal[data-filter="frontend"].active {
+  background: linear-gradient(135deg, var(--color-blue-500), var(--color-cyan-400));
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.5);
+}
+
+.filter-btn[data-filter="backend"].active,
+.filter-btn-skills[data-filter="backend"].active,
+.filter-btn-rectangular[data-filter="backend"].active,
+.filter-btn-hexagonal[data-filter="backend"].active {
+  background: linear-gradient(135deg, var(--color-green-500), var(--color-emerald-400));
+  box-shadow: 0 4px 15px rgba(34, 197, 94, 0.5);
+}
+
+.filter-btn[data-filter="database"].active,
+.filter-btn[data-filter="tools"].active,
+.filter-btn-skills[data-filter="database"].active,
+.filter-btn-skills[data-filter="tools"].active,
+.filter-btn-rectangular[data-filter="database"].active,
+.filter-btn-rectangular[data-filter="tools"].active,
+.filter-btn-hexagonal[data-filter="database"].active,
+.filter-btn-hexagonal[data-filter="tools"].active {
+  background: linear-gradient(135deg, var(--color-orange-500), var(--color-red-500));
+  box-shadow: 0 4px 15px rgba(249, 115, 22, 0.5);
 }
 
 /* Projects Grid - Masonry Layout */
@@ -953,7 +992,7 @@ p {
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  background: linear-gradient(135deg, var(--color-white), #e0e7ff);
+  background: linear-gradient(135deg, var(--color-gray-800), var(--color-primary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -2785,6 +2824,8 @@ p {
 .filter-btn-skills.active {
   background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
   color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.5);
   border-color: transparent;
   box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
 }
@@ -2950,6 +2991,8 @@ p {
 .filter-btn-rectangular.active {
   background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
   color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(14, 165, 233, 0.6);
   border-color: rgba(255, 255, 255, 0.4);
 }
 
@@ -3024,6 +3067,8 @@ p {
 .filter-btn-hexagonal.active {
   background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
   color: white;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(14, 165, 233, 0.7);
   border-color: rgba(255, 255, 255, 0.4);
   box-shadow: 0 8px 25px rgba(14, 165, 233, 0.4);
 }
@@ -3606,10 +3651,7 @@ p {
 .stat-number {
   font-size: 1.5rem;
   font-weight: 700;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-primary);
   margin-bottom: 0.5rem;
 }
 
@@ -5277,7 +5319,7 @@ p {
   color: var(--text-primary);
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   margin: 0;
-  background: linear-gradient(135deg, var(--color-white) 0%, #e0e7ff 50%, #c7d2fe 100%);
+  background: linear-gradient(135deg, var(--color-gray-800) 0%, var(--color-primary) 50%, var(--color-secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
