@@ -122,7 +122,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, onOpenModal, 
         whileHover={{ 
           opacity: 0.15,
           background: `conic-gradient(from ${mousePosition.x}deg at ${mousePosition.x}% ${mousePosition.y}%, 
-            #ff006e, #fb5607, #ffbe0b, #8338ec, #3a86ff, #06ffa5, #ff006e)`
+            var(--color-pink-500), var(--color-orange-500), var(--color-yellow-400), var(--color-purple-600), var(--color-blue-500), var(--color-green-400), var(--color-pink-500))`
         }}
         transition={{ duration: 0.3 }}
       />

@@ -134,9 +134,9 @@ export default function Contact() {
                 className="card-gradient-border-contact"
                 animate={{
                   background: [
-                    'linear-gradient(135deg, #0ea5e9, #8b5cf6)',
-                    'linear-gradient(135deg, #8b5cf6, #06b6d4)',
-                    'linear-gradient(135deg, #06b6d4, #0ea5e9)',
+                    'linear-gradient(135deg, var(--color-primary), var(--color-secondary))',
+                    'linear-gradient(135deg, var(--color-secondary), var(--color-accent))',
+                    'linear-gradient(135deg, var(--color-accent), var(--color-primary))',
                   ]
                 }}
                 transition={{
@@ -270,9 +270,9 @@ export default function Contact() {
                 className="card-gradient-border-contact"
                 animate={{
                   background: [
-                    'linear-gradient(135deg, #8b5cf6, #0ea5e9)',
-                    'linear-gradient(135deg, #0ea5e9, #06b6d4)',
-                    'linear-gradient(135deg, #06b6d4, #8b5cf6)',
+                    'linear-gradient(135deg, var(--color-secondary), var(--color-primary))',
+                    'linear-gradient(135deg, var(--color-primary), var(--color-accent))',
+                    'linear-gradient(135deg, var(--color-accent), var(--color-secondary))',
                   ]
                 }}
                 transition={{
@@ -313,7 +313,7 @@ export default function Contact() {
                       animate={{
                         y: formData.name ? -25 : 0,
                         scale: formData.name ? 0.85 : 1,
-                        color: formData.name ? '#0ea5e9' : '#9ca3af'
+                        color: formData.name ? 'var(--color-primary)' : 'var(--color-gray-400)'
                       }}
                       transition={{ duration: 0.2 }}
                     >
@@ -354,7 +354,7 @@ export default function Contact() {
                       animate={{
                         y: formData.email ? -25 : 0,
                         scale: formData.email ? 0.85 : 1,
-                        color: formData.email ? '#8b5cf6' : '#9ca3af'
+                        color: formData.email ? 'var(--color-secondary)' : 'var(--color-gray-400)'
                       }}
                       transition={{ duration: 0.2 }}
                     >
@@ -395,7 +395,7 @@ export default function Contact() {
                       animate={{
                         y: formData.message ? -25 : 0,
                         scale: formData.message ? 0.85 : 1,
-                        color: formData.message ? '#06b6d4' : '#9ca3af'
+                        color: formData.message ? 'var(--color-accent)' : 'var(--color-gray-400)'
                       }}
                       transition={{ duration: 0.2 }}
                     >
@@ -430,11 +430,11 @@ export default function Contact() {
                       className="btn-gradient-bg"
                       animate={{
                         background: isSuccess 
-                          ? 'linear-gradient(135deg, #10b981, #059669)'
+                          ? 'linear-gradient(135deg, var(--color-green-500), var(--color-green-600))'
                           : [
-                            'linear-gradient(135deg, #0ea5e9, #8b5cf6)',
-                            'linear-gradient(135deg, #8b5cf6, #06b6d4)',
-                            'linear-gradient(135deg, #06b6d4, #0ea5e9)',
+                            'linear-gradient(135deg, var(--color-primary), var(--color-secondary))',
+                            'linear-gradient(135deg, var(--color-secondary), var(--color-accent))',
+                            'linear-gradient(135deg, var(--color-accent), var(--color-primary)),
                           ]
                       }}
                       transition={{

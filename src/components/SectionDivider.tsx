@@ -15,7 +15,7 @@ interface SectionDividerProps {
 
 export default function SectionDivider({ 
   variant = 'wave', 
-  colors = { from: '#0ea5e9', via: '#8b5cf6', to: '#06b6d4' }
+  colors = { from: 'var(--color-primary)', via: 'var(--color-secondary)', to: 'var(--color-accent)' }
 }: SectionDividerProps) {
   const dividerRef = useRef(null)
   const isInView = useInView(dividerRef, { once: true, amount: 0.3 })

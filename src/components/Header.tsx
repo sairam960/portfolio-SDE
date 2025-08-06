@@ -174,7 +174,7 @@ export default function Header() {
                     animate={{ 
                       scaleX: activeSection === item.id ? 1 : 0,
                       background: activeSection === item.id 
-                        ? 'linear-gradient(90deg, #0ea5e9, #8b5cf6)' 
+                        ? 'linear-gradient(90deg, var(--color-primary), var(--color-secondary))' 
                         : 'transparent'
                     }}
                     transition={{ duration: 0.3 }}

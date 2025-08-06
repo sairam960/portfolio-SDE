@@ -110,7 +110,7 @@ export default function ScrollProgress({ showSectionIndicator = true }: ScrollPr
                   className="dot-inner"
                   animate={{
                     scale: activeSection === section.id ? 1 : 0.6,
-                    backgroundColor: activeSection === section.id ? '#0ea5e9' : '#cbd5e1'
+                    backgroundColor: activeSection === section.id ? 'var(--color-primary)' : 'var(--color-slate-300)'
                   }}
                   transition={{ duration: 0.2 }}
                 />
