@@ -618,9 +618,9 @@ export default function Skills() {
   }, [activeCategory])
 
   const otherTechnologies = [
-    'React Native', 'REST APIs', 'Microservices', 'GraphQL',
-    'Redis', 'ESLint', 'Figma', 'Postman', 'Jenkins', 'GitHub Actions',
-    'Webpack', 'Babel', 'Jest', 'Cypress', 'Storybook', 'OpenAI API'
+    'REST APIs', 'Microservices', 'GraphQL',
+    'ESLint', 'Figma', 'Postman', 'Jenkins', 'GitHub Actions',
+    'Grafana', 'Dynatrace', 'Vector Embeddings', 'OpenAI API'
   ]
 
   return (

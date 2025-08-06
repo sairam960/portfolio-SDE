@@ -395,7 +395,7 @@ export default function About() {
             transition={{ duration: 0.267, delay: 0.267 }}
           >
             with <AnimatedCounter value={3} suffix="+" /> years of experience building scalable applications. 
-            In my free time I play chess, watch NBA.
+            In my free time I play chess, and watch NBA.
           </motion.p>
         </motion.div>
 
