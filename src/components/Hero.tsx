@@ -355,7 +355,7 @@ export default function Hero() {
                   }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => {
-                    window.open('/portfolio-SDE/resume/Sai_Krishnan_Resume.pdf', '_blank')
+                    //window.open('/portfolio-SDE/resume/Sai_Krishnan_Resume.pdf', '_blank')
                     const link = document.createElement('a');
                     link.href = '/portfolio-SDE/resume/Sai_Krishnan_Resume.pdf';
                     link.download = 'Sai_Krishnan_Resume.pdf';

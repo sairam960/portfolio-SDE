@@ -434,7 +434,7 @@ export default function Contact() {
                           : [
                             'linear-gradient(135deg, var(--color-primary), var(--color-secondary))',
                             'linear-gradient(135deg, var(--color-secondary), var(--color-accent))',
-                            'linear-gradient(135deg, var(--color-accent), var(--color-primary)),
+                            'linear-gradient(135deg, var(--color-accent), var(--color-primary))',
                           ]
                       }}
                       transition={{
