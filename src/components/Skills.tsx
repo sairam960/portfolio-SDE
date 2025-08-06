@@ -310,8 +310,8 @@ const skillsData = {
   ]
 }
 
-// Animated Progress Circle Component
-const ProgressCircle: React.FC<{ 
+// Enhanced Hexagonal Progress Component with Gradient
+const HexagonalProgress: React.FC<{ 
   percentage: number
   color: string
   size: number
@@ -322,9 +322,51 @@ const ProgressCircle: React.FC<{
   const strokeDasharray = `${circumference} ${circumference}`
   const strokeDashoffset = circumference - (percentage / 100) * circumference
 
+  // Generate hexagon path
+  const hexagonPath = () => {
+    const centerX = size / 2
+    const centerY = size / 2
+    const hexRadius = radius * 0.9
+    const points = []
+    
+    for (let i = 0; i < 6; i++) {
+      const angle = (i * Math.PI) / 3
+      const x = centerX + hexRadius * Math.cos(angle)
+      const y = centerY + hexRadius * Math.sin(angle)
+      points.push(`${x},${y}`)
+    }
+    
+    return `M ${points.join(' L ')} Z`
+  }
+
   return (
-    <div className="progress-circle">
-      <svg width={size} height={size} className="progress-ring">
+    <div className="hexagonal-progress">
+      <svg width={size} height={size} className="progress-hexagon">
+        {/* Gradient Definition */}
+        <defs>
+          <linearGradient id={`hexGradient-${color}`} x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor={color} stopOpacity="0.3" />
+            <stop offset="50%" stopColor={color} stopOpacity="0.6" />
+            <stop offset="100%" stopColor={color} stopOpacity="0.9" />
+          </linearGradient>
+          <linearGradient id={`progressGradient-${color}`} x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor={color} />
+            <stop offset="100%" stopColor={color} stopOpacity="0.8" />
+          </linearGradient>
+        </defs>
+        
+        {/* Hexagonal Background */}
+        <motion.path
+          d={hexagonPath()}
+          fill={`url(#hexGradient-${color})`}
+          stroke="rgba(255,255,255,0.3)"
+          strokeWidth="1"
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, type: "spring" }}
+        />
+        
+        {/* Circular Progress Ring */}
         <circle
           className="progress-ring-background"
           cx={size / 2}
@@ -338,7 +380,7 @@ const ProgressCircle: React.FC<{
           cy={size / 2}
           r={radius}
           strokeWidth={strokeWidth}
-          stroke={color}
+          stroke={`url(#progressGradient-${color})`}
           strokeDasharray={strokeDasharray}
           initial={{ strokeDashoffset: circumference }}
           animate={{ strokeDashoffset }}
@@ -387,22 +429,23 @@ const SkillCard: React.FC<{
   return (
     <motion.div
       ref={cardRef}
-      className="skill-card-modern"
-      initial={{ opacity: 0, y: 50, scale: 0.9 }}
-      animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+      className="skill-card-hexagonal"
+      initial={{ opacity: 0, y: 50, scale: 0.9, rotate: -10 }}
+      animate={isInView ? { opacity: 1, y: 0, scale: 1, rotate: 0 } : {}}
       transition={{ 
-        duration: 0.6, 
-        delay: index * 0.1,
+        duration: 0.8, 
+        delay: index * 0.15,
         type: "spring",
-        stiffness: 100
+        stiffness: 120
       }}
       onMouseMove={handleMouseMove}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       whileHover={{ 
-        y: -10,
-        scale: 1.02,
-        transition: { duration: 0.3 }
+        y: -15,
+        scale: 1.05,
+        rotate: 2,
+        transition: { duration: 0.4, type: "spring", stiffness: 200 }
       }}
     >
       {/* Spotlight Effect */}
@@ -445,12 +488,12 @@ const SkillCard: React.FC<{
           </motion.p>
         </div>
 
-        {/* Progress Circle */}
+        {/* Hexagonal Progress */}
         <div className="skill-progress">
-          <ProgressCircle
+          <HexagonalProgress
             percentage={skill.level}
             color={skill.color}
-            size={60}
+            size={70}
             strokeWidth={4}
           />
         </div>
@@ -503,15 +546,17 @@ const SkillCard: React.FC<{
   )
 }
 
-// Category Filter Component
+// Enhanced Category Filter with Advanced Animations
 const CategoryFilter: React.FC<{
   categories: string[]
   activeCategory: string
   onCategoryChange: (category: string) => void
 }> = ({ categories, activeCategory, onCategoryChange }) => {
+  const [hoveredCategory, setHoveredCategory] = useState<string | null>(null)
+
   return (
     <motion.div 
-      className="category-filter"
+      className="category-filter-enhanced"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.2 }}
@@ -519,15 +564,60 @@ const CategoryFilter: React.FC<{
       {categories.map((category, index) => (
         <motion.button
           key={category}
-          className={`filter-btn-skills ${activeCategory === category ? 'active' : ''}`}
+          className={`filter-btn-hexagonal ${activeCategory === category ? 'active' : ''}`}
           onClick={() => onCategoryChange(category)}
-          whileHover={{ scale: 1.05 }}
+          onHoverStart={() => setHoveredCategory(category)}
+          onHoverEnd={() => setHoveredCategory(null)}
+          whileHover={{ 
+            scale: 1.1,
+            y: -5,
+            boxShadow: "0 10px 30px rgba(14, 165, 233, 0.3)"
+          }}
           whileTap={{ scale: 0.95 }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: index * 0.1 }}
+          initial={{ opacity: 0, x: -30, rotateY: -45 }}
+          animate={{ opacity: 1, x: 0, rotateY: 0 }}
+          transition={{ 
+            duration: 0.6, 
+            delay: index * 0.15,
+            type: "spring",
+            stiffness: 120
+          }}
         >
-          {category.charAt(0).toUpperCase() + category.slice(1)}
+          <motion.span
+            animate={{
+              color: activeCategory === category 
+                ? '#ffffff' 
+                : hoveredCategory === category 
+                  ? '#0ea5e9' 
+                  : '#6b7280'
+            }}
+            transition={{ duration: 0.3 }}
+          >
+            {category.charAt(0).toUpperCase() + category.slice(1)}
+          </motion.span>
+          
+          {/* Active indicator */}
+          <motion.div
+            className="filter-active-indicator"
+            initial={{ scaleX: 0 }}
+            animate={{ 
+              scaleX: activeCategory === category ? 1 : 0,
+              background: activeCategory === category 
+                ? 'linear-gradient(90deg, #0ea5e9, #8b5cf6)' 
+                : 'transparent'
+            }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+          />
+          
+          {/* Hover glow effect */}
+          <motion.div
+            className="filter-glow-effect"
+            animate={{
+              opacity: hoveredCategory === category ? 0.6 : 0,
+              scale: hoveredCategory === category ? 1.2 : 1
+            }}
+            transition={{ duration: 0.3 }}
+          />
         </motion.button>
       ))}
     </motion.div>
@@ -597,9 +687,9 @@ export default function Skills() {
           onCategoryChange={setActiveCategory}
         />
 
-        {/* Skills Grid - Enhanced with better alignment */}
+        {/* Hexagonal Skills Grid */}
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16 items-start"
+          className="skills-hexagonal-grid"
           layout
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}

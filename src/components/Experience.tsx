@@ -41,32 +41,130 @@ const TimelineItem: React.FC<{
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
     >
-      {/* Timeline Line */}
-      <div className="timeline-line">
-        <div className="timeline-connector" />
-        {!isLast && <div className="timeline-continuation" />}
-      </div>
-
-      {/* Timeline Dot */}
+      {/* Gradient Timeline Line */}
       <motion.div 
-        className="timeline-dot"
-        whileHover={{ scale: 1.2 }}
-        transition={{ type: "spring", stiffness: 300 }}
+        className="timeline-line-gradient"
+        initial={{ scaleY: 0 }}
+        animate={isInView ? { scaleY: 1 } : {}}
+        transition={{ 
+          duration: 1, 
+          delay: index * 0.3,
+          ease: "easeInOut"
+        }}
       >
-        <div className="timeline-dot-inner">
-          {experience.company.charAt(0)}
-        </div>
+        <motion.div 
+          className="timeline-connector-gradient"
+          animate={{
+            background: [
+              'linear-gradient(to bottom, #0ea5e9, #8b5cf6)',
+              'linear-gradient(to bottom, #8b5cf6, #06b6d4)',
+              'linear-gradient(to bottom, #06b6d4, #0ea5e9)',
+            ]
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        {!isLast && (
+          <motion.div 
+            className="timeline-continuation-gradient"
+            initial={{ opacity: 0, scaleY: 0 }}
+            animate={isInView ? { opacity: 1, scaleY: 1 } : {}}
+            transition={{ 
+              duration: 0.8, 
+              delay: index * 0.3 + 0.5,
+            }}
+          />
+        )}
       </motion.div>
 
-      {/* Experience Card */}
+      {/* Enhanced Timeline Dot with Company Logo Badge */}
       <motion.div 
-        className={`experience-card ${index % 2 === 0 ? 'experience-card-left' : 'experience-card-right'}`}
+        className="timeline-dot-enhanced"
         whileHover={{ 
-          y: -5,
-          boxShadow: "0 20px 40px rgba(0,0,0,0.15)"
+          scale: 1.3,
+          boxShadow: "0 0 30px rgba(14, 165, 233, 0.5)"
+        }}
+        transition={{ type: "spring", stiffness: 300 }}
+        initial={{ scale: 0, rotate: -180 }}
+        animate={isInView ? { scale: 1, rotate: 0 } : {}}
+        style={{
+          transitionDelay: `${index * 0.2}s`
+        }}
+      >
+        <motion.div 
+          className="timeline-dot-inner-enhanced"
+          animate={{
+            background: [
+              'linear-gradient(135deg, #0ea5e9, #8b5cf6)',
+              'linear-gradient(135deg, #8b5cf6, #06b6d4)',
+              'linear-gradient(135deg, #06b6d4, #0ea5e9)',
+            ]
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        >
+          {/* Company Logo Badge */}
+          <motion.div 
+            className="company-logo-badge"
+            whileHover={{ scale: 1.1 }}
+          >
+            <div className="logo-backdrop" />
+            <span className="company-initial">
+              {experience.company.charAt(0)}
+            </span>
+          </motion.div>
+          
+          {/* Pulsing Ring Effect */}
+          <motion.div
+            className="pulse-ring"
+            animate={{
+              scale: [1, 1.5, 1],
+              opacity: [0.7, 0, 0.7]
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+        </motion.div>
+      </motion.div>
+
+      {/* Enhanced Experience Card */}
+      <motion.div 
+        className={`experience-card-enhanced ${index % 2 === 0 ? 'experience-card-left' : 'experience-card-right'}`}
+        whileHover={{ 
+          y: -8,
+          scale: 1.02,
+          boxShadow: "0 25px 50px rgba(14, 165, 233, 0.2)"
         }}
         transition={{ type: "spring", stiffness: 200 }}
       >
+        {/* Gradient Border Effect */}
+        <motion.div 
+          className="card-gradient-border"
+          animate={{
+            background: [
+              'linear-gradient(135deg, #0ea5e9, #8b5cf6, #06b6d4)',
+              'linear-gradient(135deg, #8b5cf6, #06b6d4, #0ea5e9)',
+              'linear-gradient(135deg, #06b6d4, #0ea5e9, #8b5cf6)',
+            ]
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        
+        {/* Card Content Wrapper */}
+        <div className="card-content-wrapper">
         {/* Header */}
         <div className="experience-header">
           <div className="experience-company-info">
@@ -170,8 +268,21 @@ const TimelineItem: React.FC<{
           )}
         </AnimatePresence>
 
-        {/* Card Decorative Elements */}
-        <div className="card-decoration" />
+        {/* Modern Badge Elements */}
+        <motion.div 
+          className="modern-badge-container"
+          initial={{ opacity: 0, scale: 0 }}
+          animate={isInView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ delay: index * 0.2 + 0.8 }}
+        >
+          <div className="modern-badge">
+            <div className="badge-backdrop" />
+            <span className="badge-text">
+              {experience.company}
+            </span>
+          </div>
+        </motion.div>
+        </div> {/* Close card-content-wrapper */}
       </motion.div>
     </motion.div>
   )

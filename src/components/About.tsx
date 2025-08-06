@@ -49,7 +49,7 @@ const TypewriterText: React.FC<{ text: string; delay?: number }> = ({ text, dela
         setDisplayedText(prev => prev + text[currentIndex])
         setCurrentIndex(prev => prev + 1)
       }
-    }, delay + currentIndex * 15)
+    }, delay + currentIndex * 2)
 
     return () => clearTimeout(timer)
   }, [currentIndex, text, delay])

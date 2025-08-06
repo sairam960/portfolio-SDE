@@ -78,27 +78,85 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, onOpenModal, 
   return (
     <motion.div
       ref={cardRef}
-      className={`project-card-modern ${index % 2 === 0 ? 'project-card-large' : 'project-card-small'}`}
+      className={`project-card-advanced ${index % 2 === 0 ? 'project-card-large' : 'project-card-small'}`}
       variants={cardVariants}
       initial="hidden"
       animate={controls}
       whileHover={{ 
-        scale: 1.02,
-        transition: { duration: 0.3 }
+        scale: 1.05,
+        rotateY: 5,
+        rotateX: 5,
+        z: 50,
+        transition: { 
+          duration: 0.4,
+          type: "spring",
+          stiffness: 200
+        }
       }}
       onMouseMove={handleMouseMove}
       onClick={() => onOpenModal(project)}
+      style={{
+        transformStyle: 'preserve-3d'
+      }}
     >
-      {/* Spotlight Effect */}
-      <div 
-        className="spotlight-effect"
+      {/* Advanced Spotlight Effect */}
+      <motion.div 
+        className="spotlight-effect-advanced"
         style={{
-          background: `radial-gradient(600px at ${mousePosition.x}px ${mousePosition.y}px, rgba(14, 165, 233, 0.15), transparent 40%)`,
+          background: `radial-gradient(400px at ${mousePosition.x}px ${mousePosition.y}px, rgba(14, 165, 233, 0.25), rgba(139, 92, 246, 0.15) 40%, transparent 70%)`,
+        }}
+        animate={{
+          opacity: [0.3, 0.6, 0.3],
+        }}
+        transition={{
+          duration: 3,
+          repeat: Infinity,
+          ease: "easeInOut"
         }}
       />
       
-      {/* Glass Background */}
-      <div className="card-glass-bg" />
+      {/* Prismatic Rainbow Gradient Overlay */}
+      <motion.div 
+        className="prismatic-overlay"
+        initial={{ opacity: 0 }}
+        whileHover={{ 
+          opacity: 0.15,
+          background: `conic-gradient(from ${mousePosition.x}deg at ${mousePosition.x}% ${mousePosition.y}%, 
+            #ff006e, #fb5607, #ffbe0b, #8338ec, #3a86ff, #06ffa5, #ff006e)`
+        }}
+        transition={{ duration: 0.3 }}
+      />
+      
+      {/* Glass Background with Enhanced Gradient */}
+      <div className="card-glass-bg-advanced" />
+      
+      {/* Floating Particles Effect */}
+      <motion.div className="floating-particles">
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="particle"
+            initial={{ 
+              opacity: 0,
+              scale: 0,
+              x: mousePosition.x + (Math.random() - 0.5) * 200,
+              y: mousePosition.y + (Math.random() - 0.5) * 200
+            }}
+            animate={{
+              opacity: [0, 0.6, 0],
+              scale: [0, 1, 0],
+              x: mousePosition.x + (Math.random() - 0.5) * 300,
+              y: mousePosition.y + (Math.random() - 0.5) * 300
+            }}
+            transition={{
+              duration: 2,
+              delay: i * 0.2,
+              repeat: Infinity,
+              ease: "easeOut"
+            }}
+          />
+        ))}
+      </motion.div>
       
       {/* Image Section */}
       <div className="project-image-container">
@@ -129,17 +187,61 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, onOpenModal, 
           </div>
         )}
         
-        {/* Hover Details Overlay */}
+        {/* Advanced Hover Details Overlay */}
         <motion.div 
-          className="hover-details"
-          initial={{ opacity: 0 }}
-          whileHover={{ opacity: 1 }}
-          transition={{ duration: 0.3 }}
+          className="hover-details-advanced"
+          initial={{ opacity: 0, scale: 0.8, y: 20 }}
+          whileHover={{ 
+            opacity: 1, 
+            scale: 1,
+            y: 0,
+            transition: {
+              type: "spring",
+              stiffness: 200,
+              damping: 20
+            }
+          }}
         >
-          <div className="hover-content">
-            <h4>View Project</h4>
-            <p>Click to explore details</p>
-          </div>
+          <motion.div 
+            className="hover-content-advanced"
+            initial={{ opacity: 0, y: 10 }}
+            whileHover={{ 
+              opacity: 1, 
+              y: 0,
+              transition: { delay: 0.1, duration: 0.3 }
+            }}
+          >
+            <motion.div
+              className="hover-icon"
+              animate={{ 
+                rotate: [0, 360],
+                scale: [1, 1.2, 1]
+              }}
+              transition={{ 
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            >
+              <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              </svg>
+            </motion.div>
+            <h4>Explore Project</h4>
+            <p>Click to view details & live demo</p>
+            <motion.div 
+              className="hover-arrow"
+              animate={{ x: [0, 5, 0] }}
+              transition={{ 
+                duration: 1.5,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            >
+              →
+            </motion.div>
+          </motion.div>
         </motion.div>
       </div>
 

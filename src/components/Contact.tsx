@@ -39,11 +39,56 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" ref={sectionRef} className="contact-section-modern">
+    <section id="contact" ref={sectionRef} className="contact-section-enhanced">
+      {/* Animated Background Elements */}
+      <div className="contact-bg-elements">
+        <motion.div
+          className="floating-orb orb-1"
+          animate={{
+            x: [0, 100, -50, 0],
+            y: [0, -80, 60, 0],
+            scale: [1, 1.3, 0.8, 1],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div
+          className="floating-orb orb-2"
+          animate={{
+            x: [0, -120, 80, 0],
+            y: [0, 100, -40, 0],
+            scale: [0.8, 1.4, 1.1, 0.8],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 5
+          }}
+        />
+        <motion.div
+          className="floating-orb orb-3"
+          animate={{
+            x: [0, 60, -80, 0],
+            y: [0, -60, 80, 0],
+            scale: [1.2, 0.9, 1.5, 1.2],
+          }}
+          transition={{
+            duration: 30,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 10
+          }}
+        />
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
+        {/* Enhanced Header */}
         <motion.div 
-          className="contact-header"
+          className="contact-header-enhanced"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
@@ -69,14 +114,37 @@ export default function Contact() {
 
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 relative z-10">
-          {/* Contact Details */}
+          {/* Enhanced Contact Details */}
           <motion.div 
-            className="contact-details-section"
-            initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            className="contact-details-section-enhanced"
+            initial={{ opacity: 0, x: -50, rotateY: -15 }}
+            animate={isInView ? { opacity: 1, x: 0, rotateY: 0 } : {}}
+            transition={{ duration: 1, delay: 0.6, type: "spring", stiffness: 100 }}
           >
-            <div className="glassmorphism-card">
+            <motion.div 
+              className="glassmorphism-card-enhanced"
+              whileHover={{ 
+                scale: 1.02,
+                boxShadow: "0 25px 50px rgba(14, 165, 233, 0.15)"
+              }}
+              transition={{ type: "spring", stiffness: 200 }}
+            >
+              {/* Gradient Border Animation */}
+              <motion.div 
+                className="card-gradient-border-contact"
+                animate={{
+                  background: [
+                    'linear-gradient(135deg, #0ea5e9, #8b5cf6)',
+                    'linear-gradient(135deg, #8b5cf6, #06b6d4)',
+                    'linear-gradient(135deg, #06b6d4, #0ea5e9)',
+                  ]
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
               <div className="section-header">
                 <h3 className="text-2xl md:text-3xl">Let&apos;s Connect</h3>
                 <div className="section-divider" />
@@ -161,108 +229,301 @@ export default function Contact() {
             </div>
           </motion.div>
 
-          {/* Contact Form */}
+          {/* Enhanced Contact Form */}
           <motion.div 
-            className="contact-form-section"
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.8 }}
+            className="contact-form-section-enhanced"
+            initial={{ opacity: 0, x: 50, rotateY: 15 }}
+            animate={isInView ? { opacity: 1, x: 0, rotateY: 0 } : {}}
+            transition={{ duration: 1, delay: 0.8, type: "spring", stiffness: 100 }}
           >
-            <div className="glassmorphism-card">
+            <motion.div 
+              className="glassmorphism-card-enhanced form-card"
+              whileHover={{ 
+                scale: 1.02,
+                boxShadow: "0 25px 50px rgba(139, 92, 246, 0.15)"
+              }}
+              transition={{ type: "spring", stiffness: 200 }}
+            >
+              {/* Animated Background Particles */}
+              <div className="form-particles">
+                {[...Array(6)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="form-particle"
+                    animate={{
+                      y: [0, -20, 0],
+                      x: [0, 10, -10, 0],
+                      opacity: [0.3, 0.7, 0.3]
+                    }}
+                    transition={{
+                      duration: 3 + i,
+                      repeat: Infinity,
+                      delay: i * 0.5,
+                      ease: "easeInOut"
+                    }}
+                  />
+                ))}
+              </div>
+              
+              {/* Gradient Border Animation */}
+              <motion.div 
+                className="card-gradient-border-contact"
+                animate={{
+                  background: [
+                    'linear-gradient(135deg, #8b5cf6, #0ea5e9)',
+                    'linear-gradient(135deg, #0ea5e9, #06b6d4)',
+                    'linear-gradient(135deg, #06b6d4, #8b5cf6)',
+                  ]
+                }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
               <div className="section-header">
                 <h3 className="text-2xl md:text-3xl">Send Message</h3>
                 <div className="section-divider" />
               </div>
 
-              <form onSubmit={handleSubmit} className="contact-form">
+              <form onSubmit={handleSubmit} className="contact-form-enhanced">
                 <motion.div 
-                  className="form-group"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: 1.2 }}
+                  className="form-group-enhanced"
+                  initial={{ opacity: 0, y: 30, rotateX: -10 }}
+                  animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
+                  transition={{ delay: 1.2, type: "spring", stiffness: 120 }}
                 >
-                  <label htmlFor="name" className="form-label">Full Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="form-input"
-                    required
-                    placeholder="Enter your full name"
-                  />
+                  <motion.div className="input-container">
+                    <motion.input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      className="form-input-enhanced"
+                      required
+                      whileFocus={{ 
+                        scale: 1.02,
+                        boxShadow: "0 0 20px rgba(14, 165, 233, 0.3)"
+                      }}
+                    />
+                    <motion.label 
+                      htmlFor="name" 
+                      className={`form-label-floating ${formData.name ? 'active' : ''}`}
+                      animate={{
+                        y: formData.name ? -25 : 0,
+                        scale: formData.name ? 0.85 : 1,
+                        color: formData.name ? '#0ea5e9' : '#9ca3af'
+                      }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      Full Name
+                    </motion.label>
+                    <motion.div 
+                      className="input-border-glow"
+                      initial={{ scaleX: 0 }}
+                      whileFocus={{ scaleX: 1 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </motion.div>
                 </motion.div>
 
                 <motion.div 
-                  className="form-group"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: 1.4 }}
+                  className="form-group-enhanced"
+                  initial={{ opacity: 0, y: 30, rotateX: -10 }}
+                  animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
+                  transition={{ delay: 1.4, type: "spring", stiffness: 120 }}
                 >
-                  <label htmlFor="email" className="form-label">Email Address</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="form-input"
-                    required
-                    placeholder="Enter your email address"
-                  />
+                  <motion.div className="input-container">
+                    <motion.input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="form-input-enhanced"
+                      required
+                      whileFocus={{ 
+                        scale: 1.02,
+                        boxShadow: "0 0 20px rgba(139, 92, 246, 0.3)"
+                      }}
+                    />
+                    <motion.label 
+                      htmlFor="email" 
+                      className={`form-label-floating ${formData.email ? 'active' : ''}`}
+                      animate={{
+                        y: formData.email ? -25 : 0,
+                        scale: formData.email ? 0.85 : 1,
+                        color: formData.email ? '#8b5cf6' : '#9ca3af'
+                      }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      Email Address
+                    </motion.label>
+                    <motion.div 
+                      className="input-border-glow email"
+                      initial={{ scaleX: 0 }}
+                      whileFocus={{ scaleX: 1 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </motion.div>
                 </motion.div>
 
                 <motion.div 
-                  className="form-group"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: 1.6 }}
+                  className="form-group-enhanced"
+                  initial={{ opacity: 0, y: 30, rotateX: -10 }}
+                  animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
+                  transition={{ delay: 1.6, type: "spring", stiffness: 120 }}
                 >
-                  <label htmlFor="message" className="form-label">Message</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    className="form-input form-textarea"
-                    required
-                    placeholder="Tell me about your project or just say hello..."
-                    rows={5}
-                  />
+                  <motion.div className="input-container">
+                    <motion.textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      className="form-input-enhanced form-textarea-enhanced"
+                      required
+                      rows={5}
+                      whileFocus={{ 
+                        scale: 1.02,
+                        boxShadow: "0 0 20px rgba(6, 182, 212, 0.3)"
+                      }}
+                    />
+                    <motion.label 
+                      htmlFor="message" 
+                      className={`form-label-floating textarea ${formData.message ? 'active' : ''}`}
+                      animate={{
+                        y: formData.message ? -25 : 0,
+                        scale: formData.message ? 0.85 : 1,
+                        color: formData.message ? '#06b6d4' : '#9ca3af'
+                      }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      Your Message
+                    </motion.label>
+                    <motion.div 
+                      className="input-border-glow message"
+                      initial={{ scaleX: 0 }}
+                      whileFocus={{ scaleX: 1 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </motion.div>
                 </motion.div>
 
-                <motion.button
-                  type="submit"
-                  disabled={isSubmitting || isSuccess}
-                  className="contact-submit-btn"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: 1.8 }}
-                  whileHover={{ y: -2 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  {isSubmitting ? (
-                    <>
-                      <div className="loading-spinner" />
-                      Sending...
-                    </>
-                  ) : isSuccess ? (
-                    <>
-                      <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      Message Sent!
-                    </>
-                  ) : (
-                    <>
-                      <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ transform: 'rotate(-45deg)' }}>
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="m5 12 14 0m-4-8 4 4-4 4" />
-                      </svg>
-                      Send Message
-                    </>
-                  )}
-                </motion.button>
+                <motion.div className="submit-button-container">
+                  <motion.button
+                    type="submit"
+                    disabled={isSubmitting || isSuccess}
+                    className="contact-submit-btn-enhanced"
+                    initial={{ opacity: 0, y: 30, scale: 0.8 }}
+                    animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+                    transition={{ delay: 1.8, type: "spring", stiffness: 150 }}
+                    whileHover={{ 
+                      y: -5, 
+                      scale: 1.05,
+                      boxShadow: "0 15px 35px rgba(14, 165, 233, 0.4)"
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {/* Button Background Effects */}
+                    <motion.div 
+                      className="btn-gradient-bg"
+                      animate={{
+                        background: isSuccess 
+                          ? 'linear-gradient(135deg, #10b981, #059669)'
+                          : [
+                            'linear-gradient(135deg, #0ea5e9, #8b5cf6)',
+                            'linear-gradient(135deg, #8b5cf6, #06b6d4)',
+                            'linear-gradient(135deg, #06b6d4, #0ea5e9)',
+                          ]
+                      }}
+                      transition={{
+                        duration: isSuccess ? 0.5 : 3,
+                        repeat: isSuccess ? 0 : Infinity,
+                        ease: "easeInOut"
+                      }}
+                    />
+                    
+                    {/* Button Content */}
+                    <div className="btn-content">
+                      {isSubmitting ? (
+                        <>
+                          <motion.div 
+                            className="loading-spinner-enhanced"
+                            animate={{ rotate: 360 }}
+                            transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                          />
+                          <motion.span
+                            animate={{ opacity: [1, 0.5, 1] }}
+                            transition={{ duration: 1.5, repeat: Infinity }}
+                          >
+                            Sending...
+                          </motion.span>
+                        </>
+                      ) : isSuccess ? (
+                        <>
+                          <motion.div
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            transition={{ type: "spring", stiffness: 200 }}
+                          >
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                            </svg>
+                          </motion.div>
+                          <motion.span
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.2 }}
+                          >
+                            Message Sent!
+                          </motion.span>
+                        </>
+                      ) : (
+                        <>
+                          <motion.div
+                            whileHover={{ x: 5 }}
+                            transition={{ type: "spring", stiffness: 200 }}
+                          >
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ transform: 'rotate(-45deg)' }}>
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="m5 12 14 0m-4-8 4 4-4 4" />
+                            </svg>
+                          </motion.div>
+                          <span>Send Message</span>
+                        </>
+                      )}
+                    </div>
+                    
+                    {/* Success Particles */}
+                    {isSuccess && (
+                      <div className="success-particles">
+                        {[...Array(8)].map((_, i) => (
+                          <motion.div
+                            key={i}
+                            className="success-particle"
+                            initial={{ 
+                              opacity: 0,
+                              scale: 0,
+                              x: 0,
+                              y: 0
+                            }}
+                            animate={{
+                              opacity: [0, 1, 0],
+                              scale: [0, 1, 0],
+                              x: (Math.random() - 0.5) * 100,
+                              y: (Math.random() - 0.5) * 100
+                            }}
+                            transition={{
+                              duration: 1.5,
+                              delay: i * 0.1,
+                              ease: "easeOut"
+                            }}
+                          />
+                        ))}
+                      </div>
+                    )}
+                  </motion.button>
+                </motion.div>
               </form>
             </div>
           </motion.div>
