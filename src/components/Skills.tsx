@@ -619,8 +619,8 @@ export default function Skills() {
 
   const otherTechnologies = [
     'REST APIs', 'Microservices', 'GraphQL',
-    'ESLint', 'Figma', 'Postman', 'Jenkins', 'GitHub Actions',
-    'Grafana', 'Dynatrace', 'Vector Embeddings', 'OpenAI API'
+    'Figma', 'Postman', 'Jenkins', 'GitHub Actions',
+    'Grafana', 'Vector Embeddings', 'OpenAI API'
   ]
 
   return (

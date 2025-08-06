@@ -18,6 +18,15 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/sairam960/advisor-app',
     liveUrl: '#',
     imageUrl: '/portfolio-SDE/images/ai-app.png'
+  },
+  {
+    id: '3',
+    title: 'Portfolio Engineering using Python',
+    description: 'Fundamental Analysis of stock data using Python and pandas to create a portfolio of stocks based on financial metrics to generate a personalized investment portfolio with Sharpe ratio over 1.',
+    technologies: ['Python', 'pandas', 'NumPy', 'Matplotlib', 'scikit-learn'],
+    githubUrl: 'https://github.com/sairam960/finance101',
+    liveUrl: '#',
+    imageUrl: '/portfolio-SDE/images/ai-app.png'
   }
 ]
 
@@ -68,7 +77,7 @@ export const experiences: Experience[] = [
     description: [ 
       'Architected an OpenTelemetry-based observability and diagnostics platform for cloud-native microservices, enabling real-time distributed tracing and anomaly detection, reducing MTTR by 25%.'
     ],
-    technologies: ['JavaScript', 'OpenTelemetry', 'Code Instrumentation', 'Cloud','Microservices']
+    technologies: ['JavaScript', 'OpenTelemetry', 'Code Instrumentation','Microservices']
   }
 ]
 
