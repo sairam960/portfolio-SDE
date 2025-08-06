@@ -3218,7 +3218,7 @@ p {
 /* Timeline Styles */
 .timeline-container {
   position: relative;
-  max-width: 1000px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -3228,6 +3228,8 @@ p {
   align-items: flex-start;
   margin-bottom: 4rem;
 }
+
+
 
 .timeline-line {
   position: absolute;
@@ -3615,11 +3617,11 @@ p {
 
 .experience-card-enhanced.experience-card-left {
   margin-left: auto;
-  margin-right: 1000px;
+  margin-right: 40%;
 }
 
 .experience-card-enhanced.experience-card-right {
-  margin-left: 1000px;
+  margin-left: 40%;
   margin-right: auto;
 }
 

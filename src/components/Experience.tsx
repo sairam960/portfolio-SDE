@@ -320,31 +320,7 @@ export default function Experience() {
         </div>
 
         {/* Summary Stats */}
-        <motion.div 
-          className="experience-stats"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 1 }}
-        >
-          <div className="stats-grid">
-            <div className="stat-card">
-              <div className="stat-number">3+</div>
-              <div className="stat-label">Years Experience</div>
-            </div>
-            <div className="stat-card">
-              <div className="stat-number">4</div>
-              <div className="stat-label">Companies</div>
-            </div>
-            <div className="stat-card">
-              <div className="stat-number">15+</div>
-              <div className="stat-label">Technologies</div>
-            </div>
-            <div className="stat-card">
-              <div className="stat-number">50+</div>
-              <div className="stat-label">Projects Delivered</div>
-            </div>
-          </div>
-        </motion.div>
+        
       </div>
     </section>
   )
