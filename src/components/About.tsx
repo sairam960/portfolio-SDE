@@ -7,7 +7,7 @@ import { motion, AnimatePresence, useInView, useAnimation, useScroll, useTransfo
 const AnimatedCounter: React.FC<{ value: number; suffix?: string; duration?: number }> = ({ 
   value, 
   suffix = '', 
-  duration = 2 
+  duration = 0.67 
 }) => {
   const [count, setCount] = useState(0)
   const counterRef = useRef<HTMLSpanElement>(null)
@@ -49,7 +49,7 @@ const TypewriterText: React.FC<{ text: string; delay?: number }> = ({ text, dela
         setDisplayedText(prev => prev + text[currentIndex])
         setCurrentIndex(prev => prev + 1)
       }
-    }, delay + currentIndex * 2)
+    }, delay + currentIndex * 0.67)
 
     return () => clearTimeout(timer)
   }, [currentIndex, text, delay])
@@ -57,7 +57,7 @@ const TypewriterText: React.FC<{ text: string; delay?: number }> = ({ text, dela
   useEffect(() => {
     const cursorTimer = setInterval(() => {
       setShowCursor(prev => !prev)
-    }, 500)
+    }, 167)
 
     return () => clearInterval(cursorTimer)
   }, [])
@@ -88,14 +88,14 @@ const TimelineCard: React.FC<{
       className="timeline-card"
       initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
       animate={isInView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.2 }}
+      transition={{ duration: 0.2, delay: index * 0.067 }}
     >
       <div className="timeline-card-header" onClick={onToggle}>
         <h4>{title}</h4>
         <motion.div
           className="expand-icon"
           animate={{ rotate: isExpanded ? 180 : 0 }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.1 }}
         >
           <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -110,7 +110,7 @@ const TimelineCard: React.FC<{
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
+            transition={{ duration: 0.133, ease: [0.04, 0.62, 0.23, 0.98] }}
           >
             <p>{content}</p>
             <div className="technology-badges">
@@ -121,8 +121,8 @@ const TimelineCard: React.FC<{
                   initial={{ scale: 0, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ 
-                    duration: 0.3, 
-                    delay: techIndex * 0.1,
+                    duration: 0.1, 
+                    delay: techIndex * 0.033,
                     type: "spring",
                     stiffness: 200
                   }}
@@ -163,8 +163,8 @@ const FlipCard: React.FC<{
       initial={{ opacity: 0, y: 50, rotateY: -90 }}
       animate={isInView ? { opacity: 1, y: 0, rotateY: 0 } : {}}
       transition={{ 
-        duration: 0.8, 
-        delay: index * 0.2,
+        duration: 0.267, 
+        delay: index * 0.067,
         type: "spring",
         stiffness: 100
       }}
@@ -174,7 +174,7 @@ const FlipCard: React.FC<{
       <motion.div
         className="flip-card"
         animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ duration: 0.3, type: "spring", stiffness: 200 }}
+        transition={{ duration: 0.1, type: "spring", stiffness: 200 }}
       >
         {/* Front Face */}
         <div className="flip-card-front">
@@ -198,7 +198,7 @@ const FlipCard: React.FC<{
                 key={featureIndex}
                 initial={{ opacity: 0, x: -20 }}
                 animate={isFlipped ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                transition={{ delay: featureIndex * 0.1 }}
+                transition={{ delay: featureIndex * 0.033 }}
               >
                 {feature}
               </motion.li>
@@ -240,10 +240,10 @@ const FloatingShapes: React.FC = () => {
             scale: [1, 1.1, 1],
           }}
           transition={{
-            duration: 6 + shape.delay,
+            duration: 2 + shape.delay / 3,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: shape.delay,
+            delay: shape.delay / 3,
           }}
         />
       ))}
@@ -368,13 +368,13 @@ export default function About() {
           className="about-hero"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.267 }}
         >
           <motion.h2 
             className="about-title-gradient"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 1, delay: 0.2 }}
+            transition={{ duration: 0.333, delay: 0.067 }}
           >
             About Me
           </motion.h2>
@@ -383,16 +383,16 @@ export default function About() {
             className="about-subtitle"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.267, delay: 0.133 }}
           >
-            <TypewriterText text="Passionate software engineer" delay={500} />
+            <TypewriterText text="Passionate software engineer" delay={167} />
           </motion.div>
 
           <motion.p 
             className="about-description"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.8 }}
+            transition={{ duration: 0.267, delay: 0.267 }}
           >
             with <AnimatedCounter value={3} suffix="+" /> years of experience building scalable applications. 
             In my free time I play chess, watch NBA.
@@ -406,7 +406,7 @@ export default function About() {
             className="about-journey-section"
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.267, delay: 0.2 }}
           >
             <div className="glassmorphism-card">
               <div className="section-header">
@@ -418,7 +418,7 @@ export default function About() {
                 className="journey-intro"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 1 }}
+                transition={{ duration: 0.2, delay: 0.333 }}
               >
                 <p className="text-sm md:text-base">
                   I&apos;m a software engineer with a passion for turning complexity into clarity. 
@@ -432,7 +432,7 @@ export default function About() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.4 }}
+                      transition={{ duration: 0.133 }}
                     >
                       <p className="text-sm md:text-base">
                         I&apos;ve worked closely with ground teams to take products from 0→1 and thrive 
@@ -473,7 +473,7 @@ export default function About() {
                 className="flex flex-col sm:flex-row gap-4 sm:gap-8 mt-8 justify-center"
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, delay: 1.2 }}
+                transition={{ duration: 0.267, delay: 0.4 }}
               >
                 <div className="stat-item">
                   <div className="stat-number">
@@ -502,7 +502,7 @@ export default function About() {
             className="about-services-section"
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.8 }}
+            transition={{ duration: 0.267, delay: 0.267 }}
           >
             <div className="glassmorphism-card">
               <div className="section-header">

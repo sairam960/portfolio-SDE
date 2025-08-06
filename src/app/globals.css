@@ -1017,6 +1017,7 @@ p {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+  line-clamp: 3;
   overflow: hidden;
 }
 
@@ -1814,6 +1815,8 @@ p {
   display: flex;
   gap: 1.5rem;
   flex-wrap: wrap;
+  position: relative;
+  z-index: 10;
 }
 
 .btn-primary-modern, .btn-outline-modern {
@@ -1831,6 +1834,7 @@ p {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
   backdrop-filter: blur(16px);
+  z-index: 10;
 }
 
 .btn-primary-modern {
@@ -4034,6 +4038,7 @@ p {
   border-radius: 50%;
   filter: blur(40px);
   opacity: 0.6;
+  pointer-events: none;
 }
 
 .floating-orb.orb-1 {
