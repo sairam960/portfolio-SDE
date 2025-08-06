@@ -234,13 +234,10 @@ export default function Hero() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
     if (element) {
-      const headerOffset = 100
-      const elementPosition = element.offsetTop
-      const offsetPosition = elementPosition - headerOffset
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      })
+      // More robust and smooth across all Next.js deployment types
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      // Optionally update hash for accessibility
+      window.history.replaceState(null, '', `#${sectionId}`)
     }
   }
 
@@ -358,6 +355,7 @@ export default function Hero() {
                   }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => {
+                    window.open('/portfolio-SDE/resume/Sai_Krishnan_Resume.pdf', '_blank')
                     const link = document.createElement('a');
                     link.href = '/portfolio-SDE/resume/Sai_Krishnan_Resume.pdf';
                     link.download = 'Sai_Krishnan_Resume.pdf';
