@@ -467,7 +467,7 @@ export default function Projects() {
   const [filteredProjects, setFilteredProjects] = useState(projects)
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
 
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 })
@@ -498,11 +498,6 @@ export default function Projects() {
     setFilteredProjects(filtered)
   }, [searchTerm, selectedTech])
 
-  // Simulate loading
-  useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 1000)
-    return () => clearTimeout(timer)
-  }, [])
 
   const openModal = (project: typeof projects[0]) => {
     setSelectedProject(project)

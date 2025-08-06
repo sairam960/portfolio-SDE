@@ -478,28 +478,7 @@ const SkillCard: React.FC<{
           >
             {skill.name}
           </motion.h4>
-        </div>
-
-        {/* Circular Progress */}
-        <div className="skill-progress">
-          <div className="circular-progress" style={{ 
-            background: `conic-gradient(${skill.color} ${skill.level * 3.6}deg, rgba(255,255,255,0.3) 0deg)`
-          }}>
-            <div className="progress-center">
-              <span className="progress-percentage">{skill.level}%</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Skill Level Bar */}
-        <div className="skill-level-bar">
-          <motion.div
-            className="skill-level-fill"
-            style={{ backgroundColor: skill.color }}
-            initial={{ width: 0 }}
-            animate={isInView ? { width: `${skill.level}%` } : { width: 0 }}
-            transition={{ duration: 1.5, delay: index * 0.05 }}
-          />
+          <p className="skill-description">{skill.description}</p>
         </div>
       </div>
 

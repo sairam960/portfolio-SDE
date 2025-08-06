@@ -24,7 +24,7 @@ export default function Header() {
       setScrolled(window.scrollY > 50)
       
       // Update active section based on scroll position
-      const sections = ['home', 'projects', 'experience', 'skills', 'contact']
+      const sections = ['home', 'skills', 'experience', 'projects', 'contact']
       const scrollPosition = window.scrollY + 150
       
       for (const section of sections) {
@@ -148,9 +148,9 @@ export default function Header() {
             >
               {[
                 { id: 'home', label: 'Home' },
-                { id: 'projects', label: 'Projects' },
-                { id: 'experience', label: 'Experience' },
                 { id: 'skills', label: 'Skills' },
+                { id: 'experience', label: 'Experience' },
+                { id: 'projects', label: 'Projects' },
                 { id: 'contact', label: 'Contact' }
               ].map((item, index) => (
                 <motion.button
