@@ -32,7 +32,8 @@ export const experiences: Experience[] = [
       'Led end-to-end infrastructure migration from a legacy private server to AWS, leveraging S3 for scalable storage and ECS for containerized service deployment.',
       'Modernized static website using Next.js and React.js, improving onboarding flow and reducing average page load time by 60%.'
     ],
-    technologies: ['React', 'Node.js', 'AWS', 'Docker', 'TypeScript']
+    technologies: ['React', 'Node.js', 'AWS', 'Docker', 'TypeScript'],
+    image:'/portfolio-SDE/public/images/yp1.png'
   },
   {
     id: '2',
@@ -45,7 +46,8 @@ export const experiences: Experience[] = [
       'Engineered OpenAI powered chat agents to automate customer complaint and room service process, improving complaint turnaround-time by 30x and boosting customer satisfaction by 30%.',
       'Engineered multiple MCP servers and hooked in relevant API’s for dynamic context based chat responses and reducing hallucinations.'
     ],
-    technologies: ['OpenAI API', 'Python', 'CosmosDB', 'JavaScript']
+    technologies: ['OpenAI API', 'Python', 'CosmosDB', 'JavaScript'],
+    image:'/portfolio-SDE/public/images/yp1.png'
   },
   {
     id: '3',
@@ -58,7 +60,8 @@ export const experiences: Experience[] = [
       'Built an analytics tool to visualize $1M+ in annual inventory data, cutting procurement processing time by 30%.',
       'Designed ETL pipelines to calculate operational costs from Grubhub sales data, reducing operational costs by 47% during summer.'
     ],
-    technologies: ['React', 'Node.js', 'PostgreSQL', 'Github Actions','Python']
+    technologies: ['React', 'Node.js', 'PostgreSQL', 'Github Actions','Python'],
+    image:'/portfolio-SDE/public/images/yp1.png'
   },
   {
     id: '4',
@@ -68,7 +71,8 @@ export const experiences: Experience[] = [
     description: [ 
       'Architected an OpenTelemetry-based observability and diagnostics platform for cloud-native microservices, enabling real-time distributed tracing and anomaly detection, reducing MTTR by 25%.'
     ],
-    technologies: ['JavaScript', 'OpenTelemetry', 'Code Instrumentation', 'Cloud','Microservices']
+    technologies: ['JavaScript', 'OpenTelemetry', 'Code Instrumentation', 'Cloud','Microservices'],
+    image:'/portfolio-SDE/public/images/yp1.png'
   }
 ]
 
