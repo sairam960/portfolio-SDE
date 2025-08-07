@@ -7,6 +7,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [cursorVisible, setCursorVisible] = useState(false)
   const logoRef = useRef<HTMLButtonElement>(null)
   
   const { scrollYProgress } = useScroll()
@@ -41,16 +42,25 @@ export default function Header() {
 
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY })
-      cursorX.set(e.clientX - 16)
-      cursorY.set(e.clientY - 16)
+      cursorX.set(e.clientX)
+      cursorY.set(e.clientY)
+      if (!cursorVisible) {
+        setCursorVisible(true)
+      }
+    }
+
+    const handleMouseLeave = () => {
+      setCursorVisible(false)
     }
 
     window.addEventListener('scroll', handleScroll)
     window.addEventListener('mousemove', handleMouseMove)
+    window.addEventListener('mouseleave', handleMouseLeave)
     
     return () => {
       window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('mousemove', handleMouseMove)
+      window.removeEventListener('mouseleave', handleMouseLeave)
     }
   }, [cursorX, cursorY])
 
@@ -89,11 +99,14 @@ export default function Header() {
     <>
       {/* Custom Cursor */}
       <motion.div
-        className="custom-cursor"
+        className={`custom-cursor ${cursorVisible ? 'active' : ''}`}
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
         }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: cursorVisible ? 1 : 0 }}
+        transition={{ duration: 0.2 }}
       />
       
       <motion.header 

@@ -1760,15 +1760,18 @@ p {
 
 /* Custom Cursor */
 .custom-cursor {
-  position: fixed;
-  width: 32px;
-  height: 32px;
-  background: radial-gradient(circle, rgba(0, 102, 255, 0.6) 0%, rgba(107, 70, 193, 0.4) 50%, transparent 70%);
+  display: none;
+  /* Disabled custom cursor to prevent visual issues */
+  /* position: fixed;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, rgba(0, 102, 255, 0.8) 0%, rgba(107, 70, 193, 0.6) 50%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
-  mix-blend-mode: difference;
-  opacity: 0.8;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  transform: translate(-50%, -50%); */
 }
 
 @media (max-width: 768px) {
@@ -2507,8 +2510,8 @@ p {
 
 .animated-counter {
   font-weight: 700;
-  color: var(--color-primary);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: #003d99;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* Content Grid */
@@ -3717,7 +3720,7 @@ p {
 .stat-number {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--color-primary);
+  color: var(--color-gray-800);
   margin-bottom: 0.5rem;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -5210,7 +5213,7 @@ p {
 .footer-section-title {
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--color-gray-400);
   margin-bottom: 1.5rem;
   position: relative;
 }
@@ -5730,9 +5733,9 @@ p {
 }
 
 /* Cursor Animation */
-.custom-cursor {
+.custom-cursor.active {
+  opacity: 1;
   animation: cursor-pulse 2s ease-in-out infinite;
-  transition: transform 0.1s ease-out;
 }
 
 @keyframes cursor-pulse {
