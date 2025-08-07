@@ -96,7 +96,7 @@ export default function ScrollProgress({ showSectionIndicator = true }: ScrollPr
             exit={{ opacity: 0, x: 50 }}
             transition={{ duration: 0.3 }}
           >
-            {sections.map((section, index) => (
+            {sections.map((section) => (
               <motion.button
                 key={section.id}
                 className={`section-nav-dot ${activeSection === section.id ? 'active' : ''}`}
