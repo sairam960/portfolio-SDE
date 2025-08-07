@@ -13,7 +13,6 @@
     "module": "esnext",
     "moduleResolution": "bundler",
     "noUnusedParameters": true,
-    "noImplicitReturns": true,
     "removeComments": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
