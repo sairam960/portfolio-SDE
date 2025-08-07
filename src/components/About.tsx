@@ -322,7 +322,6 @@ export default function About() {
           "Node.js & Python APIs",
           "Database Architecture", 
           "Microservices Design",
-          "Authentication & Security",
           "Performance Monitoring"
         ]
       }
@@ -343,7 +342,6 @@ export default function About() {
           "AWS Cloud Architecture",
           "Docker & Kubernetes",
           "CI/CD Pipelines", 
-          "Infrastructure as Code",
           "Monitoring & Observability"
         ]
       }
