@@ -59,7 +59,7 @@ const GradientMeshBackground = () => {
           ease: "easeInOut"
         }}
         style={{
-          background: `radial-gradient(circle, rgba(14, 165, 233, 0.4) 0%, rgba(14, 165, 233, 0.1) 70%, transparent 100%)`,
+          background: `radial-gradient(circle, rgba(0, 102, 255, 0.4) 0%, rgba(0, 102, 255, 0.1) 70%, transparent 100%)`,
         }}
       />
       <motion.div
@@ -76,7 +76,7 @@ const GradientMeshBackground = () => {
           delay: 5
         }}
         style={{
-          background: `radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, rgba(139, 92, 246, 0.1) 70%, transparent 100%)`,
+          background: `radial-gradient(circle, rgba(107, 70, 193, 0.3) 0%, rgba(107, 70, 193, 0.1) 70%, transparent 100%)`,
         }}
       />
       <motion.div
@@ -93,7 +93,7 @@ const GradientMeshBackground = () => {
           delay: 10
         }}
         style={{
-          background: `radial-gradient(circle, rgba(236, 72, 153, 0.25) 0%, rgba(236, 72, 153, 0.08) 70%, transparent 100%)`,
+          background: `radial-gradient(circle, rgba(16, 185, 129, 0.25) 0%, rgba(16, 185, 129, 0.08) 70%, transparent 100%)`,
         }}
       />
       
@@ -350,7 +350,7 @@ export default function Hero() {
                   whileHover={{ 
                     scale: 1.05,
                     y: -3,
-                    backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                    backgroundColor: 'rgba(107, 70, 193, 0.1)',
                     borderColor: 'var(--color-secondary)'
                   }}
                   whileTap={{ scale: 0.98 }}
@@ -383,7 +383,7 @@ export default function Hero() {
                   whileHover={{ 
                     scale: 1.05,
                     y: -3,
-                    backgroundColor: 'rgba(14, 165, 233, 0.1)',
+                    backgroundColor: 'rgba(0, 102, 255, 0.1)',
                     borderColor: 'var(--color-primary)'
                   }}
                   whileTap={{ scale: 0.98 }}

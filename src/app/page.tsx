@@ -31,7 +31,7 @@ export default function Home() {
           {/* Hero to About Divider - Wave Pattern */}
           <SectionDivider 
             variant="wave" 
-            colors={{ from: '#0ea5e9', via: '#8b5cf6', to: '#06b6d4' }} 
+            colors={{ from: '#0066FF', via: '#6B46C1', to: '#10B981' }} 
           />
           
           <section id="about">
@@ -41,7 +41,7 @@ export default function Home() {
           {/* About to Skills Divider - Gradient Fade */}
           <SectionDivider 
             variant="gradient" 
-            colors={{ from: '#8b5cf6', via: '#06b6d4', to: '#10b981' }} 
+            colors={{ from: '#6B46C1', via: '#0066FF', to: '#10B981' }} 
           />
           
           <section id="skills">
@@ -51,7 +51,7 @@ export default function Home() {
           {/* Skills to Projects Divider - Particles */}
           <SectionDivider 
             variant="particles" 
-            colors={{ from: '#06b6d4', via: '#0ea5e9', to: '#8b5cf6' }} 
+            colors={{ from: '#10B981', via: '#0066FF', to: '#6B46C1' }} 
           />
           
           <section id="projects">
@@ -61,7 +61,7 @@ export default function Home() {
           {/* Projects to Experience Divider - Wave Pattern */}
           <SectionDivider 
             variant="wave" 
-            colors={{ from: '#10b981', via: '#0ea5e9', to: '#8b5cf6' }} 
+            colors={{ from: '#10B981', via: '#0066FF', to: '#6B46C1' }} 
           />
           
           <section id="experience">
@@ -71,7 +71,7 @@ export default function Home() {
           {/* Experience to Contact Divider - Gradient Fade */}
           <SectionDivider 
             variant="gradient" 
-            colors={{ from: '#8b5cf6', via: '#06b6d4', to: '#0ea5e9' }} 
+            colors={{ from: '#6B46C1', via: '#10B981', to: '#0066FF' }} 
           />
           
           <section id="contact">
@@ -81,7 +81,7 @@ export default function Home() {
           {/* Contact to Footer Divider - Particles */}
           <SectionDivider 
             variant="particles" 
-            colors={{ from: '#0ea5e9', via: '#8b5cf6', to: '#06b6d4' }} 
+            colors={{ from: '#0066FF', via: '#6B46C1', to: '#10B981' }} 
           />
           
         </main>

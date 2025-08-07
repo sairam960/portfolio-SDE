@@ -42,7 +42,7 @@ export default function PageTransition({ children }: PageTransitionProps) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
               >
-                Portfolio
+                Welcome to my world!!!
               </motion.h1>
             </motion.div>
 
@@ -94,7 +94,7 @@ export default function PageTransition({ children }: PageTransitionProps) {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1 }}
               >
-                Loading Experience...
+                Loading...
               </motion.p>
             </motion.div>
           </div>
