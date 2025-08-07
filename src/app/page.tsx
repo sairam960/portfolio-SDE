@@ -28,9 +28,9 @@ export default function Home() {
             <Hero />
           </section>
       
-          {/* Hero to About Divider - Wave Pattern */}
+          {/* Hero to About Divider - Particles */}
           <SectionDivider 
-            variant="wave" 
+            variant="particles" 
             colors={{ from: '#0066FF', via: '#6B46C1', to: '#10B981' }} 
           />
           
@@ -38,9 +38,19 @@ export default function Home() {
             <About />
           </section>
           
-          {/* About to Skills Divider - Gradient Fade */}
+          {/* About to Experience Divider - Particles */}
           <SectionDivider 
-            variant="gradient" 
+            variant="particles" 
+            colors={{ from: '#6B46C1', via: '#0066FF', to: '#10B981' }} 
+          />
+          
+          <section id="experience">
+            <Experience />
+          </section>
+          
+          {/* Experience to Skills Divider - Particles  */}
+          <SectionDivider 
+            variant="particles" 
             colors={{ from: '#6B46C1', via: '#0066FF', to: '#10B981' }} 
           />
           
@@ -58,19 +68,9 @@ export default function Home() {
             <Projects />
           </section>
           
-          {/* Projects to Experience Divider - Wave Pattern */}
+          {/* Projects to Contact Divider - Gradient Fade */}
           <SectionDivider 
-            variant="wave" 
-            colors={{ from: '#10B981', via: '#0066FF', to: '#6B46C1' }} 
-          />
-          
-          <section id="experience">
-            <Experience />
-          </section>
-          
-          {/* Experience to Contact Divider - Gradient Fade */}
-          <SectionDivider 
-            variant="gradient" 
+            variant="particles" 
             colors={{ from: '#6B46C1', via: '#10B981', to: '#0066FF' }} 
           />
           

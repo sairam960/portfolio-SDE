@@ -174,14 +174,22 @@ const FlipCard: React.FC<{
       <motion.div
         className="flip-card"
         animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ duration: 0.1, type: "spring", stiffness: 200 }}
+        transition={{ 
+          duration: 0.6, 
+          ease: [0.25, 0.8, 0.25, 1],
+          type: "tween"
+        }}
       >
         {/* Front Face */}
         <div className="flip-card-front">
           <motion.div 
             className="flip-card-icon"
             whileHover={{ scale: 1.2, rotate: 5 }}
-            transition={{ type: "spring", stiffness: 300 }}
+            transition={{ 
+              duration: 0.3,
+              ease: [0.25, 0.8, 0.25, 1],
+              type: "tween"
+            }}
           >
             {frontContent.icon}
           </motion.div>
@@ -191,14 +199,29 @@ const FlipCard: React.FC<{
 
         {/* Back Face */}
         <div className="flip-card-back">
-          <p className="flip-card-description">{backContent.description}</p>
+          <motion.p 
+            className="flip-card-description"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isFlipped ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ 
+              delay: isFlipped ? 0.2 : 0,
+              duration: 0.4,
+              ease: [0.25, 0.8, 0.25, 1]
+            }}
+          >
+            {backContent.description}
+          </motion.p>
           <ul className="flip-card-features">
             {backContent.features.map((feature, featureIndex) => (
               <motion.li
                 key={featureIndex}
                 initial={{ opacity: 0, x: -20 }}
                 animate={isFlipped ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                transition={{ delay: featureIndex * 0.033 }}
+                transition={{ 
+                  delay: isFlipped ? featureIndex * 0.1 + 0.3 : 0,
+                  duration: 0.4,
+                  ease: [0.25, 0.8, 0.25, 1]
+                }}
               >
                 {feature}
               </motion.li>
