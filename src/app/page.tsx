@@ -48,7 +48,18 @@ export default function Home() {
             <Skills />
           </section>
           
-          {/* Skills to Projects Divider - Particles */}
+          {/* Skills to Experience Divider - Particles */}
+          <SectionDivider 
+            variant="particles" 
+            colors={{ from: '#10B981', via: '#0066FF', to: '#6B46C1' }} 
+          />
+          
+
+          <section id="experience">
+            <Experience />
+          </section>
+          
+          {/* Experience to Projects Divider - Particles */}
           <SectionDivider 
             variant="particles" 
             colors={{ from: '#10B981', via: '#0066FF', to: '#6B46C1' }} 
@@ -58,17 +69,7 @@ export default function Home() {
             <Projects />
           </section>
           
-          {/* Projects to Experience Divider - Particles */}
-          <SectionDivider 
-            variant="particles" 
-            colors={{ from: '#10B981', via: '#0066FF', to: '#6B46C1' }} 
-          />
-          
-          <section id="experience">
-            <Experience />
-          </section>
-          
-          {/* Experience to Contact Divider - Particles */}
+          {/* Projects to Contact Divider - Particles */}
           <SectionDivider 
             variant="particles" 
             colors={{ from: '#6B46C1', via: '#10B981', to: '#0066FF' }} 
