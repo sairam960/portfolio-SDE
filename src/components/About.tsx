@@ -422,8 +422,7 @@ export default function About() {
               >
                 <p className="text-sm md:text-base">
                   I&apos;m a software engineer with a passion for turning complexity into clarity. 
-                  I&apos;ve led projects across AI, building a RAG admissions chatbot and engineered 
-                  OpenAI powered chat agents to handle customer complaints.
+                  I&apos;ve led projects across AI, Software Engineering, building a AI integrated chatbot.
                 </p>
                 
                 <AnimatePresence>

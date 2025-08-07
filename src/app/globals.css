@@ -1570,8 +1570,8 @@ p {
 }
 
 .header-modern.scrolled {
-  background: rgba(15, 23, 42, 0.95);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 32px rgba(0, 102, 255, 0.1);
   padding: 0.75rem 0;
   border-bottom: 1px solid rgba(0, 102, 255, 0.3);
 }
@@ -2494,6 +2494,7 @@ p {
 .animated-counter {
   font-weight: 700;
   color: var(--color-primary);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Content Grid */
@@ -2683,7 +2684,7 @@ p {
   width: 60px;
   height: 60px;
   background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-  color: var(--text-primary);
+  color: var(--color-white);
   font-size: 1rem;
   font-weight: 700;
   border-radius: 50%;
@@ -3703,6 +3704,7 @@ p {
   font-weight: 700;
   color: var(--color-primary);
   margin-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .stat-label {
@@ -5414,7 +5416,7 @@ p {
 .loading-title {
   font-size: 3.5rem;
   font-weight: 700;
-  color: var(--color-gray-800);
+  color: var(--color-white);
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   margin: 0;
   background-clip: text;

@@ -26,8 +26,18 @@ export const projects: Project[] = [
     technologies: ['Python', 'pandas', 'NumPy', 'Matplotlib', 'scikit-learn'],
     githubUrl: 'https://github.com/sairam960/finance101',
     liveUrl: '#',
-    imageUrl: '/portfolio-SDE/images/ai-app.png'
+    imageUrl: '/portfolio-SDE/images/finance.png'
+  },
+  {
+    id: '4',
+    title: 'Crime Data Analysis',
+    description: 'Discovered patterns in crime data using Python and pandas, visualizing trends and correlations to provide insights for international students/ non local moving to Montgomery county.',
+    technologies: ['Python', 'pandas', 'NumPy', 'Seaborn', 'scikit-learn'],
+    githubUrl: 'https://github.com/sairam960/crimeAnalyticsMGPD',
+    liveUrl: '#',
+    imageUrl: '/portfolio-SDE/images/crime-data.png'
   }
+
 ]
 
 export const experiences: Experience[] = [
@@ -58,8 +68,8 @@ export const experiences: Experience[] = [
   },
   {
     id: '3',
-    company: 'Freelance Projects',
-    position: 'Software Developer',
+    company: 'University of Maryland',
+    position: 'Consultant, Software Engineer',
     duration: 'Jan 2024 - Dec 2024',
     description: [ 
       'Automated deployment processes using GitHub Actions, reducing manual errors and deployment time by 50%',
@@ -67,7 +77,7 @@ export const experiences: Experience[] = [
       'Built an analytics tool to visualize $1M+ in annual inventory data, cutting procurement processing time by 30%.',
       'Designed ETL pipelines to calculate operational costs from Grubhub sales data, reducing operational costs by 47% during summer.'
     ],
-    technologies: ['React', 'Node.js', 'PostgreSQL', 'Github Actions','Python']
+    technologies: ['React', 'Node.js', 'PostgreSQL','Python']
   },
   {
     id: '4',
