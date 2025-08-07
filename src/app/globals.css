@@ -2,9 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&display=swap');
 
-/* Tailwind Directives - Commented out to avoid conflicts with custom CSS */
-@tailwind base; 
-@tailwind components; 
+/* Tailwind Directives */
+/* stylelint-disable-next-line at-rule-no-unknown */
+@tailwind base;
+/* stylelint-disable-next-line at-rule-no-unknown */
+@tailwind components;
+/* stylelint-disable-next-line at-rule-no-unknown */
 @tailwind utilities;
 
 /* Global Styles */
@@ -2731,8 +2734,8 @@ p {
   width: 100%;
   height: 100%;
   text-align: center;
+  transition: transform 0.6s;
   transform-style: preserve-3d;
-  will-change: transform;
 }
 
 .flip-card-front,
@@ -2747,8 +2750,6 @@ p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  will-change: transform;
-  transform: translateZ(0);
 }
 
 .flip-card-front {
@@ -5163,7 +5164,7 @@ p {
   font-family: var(--font-display);
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--color-white);
+  color: var(--text-primary);
   margin: 0 0 0.25rem 0;
 }
 
@@ -5209,7 +5210,7 @@ p {
 .footer-section-title {
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--color-white);
+  color: var(--text-primary);
   margin-bottom: 1.5rem;
   position: relative;
 }

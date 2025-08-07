@@ -14,9 +14,10 @@ export default function ScrollProgress({ showSectionIndicator = true }: ScrollPr
 
   const sections = useMemo(() => [
     { id: 'home', label: 'Home' },
-    { id: 'experience', label: 'Experience' },
+    { id: 'about', label: 'About' },
     { id: 'skills', label: 'Skills' },
     { id: 'projects', label: 'Projects' },
+    { id: 'experience', label: 'Experience' },
     { id: 'contact', label: 'Contact' }
   ], [])
 
