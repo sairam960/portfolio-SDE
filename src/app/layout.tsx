@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import { ThemeProvider } from '@/contexts/ThemeContext'
 
 export const metadata: Metadata = {
   title: 'Portfolio - Software Developer',
@@ -13,7 +14,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="smooth-scroll">{children}</body>
+      <body className="smooth-scroll transition-colors duration-300">
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   )
 }

@@ -357,7 +357,7 @@ export default function About() {
   ]
 
   return (
-    <section id="about" ref={sectionRef} className="about-section-modern">
+    <section id="about" ref={sectionRef} className="about-section-modern text-gray-900 dark:text-white">
       {/* Floating Background Shapes */}
       <FloatingShapes />
       

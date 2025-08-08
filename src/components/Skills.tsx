@@ -624,7 +624,7 @@ export default function Skills() {
   ]
 
   return (
-    <section id="skills" ref={sectionRef} className="skills-section-modern">
+    <section id="skills" ref={sectionRef} className="skills-section-modern text-gray-900 dark:text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div 

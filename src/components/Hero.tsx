@@ -247,7 +247,7 @@ export default function Hero() {
       <motion.section 
         ref={ref}
         style={{ y, opacity }}
-        className="hero-section-modern"
+        className="hero-section-modern text-gray-900 dark:text-white"
         id="home"
       >
         <GradientMeshBackground />

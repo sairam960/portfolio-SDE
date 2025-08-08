@@ -61,7 +61,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" ref={sectionRef} className="contact-section-enhanced">
+    <section id="contact" ref={sectionRef} className="contact-section-enhanced text-gray-900 dark:text-white">
       {/* Animated Background Elements */}
       <div className="contact-bg-elements">
         <motion.div

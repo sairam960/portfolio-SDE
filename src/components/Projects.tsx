@@ -510,7 +510,7 @@ export default function Projects() {
   }
 
   return (
-    <section id="projects" ref={sectionRef} className="projects-section-modern">
+    <section id="projects" ref={sectionRef} className="projects-section-modern text-gray-900 dark:text-white">
       <div className="container-custom">
         {/* Header */}
         <motion.div 

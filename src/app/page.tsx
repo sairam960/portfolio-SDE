@@ -21,7 +21,7 @@ export default function Home() {
       {/* Scroll Progress & Navigation */}
       <ScrollProgress showSectionIndicator={true} />
       
-      <div className="min-h-screen">
+      <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
         <Header />
         <main id="main-content" role="main" aria-label="Main content">
           <section id="home">

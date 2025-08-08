@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion'
+import ThemeToggle from './ThemeToggle'
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
@@ -121,7 +122,7 @@ export default function Header() {
           style={{ scaleX }}
         />
         
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="header-nav-modern">
             {/* Logo/Brand with Magnetic Effect */}
             <motion.div 
@@ -202,34 +203,46 @@ export default function Header() {
               ))}
             </motion.div>
 
-            {/* CTA Button */}
-            <motion.div
-              className="header-cta"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.8 }}
-            >
-              <motion.button
-                onClick={() => scrollToSection('contact')}
-                className="cta-button-modern"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
+            {/* Theme Toggle & CTA */}
+            <div className="flex items-center gap-4">
+              {/* Theme Toggle */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.7 }}
               >
-                <span>Let&apos;s Talk</span>
-                <motion.div 
-                  className="cta-glow"
-                  animate={{ 
-                    scale: [1, 1.2, 1],
-                    opacity: [0.5, 0.8, 0.5]
-                  }}
-                  transition={{ 
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                />
-              </motion.button>
-            </motion.div>
+                <ThemeToggle />
+              </motion.div>
+
+              {/* CTA Button */}
+              <motion.div
+                className="header-cta"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.8 }}
+              >
+                <motion.button
+                  onClick={() => scrollToSection('contact')}
+                  className="cta-button-modern"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span>Let&apos;s Talk</span>
+                  <motion.div 
+                    className="cta-glow"
+                    animate={{ 
+                      scale: [1, 1.2, 1],
+                      opacity: [0.5, 0.8, 0.5]
+                    }}
+                    transition={{ 
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  />
+                </motion.button>
+              </motion.div>
+            </div>
           </nav>
         </div>
       </motion.header>
