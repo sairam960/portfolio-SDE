@@ -35,7 +35,7 @@ export default function Contact() {
     
     try {
       // Correct Formkeep implementation - JSON format with proper headers
-      const response = await fetch('https://formkeep.com/f/cf9ba072e68e10a2904be4097359732a', {
+      const response = await fetch('https://formkeep.com/f/735ccaa89479', {
         method: 'POST',
         headers: {
           'Accept': 'application/javascript',
@@ -317,7 +317,7 @@ export default function Contact() {
                 <div className="section-divider" />
               </div>
 
-              <form onSubmit={handleSubmit} className="contact-form-enhanced">
+              <form onSubmit={handleSubmit} className="contact-form-enhanced" accept-charset="UTF-8" encType="multipart/form-data" method="POST">
                 <motion.div 
                   className="form-group-enhanced"
                   initial={{ opacity: 0, y: 30, rotateX: -10 }}
