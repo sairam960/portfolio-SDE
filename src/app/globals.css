@@ -42,6 +42,10 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-gray-900);
 }
 
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+  color: var(--color-gray-100);
+}
+
 p {
   margin-bottom: 1rem;
   color: var(--text-secondary);
@@ -763,12 +767,20 @@ p {
   background-clip: text;
 }
 
+.dark .projects-title {
+  color: var(--color-gray-100);
+}
+
 .projects-subtitle {
   font-size: clamp(1rem, 1.5vw, 1.25rem);
   color: var(--color-gray-500);
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.6;
+}
+
+.dark .projects-subtitle {
+  color: var(--color-gray-300);
 }
 
 /* Search and Filter Section */
@@ -1931,6 +1943,10 @@ p {
   animation: gradientShift 6s ease-in-out infinite;
 }
 
+.dark .hero-title-modern {
+  color: var(--color-gray-100);
+}
+
 .typewriter-modern {
   display: inline-block;
 }
@@ -2474,6 +2490,10 @@ p {
   animation: gradientShift 4s ease-in-out infinite;
 }
 
+.dark .about-title-gradient {
+  color: var(--color-gray-100);
+}
+
 @keyframes gradientShift {
   0%, 100% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -2875,12 +2895,20 @@ p {
   animation: gradientShift 4s ease-in-out infinite;
 }
 
+.dark .skills-title-gradient {
+  color: var(--color-gray-100);
+}
+
 .skills-subtitle {
   font-size: clamp(1.1rem, 2vw, 1.3rem);
   color: var(--color-gray-500);
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.7;
+}
+
+.dark .skills-subtitle {
+  color: var(--color-gray-300);
 }
 
 /* Category Filter */
@@ -3353,6 +3381,13 @@ p {
   padding: 8rem 0;
   background: var(--gradient-hero);
   overflow: hidden;
+}
+
+.dark .experience-section-modern {
+  background: linear-gradient(135deg, 
+    var(--color-gray-900) 0%, 
+    var(--color-gray-800) 50%, 
+    var(--color-gray-900) 100%);
 }
 
 .experience-section-modern::before {
@@ -3944,12 +3979,20 @@ p {
   animation: gradientShift 4s ease-in-out infinite;
 }
 
+.dark .contact-title-gradient {
+  color: var(--color-gray-100);
+}
+
 .contact-subtitle {
   font-size: clamp(1.1rem, 2vw, 1.3rem);
   color: var(--color-gray-500);
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.7;
+}
+
+.dark .contact-subtitle {
+  color: var(--color-gray-300);
 }
 
 .contact-description {

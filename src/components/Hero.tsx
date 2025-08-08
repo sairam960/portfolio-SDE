@@ -110,47 +110,7 @@ const GradientMeshBackground = () => {
   )
 }
 
-// Cursor Trail Effect
-const CursorTrail = () => {
-  const [trail, setTrail] = useState<Array<{ x: number; y: number; id: number }>>([])
-  const idRef = useRef(0)
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const newPoint = {
-        x: e.clientX,
-        y: e.clientY,
-        id: idRef.current++
-      }
-      
-      setTrail(prev => [...prev.slice(-8), newPoint])
-    }
-
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [])
-
-  return (
-    <div className="cursor-trail">
-      {trail.map((point, index) => (
-        <motion.div
-          key={point.id}
-          className="trail-dot"
-          initial={{ opacity: 1, scale: 1 }}
-          animate={{ 
-            opacity: (index + 1) / trail.length * 0.6,
-            scale: (index + 1) / trail.length * 0.8 + 0.2
-          }}
-          exit={{ opacity: 0, scale: 0 }}
-          style={{
-            left: point.x,
-            top: point.y,
-          }}
-        />
-      ))}
-    </div>
-  )
-}
+// Cursor Trail Effect - Removed for better performance
 
 // Modern Skill Pills Component
 const SkillPills = () => {
@@ -243,7 +203,6 @@ export default function Hero() {
 
   return (
     <>
-      <CursorTrail />
       <motion.section 
         ref={ref}
         style={{ y, opacity }}

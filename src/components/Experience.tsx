@@ -8,7 +8,7 @@ import { motion } from 'framer-motion'
  */
 export default function Experience() {
   return (
-    <section id="experience" className="bg-white dark:bg-black py-16">
+    <section id="experience" className="experience-section-modern text-gray-900 dark:text-white">
       <div className="max-w-3xl mx-auto px-6">
         <motion.h2
           className="text-3xl md:text-4xl font-bold text-primary-700 dark:text-primary-300 mb-6"
