@@ -24,21 +24,32 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    
+    // Validate form data
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      alert('Please fill in all fields')
+      return
+    }
+
     setIsSubmitting(true)
     
     try {
-      // Use FormData for proper form submission to Formkeep
-      const formDataToSend = new FormData()
-      formDataToSend.append('name', formData.name)
-      formDataToSend.append('email', formData.email)
-      formDataToSend.append('message', formData.message)
+      // Create URLSearchParams for form-encoded data (Formkeep's preferred format)
+      const params = new URLSearchParams()
+      params.append('name', formData.name.trim())
+      params.append('email', formData.email.trim())
+      params.append('message', formData.message.trim())
 
       const response = await fetch('https://formkeep.com/p/cf9ba072e68e10a2904be4097359732a', {
         method: 'POST',
-        body: formDataToSend
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: params.toString()
       })
       
-      if (response.ok) {
+      // Check if request was successful
+      if (response.ok || response.status === 302) { // 302 is redirect, often means success
         setIsSuccess(true)
         // Reset form after 3 seconds
         setTimeout(() => {
@@ -46,15 +57,15 @@ export default function Contact() {
           setFormData({ name: '', email: '', message: '' })
         }, 3000)
       } else {
-        throw new Error('Failed to send message')
+        throw new Error(`Server responded with status: ${response.status}`)
       }
+      
     } catch (error) {
       console.error('Error sending message:', error)
-      // You might want to add error state handling here
-      alert('Failed to send message. Please try again.')
+      alert(`Failed to send message: ${error instanceof Error ? error.message : 'Please try again.'}`)
+    } finally {
+      setIsSubmitting(false)
     }
-    
-    setIsSubmitting(false)
   }
 
   return (
