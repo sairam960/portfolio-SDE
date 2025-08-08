@@ -174,7 +174,13 @@ const FlipCard: React.FC<{
       <motion.div
         className="flip-card"
         animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ duration: 0.1, type: "spring", stiffness: 200 }}
+        transition={{ 
+          duration: 0.6, 
+          ease: [0.4, 0, 0.2, 1] // cubic-bezier for smooth easing
+        }}
+        style={{
+          transformStyle: "preserve-3d"
+        }}
       >
         {/* Front Face */}
         <div className="flip-card-front">
@@ -196,9 +202,13 @@ const FlipCard: React.FC<{
             {backContent.features.map((feature, featureIndex) => (
               <motion.li
                 key={featureIndex}
-                initial={{ opacity: 0, x: -20 }}
-                animate={isFlipped ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                transition={{ delay: featureIndex * 0.033 }}
+                initial={{ opacity: 0, x: -10 }}
+                animate={isFlipped ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+                transition={{ 
+                  delay: featureIndex * 0.1,
+                  duration: 0.3,
+                  ease: [0.4, 0, 0.2, 1]
+                }}
               >
                 {feature}
               </motion.li>
@@ -416,36 +426,41 @@ export default function About() {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.2, delay: 0.333 }}
               >
-                <p className="text-sm md:text-base">
-                  I&apos;m a software engineer with a passion for turning complexity into clarity. 
-                  I&apos;ve led projects across AI, Software Engineering, building a AI integrated chatbot.
-                </p>
-                
-                <AnimatePresence>
-                  {readMore && (
+                <div className="timeline-card">
+                  <div className="timeline-card-header" onClick={() => setReadMore(!readMore)}>
+                    <p className="text-sm md:text-base">
+                      I&apos;m a software engineer with a passion for turning complexity into clarity. 
+                      I&apos;ve led projects across AI, Software Engineering, building a AI integrated chatbot.
+                    </p>
                     <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.133 }}
+                      className="expand-icon"
+                      animate={{ rotate: readMore ? 180 : 0 }}
+                      transition={{ duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] }}
                     >
-                      <p className="text-sm md:text-base">
-                        I&apos;ve worked closely with ground teams to take products from 0→1 and thrive 
-                        in fast-paced, high-impact environments. My expertise spans modern 
-                        technologies including React, Node.js, Python, and cloud platforms.
-                      </p>
+                      <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
                     </motion.div>
-                  )}
-                </AnimatePresence>
-
-                <motion.button
-                  className="read-more-btn"
-                  onClick={() => setReadMore(!readMore)}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {readMore ? 'Read Less' : 'Read More'}
-                </motion.button>
+                  </div>
+                  
+                  <AnimatePresence>
+                    {readMore && (
+                      <motion.div
+                        className="timeline-card-content"
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] }}
+                      >
+                        <p className="text-sm md:text-base">
+                          I&apos;ve worked closely with ground teams to take products from 0→1 and thrive 
+                          in fast-paced, high-impact environments. My expertise spans modern 
+                          technologies including React, Node.js, Python, and cloud platforms.
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               </motion.div>
 
               {/* Timeline Cards */}

@@ -52,11 +52,11 @@ export default function Experience() {
                   </div>
                   <span className="text-sm text-gray-500 mt-2 md:mt-0">{exp.duration}</span>
                 </div>
-                <ul className="mt-4 mb-3 space-y-2">
+                <ul className="mt-4 mb-3 space-y-3">
                   {exp.description.map((item, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <span className="mt-1 w-2 h-2 rounded-full bg-primary-400 inline-block" />
-                      <span className="text-gray-800 dark:text-gray-200">{item}</span>
+                    <li key={i} className="flex items-start gap-3">
+                      <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary-500 dark:bg-primary-400 flex-shrink-0" />
+                      <span className="text-gray-800 dark:text-gray-200 leading-relaxed">{item}</span>
                     </li>
                   ))}
                 </ul>
