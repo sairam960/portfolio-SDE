@@ -214,10 +214,8 @@ const FlipCard: React.FC<{
 const FloatingShapes: React.FC = () => {
   const shapes = [
     { id: 1, size: 60, top: '10%', left: '10%', delay: 0 },
-    { id: 2, size: 40, top: '20%', right: '15%', delay: 1 },
-    { id: 3, size: 80, bottom: '20%', left: '20%', delay: 2 },
-    { id: 4, size: 50, bottom: '30%', right: '10%', delay: 1.5 },
-    { id: 5, size: 35, top: '60%', left: '50%', delay: 0.5 },
+    { id: 2, size: 50, bottom: '20%', right: '10%', delay: 1.5 },
+    { id: 3, size: 40, top: '60%', left: '50%', delay: 0.8 },
   ]
 
   return (

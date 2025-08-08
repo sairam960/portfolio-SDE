@@ -65,7 +65,7 @@ export default function PageTransition({ children }: PageTransitionProps) {
 
               {/* Floating Particles */}
               <div className="loading-particles">
-                {[...Array(6)].map((_, i) => (
+                {[...Array(3)].map((_, i) => (
                   <motion.div
                     key={i}
                     className="loading-particle"

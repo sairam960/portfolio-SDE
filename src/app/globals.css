@@ -5715,6 +5715,20 @@ p {
     animation: none;
   }
   
+  /* Disable all particle animations for better performance */
+  .floating-orb,
+  .floating-shape,
+  .floating-particle,
+  .form-particle,
+  .divider-particle,
+  .particle,
+  .gradient-orb,
+  .skill-particles,
+  .cursor-modern {
+    animation: none !important;
+    transform: none !important;
+  }
+  
   .page-loading-container::before {
     animation: none;
   }

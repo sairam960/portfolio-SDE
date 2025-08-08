@@ -145,12 +145,12 @@ export default function SectionDivider({
         >
           {/* Floating Particles */}
           <div className="particles-container">
-            {[...Array(20)].map((_, i) => (
+            {[...Array(8)].map((_, i) => (
               <motion.div
                 key={i}
                 className="divider-particle"
                 style={{
-                  left: `${(i / 20) * 100}%`,
+                  left: `${(i / 8) * 100}%`,
                   backgroundColor: i % 3 === 0 ? colors.from : i % 3 === 1 ? colors.via || colors.to : colors.to
                 }}
                 initial={{ 

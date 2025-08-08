@@ -26,16 +26,38 @@ export default function Contact() {
     e.preventDefault()
     setIsSubmitting(true)
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500))
+    try {
+      // Replace 'YOUR_FORMKEEP_FORM_ID' with your actual Formkeep form ID
+      const response = await fetch('https://formkeep.com/p/cf9ba072e68e10a2904be4097359732a', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message
+        })
+      })
+      
+      if (response.ok) {
+        setIsSuccess(true)
+        // Reset form after 3 seconds
+        setTimeout(() => {
+          setIsSuccess(false)
+          setFormData({ name: '', email: '', message: '' })
+        }, 3000)
+      } else {
+        throw new Error('Failed to send message')
+      }
+    } catch (error) {
+      console.error('Error sending message:', error)
+      // You might want to add error state handling here
+      alert('Failed to send message. Please try again.')
+    }
     
-    setIsSuccess(true)
     setIsSubmitting(false)
-    
-    setTimeout(() => {
-      setIsSuccess(false)
-      setFormData({ name: '', email: '', message: '' })
-    }, 3000)
   }
 
   return (
@@ -246,7 +268,7 @@ export default function Contact() {
             >
               {/* Animated Background Particles */}
               <div className="form-particles">
-                {[...Array(6)].map((_, i) => (
+                {[...Array(3)].map((_, i) => (
                   <motion.div
                     key={i}
                     className="form-particle"
@@ -487,7 +509,7 @@ export default function Contact() {
                     {/* Success Particles */}
                     {isSuccess && (
                       <div className="success-particles">
-                        {[...Array(8)].map((_, i) => (
+                        {[...Array(4)].map((_, i) => (
                           <motion.div
                             key={i}
                             className="success-particle"

@@ -132,7 +132,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, onOpenModal, 
       
       {/* Floating Particles Effect */}
       <motion.div className="floating-particles">
-        {[...Array(8)].map((_, i) => (
+        {[...Array(4)].map((_, i) => (
           <motion.div
             key={i}
             className="particle"
