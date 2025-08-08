@@ -34,22 +34,23 @@ export default function Contact() {
     setIsSubmitting(true)
     
     try {
-      // Create URLSearchParams for form-encoded data (Formkeep's preferred format)
-      const params = new URLSearchParams()
-      params.append('name', formData.name.trim())
-      params.append('email', formData.email.trim())
-      params.append('message', formData.message.trim())
-
-      const response = await fetch('https://formkeep.com/p/cf9ba072e68e10a2904be4097359732a', {
+      // Correct Formkeep implementation - JSON format with proper headers
+      const response = await fetch('https://formkeep.com/f/cf9ba072e68e10a2904be4097359732a', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
+          'Accept': 'application/javascript',
+          'Content-Type': 'application/json',
         },
-        body: params.toString()
+        body: JSON.stringify({
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          message: formData.message.trim()
+        })
       })
       
       // Check if request was successful
-      if (response.ok || response.status === 302) { // 302 is redirect, often means success
+      if (response.ok) {
+        const result = await response.json()
         setIsSuccess(true)
         // Reset form after 3 seconds
         setTimeout(() => {
