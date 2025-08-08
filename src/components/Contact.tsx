@@ -27,18 +27,15 @@ export default function Contact() {
     setIsSubmitting(true)
     
     try {
-      // Replace 'YOUR_FORMKEEP_FORM_ID' with your actual Formkeep form ID
+      // Use FormData for proper form submission to Formkeep
+      const formDataToSend = new FormData()
+      formDataToSend.append('name', formData.name)
+      formDataToSend.append('email', formData.email)
+      formDataToSend.append('message', formData.message)
+
       const response = await fetch('https://formkeep.com/p/cf9ba072e68e10a2904be4097359732a', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          message: formData.message
-        })
+        body: formDataToSend
       })
       
       if (response.ok) {

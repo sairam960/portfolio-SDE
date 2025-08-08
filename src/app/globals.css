@@ -3259,6 +3259,10 @@ p {
   margin-bottom: 2rem;
 }
 
+.dark .other-technologies h3 {
+  color: var(--color-gray-100);
+}
+
 .tech-tags-container {
   display: flex;
   flex-wrap: wrap;
@@ -3277,6 +3281,12 @@ p {
   backdrop-filter: blur(10px);
   cursor: pointer;
   transition: all 0.3s ease;
+}
+
+.dark .tech-tag-modern {
+  color: var(--color-gray-100);
+  background: linear-gradient(135deg, rgba(0, 102, 255, 0.2), rgba(107, 70, 193, 0.2));
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .tech-tag-modern:hover {

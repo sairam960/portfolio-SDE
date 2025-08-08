@@ -691,7 +691,7 @@ export default function Skills() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 1 }}
         >
-          <h3 className="text-center text-2xl md:text-3xl font-bold text-gray-800 mb-8">Other Technologies & Tools</h3>
+          <h3 className="text-center text-2xl md:text-3xl font-bold text-gray-800 dark:text-gray-100 mb-8">Other Technologies & Tools</h3>
           <div className="flex flex-wrap justify-center gap-3 md:gap-4">
             {otherTechnologies.map((tech, index) => (
               <motion.span
