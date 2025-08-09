@@ -933,9 +933,20 @@ p {
   perspective: 1000px;
 }
 
+.dark .project-card-advanced {
+  background: rgba(31, 41, 55, 0.8);
+  border: 2px solid rgba(55, 65, 81, 0.6);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
 .project-card-advanced:hover {
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
   border-color: rgba(255, 255, 255, 0.6);
+}
+
+.dark .project-card-advanced:hover {
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+  border-color: rgba(55, 65, 81, 0.8);
 }
 
 /* Advanced Spotlight Effect */
@@ -984,6 +995,15 @@ p {
     rgba(255, 255, 255, 0.15) 100%);
   z-index: 1;
   border-radius: 2rem;
+}
+
+.dark .card-glass-bg-advanced {
+  background: linear-gradient(135deg, 
+    rgba(55, 65, 81, 0.3) 0%, 
+    rgba(75, 85, 99, 0.2) 25%,
+    rgba(31, 41, 55, 0.15) 50%,
+    rgba(75, 85, 99, 0.2) 75%,
+    rgba(55, 65, 81, 0.25) 100%);
 }
 
 /* Floating Particles */
@@ -1829,6 +1849,7 @@ p {
   justify-content: center;
   overflow: hidden;
   background: var(--gradient-hero);
+  margin-top: 4.5rem; /* 3 lines spacing from header (1.5rem per line) */
 }
 
 .dark .hero-section-modern {
@@ -2135,6 +2156,7 @@ p {
 
 .profile-image-modern {
   object-fit: cover;
+  object-position: center 30%; /* Move image up to show face better */
   width: 100%;
   height: 100%;
   border-radius: inherit;
@@ -4271,6 +4293,21 @@ p {
   border-radius: 2rem;
   z-index: -1;
   opacity: 0.8;
+}
+
+.card-theme-border-contact {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2rem;
+  z-index: -1;
+}
+
+.dark .card-theme-border-contact {
+  background: rgba(55, 65, 81, 0.5);
 }
 
 /* Form particles removed - not used in Contact component */

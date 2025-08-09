@@ -156,26 +156,12 @@ export default function Contact() {
               className="glassmorphism-card-enhanced"
               whileHover={{ 
                 scale: 1.02,
-                boxShadow: "0 25px 50px rgba(14, 165, 233, 0.15)"
+                boxShadow: "0 25px 50px rgba(0, 0, 0, 0.1)"
               }}
               transition={{ type: "spring", stiffness: 200 }}
             >
-              {/* Gradient Border Animation */}
-              <motion.div 
-                className="card-gradient-border-contact"
-                animate={{
-                  background: [
-                    'linear-gradient(135deg, var(--color-primary), var(--color-secondary))',
-                    'linear-gradient(135deg, var(--color-secondary), var(--color-accent))',
-                    'linear-gradient(135deg, var(--color-accent), var(--color-primary))',
-                  ]
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
+              {/* Theme-aware Border */}
+              <div className="card-theme-border-contact" />
               <div className="section-header">
                 <h3 className="text-2xl md:text-3xl">Let&apos;s Connect</h3>
                 <div className="section-divider" />
@@ -271,7 +257,7 @@ export default function Contact() {
               className="glassmorphism-card-enhanced form-card"
               whileHover={{ 
                 scale: 1.02,
-                boxShadow: "0 25px 50px rgba(139, 92, 246, 0.15)"
+                boxShadow: "0 25px 50px rgba(0, 0, 0, 0.1)"
               }}
               transition={{ type: "spring", stiffness: 200 }}
             >
@@ -296,22 +282,8 @@ export default function Contact() {
                 ))}
               </div>
               
-              {/* Gradient Border Animation */}
-              <motion.div 
-                className="card-gradient-border-contact"
-                animate={{
-                  background: [
-                    'linear-gradient(135deg, var(--color-secondary), var(--color-primary))',
-                    'linear-gradient(135deg, var(--color-primary), var(--color-accent))',
-                    'linear-gradient(135deg, var(--color-accent), var(--color-secondary))',
-                  ]
-                }}
-                transition={{
-                  duration: 5,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
+              {/* Theme-aware Border */}
+              <div className="card-theme-border-contact" />
               <div className="section-header">
                 <h3 className="text-2xl md:text-3xl">Send Message</h3>
                 <div className="section-divider" />
