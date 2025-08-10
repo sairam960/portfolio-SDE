@@ -4705,25 +4705,6 @@ p {
   border: 0 !important;
 }
 
-/* Skip to Content Link */
-.skip-to-content {
-  position: absolute;
-  top: -40px;
-  left: 6px;
-  background: var(--color-primary);
-  color: var(--text-primary);
-  padding: 8px 16px;
-  border-radius: 4px;
-  text-decoration: none;
-  font-weight: 600;
-  z-index: 9999;
-  transition: top 0.3s ease;
-}
-
-.skip-to-content:focus {
-  top: 6px;
-}
-
 /* Performance Optimizations */
 
 /* GPU Acceleration for Animations */
