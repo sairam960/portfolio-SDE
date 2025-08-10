@@ -26,86 +26,114 @@ const useTypewriter = (text: string, speed: number = 100) => {
   return { displayText, isComplete }
 }
 
-// Gradient Mesh Background Component
+// Gradient Mesh Background Component with Progressive Loading
 const GradientMeshBackground = () => {
   const meshRef = useRef<HTMLDivElement>(null)
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
+  const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
+    // Delay heavy animations until after initial render
+    const timer = setTimeout(() => {
+      setIsLoaded(true)
+    }, 1000) // 1 second delay for smoother initial load
+
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePos({
-        x: (e.clientX / window.innerWidth) * 100,
-        y: (e.clientY / window.innerHeight) * 100
-      })
+      if (isLoaded) { // Only track mouse after animations are loaded
+        setMousePos({
+          x: (e.clientX / window.innerWidth) * 100,
+          y: (e.clientY / window.innerHeight) * 100
+        })
+      }
     }
 
     window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [])
+    return () => {
+      clearTimeout(timer)
+      window.removeEventListener('mousemove', handleMouseMove)
+    }
+  }, [isLoaded])
 
   return (
     <div className="gradient-mesh-container" ref={meshRef}>
-      {/* Animated Gradient Orbs */}
-      <motion.div
-        className="gradient-orb orb-1"
-        animate={{
-          x: [0, 100, -50, 0],
-          y: [0, -50, 100, 0],
-          scale: [1, 1.2, 0.8, 1],
-        }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-        style={{
-          background: `radial-gradient(circle, rgba(0, 102, 255, 0.4) 0%, rgba(0, 102, 255, 0.1) 70%, transparent 100%)`,
-        }}
-      />
-      <motion.div
-        className="gradient-orb orb-2"
-        animate={{
-          x: [0, -80, 120, 0],
-          y: [0, 80, -30, 0],
-          scale: [0.8, 1.3, 1, 0.8],
-        }}
-        transition={{
-          duration: 25,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 5
-        }}
-        style={{
-          background: `radial-gradient(circle, rgba(107, 70, 193, 0.3) 0%, rgba(107, 70, 193, 0.1) 70%, transparent 100%)`,
-        }}
-      />
-      <motion.div
-        className="gradient-orb orb-3"
-        animate={{
-          x: [0, 60, -100, 0],
-          y: [0, -80, 40, 0],
-          scale: [1.1, 0.9, 1.4, 1.1],
-        }}
-        transition={{
-          duration: 30,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 10
-        }}
-        style={{
-          background: `radial-gradient(circle, rgba(16, 185, 129, 0.25) 0%, rgba(16, 185, 129, 0.08) 70%, transparent 100%)`,
-        }}
-      />
-      
-      {/* Mouse-following gradient */}
-      <motion.div
-        className="mouse-gradient"
-        animate={{
-          x: mousePos.x + '%',
-          y: mousePos.y + '%',
-        }}
-        transition={{ type: "spring", damping: 30, stiffness: 200 }}
-      />
+      {/* Animated Gradient Orbs - Progressive Loading */}
+      {isLoaded && (
+        <>
+          <motion.div
+            className="gradient-orb orb-1"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{
+              opacity: 1,
+              x: [0, 100, -50, 0],
+              y: [0, -50, 100, 0],
+              scale: [1, 1.2, 0.8, 1],
+            }}
+            transition={{
+              opacity: { duration: 0.5 },
+              x: { duration: 20, repeat: Infinity, ease: "easeInOut" },
+              y: { duration: 20, repeat: Infinity, ease: "easeInOut" },
+              scale: { duration: 20, repeat: Infinity, ease: "easeInOut" }
+            }}
+            style={{
+              background: `radial-gradient(circle, rgba(0, 102, 255, 0.3) 0%, rgba(0, 102, 255, 0.08) 70%, transparent 100%)`,
+            }}
+          />
+          <motion.div
+            className="gradient-orb orb-2"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{
+              opacity: 1,
+              x: [0, -80, 120, 0],
+              y: [0, 80, -30, 0],
+              scale: [0.8, 1.3, 1, 0.8],
+            }}
+            transition={{
+              opacity: { duration: 0.5, delay: 0.2 },
+              x: { duration: 25, repeat: Infinity, ease: "easeInOut", delay: 5 },
+              y: { duration: 25, repeat: Infinity, ease: "easeInOut", delay: 5 },
+              scale: { duration: 25, repeat: Infinity, ease: "easeInOut", delay: 5 }
+            }}
+            style={{
+              background: `radial-gradient(circle, rgba(107, 70, 193, 0.2) 0%, rgba(107, 70, 193, 0.06) 70%, transparent 100%)`,
+            }}
+          />
+          <motion.div
+            className="gradient-orb orb-3"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{
+              opacity: 1,
+              x: [0, 60, -100, 0],
+              y: [0, -80, 40, 0],
+              scale: [1.1, 0.9, 1.4, 1.1],
+            }}
+            transition={{
+              opacity: { duration: 0.5, delay: 0.4 },
+              x: { duration: 30, repeat: Infinity, ease: "easeInOut", delay: 10 },
+              y: { duration: 30, repeat: Infinity, ease: "easeInOut", delay: 10 },
+              scale: { duration: 30, repeat: Infinity, ease: "easeInOut", delay: 10 }
+            }}
+            style={{
+              background: `radial-gradient(circle, rgba(16, 185, 129, 0.18) 0%, rgba(16, 185, 129, 0.05) 70%, transparent 100%)`,
+            }}
+          />
+          
+          {/* Mouse-following gradient */}
+          <motion.div
+            className="mouse-gradient"
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: 0.6,
+              x: mousePos.x + '%',
+              y: mousePos.y + '%',
+            }}
+            transition={{ 
+              opacity: { duration: 0.5, delay: 0.6 },
+              x: { type: "spring", damping: 30, stiffness: 200 },
+              y: { type: "spring", damping: 30, stiffness: 200 }
+            }}
+          />
+        </>
+      )}
     </div>
   )
 }

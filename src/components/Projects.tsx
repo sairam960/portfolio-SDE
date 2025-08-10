@@ -29,10 +29,12 @@ const ProjectSkeleton = () => (
   </div>
 )
 
-// Project Card Component with Glassmorphism
+// Project Card Component with Glassmorphism and Performance Optimization
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, onOpenModal, isLoading }) => {
   const [imageLoaded, setImageLoaded] = useState(false)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [isHovered, setIsHovered] = useState(false)
+  const [showParticles, setShowParticles] = useState(false)
   const cardRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(cardRef, { once: true, amount: 0.3 })
   const controls = useAnimation()
@@ -44,6 +46,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, onOpenModal, 
       x: e.clientX - rect.left,
       y: e.clientY - rect.top,
     })
+    if (!showParticles) {
+      setShowParticles(true) // Enable particles only after first hover
+    }
+  }, [showParticles])
+
+  const handleMouseEnter = useCallback(() => {
+    setIsHovered(true)
+  }, [])
+
+  const handleMouseLeave = useCallback(() => {
+    setIsHovered(false)
   }, [])
 
   useEffect(() => {
@@ -94,6 +107,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, onOpenModal, 
         }
       }}
       onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       onClick={() => onOpenModal(project)}
       style={{
         transformStyle: 'preserve-3d'
@@ -130,33 +145,38 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, onOpenModal, 
       {/* Glass Background with Enhanced Gradient */}
       <div className="card-glass-bg-advanced" />
       
-      {/* Floating Particles Effect */}
-      <motion.div className="floating-particles">
-        {[...Array(4)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="particle"
-            initial={{ 
-              opacity: 0,
-              scale: 0,
-              x: mousePosition.x + (Math.random() - 0.5) * 200,
-              y: mousePosition.y + (Math.random() - 0.5) * 200
-            }}
-            animate={{
-              opacity: [0, 0.6, 0],
-              scale: [0, 1, 0],
-              x: mousePosition.x + (Math.random() - 0.5) * 300,
-              y: mousePosition.y + (Math.random() - 0.5) * 300
-            }}
-            transition={{
-              duration: 2,
-              delay: i * 0.2,
-              repeat: Infinity,
-              ease: "easeOut"
-            }}
-          />
-        ))}
-      </motion.div>
+      {/* Floating Particles Effect - Performance Optimized */}
+      {showParticles && isHovered && (
+        <AnimatePresence>
+          <motion.div className="floating-particles">
+            {[...Array(3)].map((_, i) => ( // Reduced from 4 to 3 particles
+              <motion.div
+                key={i}
+                className="particle"
+                initial={{ 
+                  opacity: 0,
+                  scale: 0,
+                  x: mousePosition.x,
+                  y: mousePosition.y
+                }}
+                animate={{
+                  opacity: [0, 0.4, 0], // Reduced opacity for better performance
+                  scale: [0, 0.8, 0], // Reduced scale for better performance
+                  x: mousePosition.x + (Math.random() - 0.5) * 150, // Reduced range
+                  y: mousePosition.y + (Math.random() - 0.5) * 150 // Reduced range
+                }}
+                exit={{ opacity: 0, scale: 0 }}
+                transition={{
+                  duration: 1.5, // Shorter duration
+                  delay: i * 0.15,
+                  repeat: 2, // Limited repeats instead of infinite
+                  ease: "easeOut"
+                }}
+              />
+            ))}
+          </motion.div>
+        </AnimatePresence>
+      )}
       
       {/* Image Section */}
       <div className="project-image-container">

@@ -1,3 +1,6 @@
+'use client'
+
+import { useState, useEffect } from 'react'
 import Header from '@/components/Header'
 import Hero from '@/components/Hero'
 import About from '@/components/About'
@@ -9,10 +12,24 @@ import Footer from '@/components/Footer'
 import SectionDivider from '@/components/SectionDivider'
 import PageTransition from '@/components/PageTransition'
 import ScrollProgress from '@/components/ScrollProgress'
+import LoadingScreen from '@/components/LoadingScreen'
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    // Simulate initial loading time for better UX
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 1500) // 1.5 seconds loading screen
+
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
-    <PageTransition>
+    <>
+      <LoadingScreen isLoading={isLoading} />
+      <PageTransition>
       
       {/* Scroll Progress & Navigation */}
       <ScrollProgress showSectionIndicator={true} />
@@ -85,5 +102,6 @@ export default function Home() {
         <Footer />
       </div>
     </PageTransition>
+    </>
   )
 }
