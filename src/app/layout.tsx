@@ -3,8 +3,8 @@ import './globals.css'
 import { ThemeProvider } from '@/contexts/ThemeContext'
 
 export const metadata: Metadata = {
-  title: 'Portfolio - Software Developer',
-  description: 'Professional portfolio showcasing projects and experience',
+  title: 'Portfolio - Sai Krishnan',
+  description: 'Professional portfolio of Sai',
 }
 
 export default function RootLayout({
