@@ -44,13 +44,6 @@ The project is configured for automatic deployment to GitHub Pages using GitHub 
 3. Set source to "GitHub Actions"
 4. Push to the `main` branch to trigger deployment
 
-### Manual Deployment
-
-```bash
-npm run build
-```
-
-The static files will be generated in the `out` directory.
 
 ## Project Structure
 
