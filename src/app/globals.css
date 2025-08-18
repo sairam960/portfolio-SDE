@@ -2627,6 +2627,10 @@ p {
   margin-bottom: 1rem;
 }
 
+.dark .section-header h3 {
+  color: var(--text-primary-dark);
+}
+
 .section-divider {
   width: 60px;
   height: 4px;
@@ -4788,16 +4792,7 @@ p {
   border-radius: 50%;
 }
 
-.loading-text {
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: var(--color-gray-700);
-  font-family: var(--font-body);
-}
-
-.dark .loading-text {
-  color: var(--color-gray-300);
-}
+/* Loading text styles moved to consolidated section below */
 
 /* Performance Optimizations */
 
@@ -5451,10 +5446,14 @@ p {
 }
 
 .loading-text {
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--color-gray-700);
   font-size: 1.1rem;
   font-weight: 500;
   letter-spacing: 0.5px;
+}
+
+.dark .loading-text {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .page-content {
