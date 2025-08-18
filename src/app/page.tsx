@@ -10,7 +10,6 @@ import Experience from '@/components/Experience'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 import SectionDivider from '@/components/SectionDivider'
-import PageTransition from '@/components/PageTransition'
 import ScrollProgress from '@/components/ScrollProgress'
 import LoadingScreen from '@/components/LoadingScreen'
 
@@ -27,9 +26,7 @@ export default function Home() {
   }, [])
 
   return (
-    <>
-      <LoadingScreen isLoading={isLoading} />
-      <PageTransition>
+    <LoadingScreen isLoading={isLoading}>
       
       {/* Scroll Progress & Navigation */}
       <ScrollProgress showSectionIndicator={true} />
@@ -101,7 +98,6 @@ export default function Home() {
         </main>
         <Footer />
       </div>
-    </PageTransition>
-    </>
+    </LoadingScreen>
   )
 }

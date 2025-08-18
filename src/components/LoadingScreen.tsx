@@ -1,16 +1,19 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
+import { ReactNode } from 'react'
 
 interface LoadingScreenProps {
   isLoading: boolean
+  children: ReactNode
 }
 
-export default function LoadingScreen({ isLoading }: LoadingScreenProps) {
+export default function LoadingScreen({ isLoading, children }: LoadingScreenProps) {
   return (
-    <AnimatePresence>
-      {isLoading && (
+    <AnimatePresence mode="wait">
+      {isLoading ? (
         <motion.div
+          key="loading"
           className="loading-screen"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -38,6 +41,16 @@ export default function LoadingScreen({ isLoading }: LoadingScreenProps) {
               Loading Portfolio...
             </motion.p>
           </motion.div>
+        </motion.div>
+      ) : (
+        <motion.div
+          key="content"
+          className="page-content"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          {children}
         </motion.div>
       )}
     </AnimatePresence>
