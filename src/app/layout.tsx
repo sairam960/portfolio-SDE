@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   },
   
   verification: {
-    google: 'your-google-verification-code', // Add your Google verification code
+    google: '6QVYfqpm3tv7P8RHeYhygYm7o3NSpnvrvGPntqJFByw',
   },
 }
 
@@ -87,7 +87,6 @@ export default function RootLayout({
       "Node.js",
       "Python",
       "AWS",
-      "Docker",
       "PostgreSQL",
       "MongoDB"
     ]
