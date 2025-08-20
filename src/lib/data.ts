@@ -61,7 +61,6 @@ export const experiences: Experience[] = [
     description: [
       'Engineered OpenAI powered chat agents to automate customer complaint and room service process, improving complaint turnaround-time by 30x and boosting customer satisfaction by 30%.',
       'Reduced hallucination rates by 80%+ through RAG, rule-based filters, and QA pipelines, eliminating overconfident errors in production.',
-      'Optimized database queries improving application performance by 40%',
       'Integrated third-party APIs and payment gateways'
     ],
     technologies: ['OpenAI API', 'Python', 'CosmosDB', 'JavaScript', 'RAG']
@@ -72,7 +71,6 @@ export const experiences: Experience[] = [
     position: 'Consultant, Software Engineer',
     duration: 'Jan 2024 - Dec 2024',
     description: [ 
-      'Automated deployment processes using GitHub Actions, reducing manual errors and deployment time by 50%',
       'Automated inventory counting with a React application, saved store team 7+ hours/week.',
       'Built an analytics tool to visualize $1M+ in annual inventory data, cutting procurement processing time by 30%.',
       'Designed ETL pipelines to calculate operational costs from Grubhub sales data, reducing operational costs by 47% during summer.'
