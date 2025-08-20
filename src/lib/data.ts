@@ -5,7 +5,7 @@ export const projects: Project[] = [
     id: '1',
     title: 'Inventory Management Application',
     description: 'A full-stack inventory management solution with user authentication, inventory tracking, and real-time inventory dashboard.',
-    technologies: ['Next.js', 'TypeScript', 'PostgreSQL', 'Tailwind CSS','Tableau'],
+    technologies: ['React', 'Node.JS', 'PostgreSQL', 'Tailwind CSS','Tableau'],
     githubUrl: 'https://github.com/mfongpanera',
     liveUrl: '#',
     imageUrl: '/portfolio-SDE/images/project1.png'
@@ -21,7 +21,7 @@ export const projects: Project[] = [
   },
   {
     id: '3',
-    title: 'Portfolio Engineering using Python',
+    title: 'Equity Portfolio Engineering using Python',
     description: 'Fundamental Analysis of stock data using Python and pandas to create a portfolio of stocks based on financial metrics to generate a personalized investment portfolio with Sharpe ratio over 1.',
     technologies: ['Python', 'pandas', 'NumPy', 'Matplotlib', 'scikit-learn'],
     githubUrl: 'https://github.com/sairam960/finance101',
@@ -51,7 +51,7 @@ export const experiences: Experience[] = [
       'Led end-to-end infrastructure migration from a legacy private server to AWS, leveraging S3 for scalable storage and ECS for containerized service deployment.',
       'Modernized static website using Next.js and React.js, improving onboarding flow and reducing average page load time by 60%.'
     ],
-    technologies: ['React', 'Node.js', 'AWS', 'Docker', 'TypeScript']
+    technologies: ['React', 'Node.js', 'AWS']
   },
   {
     id: '2',
@@ -59,12 +59,12 @@ export const experiences: Experience[] = [
     position: 'Founding Software Engineer',
     duration: 'Jan 2024 - Dec 2024',
     description: [
-      'Optimized database queries improving application performance by 40%',
-      'Integrated third-party APIs and payment gateways',
       'Engineered OpenAI powered chat agents to automate customer complaint and room service process, improving complaint turnaround-time by 30x and boosting customer satisfaction by 30%.',
-      'Engineered multiple MCP servers and hooked in relevant API’s for dynamic context based chat responses and reducing hallucinations.'
+      'Reduced hallucination rates by 80%+ through RAG, rule-based filters, and QA pipelines, eliminating overconfident errors in production.',
+      'Optimized database queries improving application performance by 40%',
+      'Integrated third-party APIs and payment gateways'
     ],
-    technologies: ['OpenAI API', 'Python', 'CosmosDB', 'JavaScript']
+    technologies: ['OpenAI API', 'Python', 'CosmosDB', 'JavaScript', 'RAG']
   },
   {
     id: '3',
@@ -98,7 +98,7 @@ export const skills: Skill[] = [
   },
   {
     category: 'Backend',
-    items: ['Node.js', 'Python', 'Express.js', 'Django', 'RESTful APIs', 'Microservices']
+    items: ['Node.js', 'Python', 'Express.js', 'GraphQL', 'RESTful APIs', 'Microservices']
   },
   {
     category: 'Database',
