@@ -482,7 +482,6 @@ const ProjectModal: React.FC<{
 
 // Main Projects Component
 export default function Projects() {
-  const [searchTerm, setSearchTerm] = useState('')
   const [selectedTech, setSelectedTech] = useState('All')
   const [filteredProjects, setFilteredProjects] = useState(projects)
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null)
@@ -495,19 +494,9 @@ export default function Projects() {
   // Get all unique technologies
   const allTechnologies = ['All', ...new Set(projects.flatMap(p => p.technologies))]
 
-  // Filter projects based on search and technology
+  // Filter projects based on technology
   useEffect(() => {
     let filtered = projects
-
-    if (searchTerm) {
-      filtered = filtered.filter(project =>
-        project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        project.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        project.technologies.some(tech => 
-          tech.toLowerCase().includes(searchTerm.toLowerCase())
-        )
-      )
-    }
 
     if (selectedTech !== 'All') {
       filtered = filtered.filter(project =>
@@ -516,7 +505,7 @@ export default function Projects() {
     }
 
     setFilteredProjects(filtered)
-  }, [searchTerm, selectedTech])
+  }, [selectedTech])
 
 
   const openModal = (project: typeof projects[0]) => {
@@ -545,27 +534,13 @@ export default function Projects() {
           </p>
         </motion.div>
 
-        {/* Search and Filter Bar */}
+        {/* Technology Filter Bar */}
         <motion.div 
           className="projects-filters"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          {/* Search Bar */}
-          <div className="search-container">
-            <svg className="search-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-            <input
-              type="text"
-              placeholder="Search projects..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="search-input"
-            />
-          </div>
-
           {/* Technology Filter */}
           <div className="tech-filter">
             {allTechnologies.map((tech) => (
@@ -611,7 +586,7 @@ export default function Projects() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.29-1.64-6.71-3.58M6.343 6.343A8 8 0 1021.657 21.657 8 8 0 006.343 6.343z" />
               </svg>
               <h3>No projects found</h3>
-              <p>Try adjusting your search or filter criteria</p>
+              <p>Try adjusting your filter criteria</p>
             </motion.div>
           )}
         </motion.div>
