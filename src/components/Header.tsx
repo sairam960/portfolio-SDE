@@ -54,9 +54,9 @@ export default function Header() {
       setCursorVisible(false)
     }
 
-    window.addEventListener('scroll', handleScroll)
-    window.addEventListener('mousemove', handleMouseMove)
-    window.addEventListener('mouseleave', handleMouseLeave)
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    window.addEventListener('mousemove', handleMouseMove, { passive: true })
+    window.addEventListener('mouseleave', handleMouseLeave, { passive: true })
     
     return () => {
       window.removeEventListener('scroll', handleScroll)

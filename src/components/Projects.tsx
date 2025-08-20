@@ -191,9 +191,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, onOpenModal, 
               src={project.imageUrl}
               alt={project.title}
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className={`project-image-modern ${imageLoaded ? 'image-loaded' : 'image-loading'}`}
               onLoad={() => setImageLoaded(true)}
-              unoptimized
               style={{ objectFit: 'cover' }}
             />
             {/* Image Overlay */}
@@ -406,8 +406,8 @@ const ProjectModal: React.FC<{
                           src={img}
                           alt={`${project.title} - Image ${index + 1}`}
                           fill
+                          sizes="(max-width: 768px) 100vw, 60vw"
                           style={{ objectFit: 'cover' }}
-                          unoptimized
                         />
                       </div>
                     ))}

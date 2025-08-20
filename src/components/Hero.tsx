@@ -61,75 +61,17 @@ const GradientMeshBackground = () => {
         <>
           <motion.div
             className="gradient-orb orb-1"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{
-              opacity: 1,
-              x: [0, 100, -50, 0],
-              y: [0, -50, 100, 0],
-              scale: [1, 1.2, 0.8, 1],
-            }}
-            transition={{
-              opacity: { duration: 0.5 },
-              x: { duration: 20, repeat: Infinity, ease: "easeInOut" },
-              y: { duration: 20, repeat: Infinity, ease: "easeInOut" },
-              scale: { duration: 20, repeat: Infinity, ease: "easeInOut" }
-            }}
-            style={{
-              background: `radial-gradient(circle, rgba(0, 102, 255, 0.3) 0%, rgba(0, 102, 255, 0.08) 70%, transparent 100%)`,
-            }}
-          />
-          <motion.div
-            className="gradient-orb orb-2"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{
-              opacity: 1,
-              x: [0, -80, 120, 0],
-              y: [0, 80, -30, 0],
-              scale: [0.8, 1.3, 1, 0.8],
-            }}
-            transition={{
-              opacity: { duration: 0.5, delay: 0.2 },
-              x: { duration: 25, repeat: Infinity, ease: "easeInOut", delay: 5 },
-              y: { duration: 25, repeat: Infinity, ease: "easeInOut", delay: 5 },
-              scale: { duration: 25, repeat: Infinity, ease: "easeInOut", delay: 5 }
-            }}
-            style={{
-              background: `radial-gradient(circle, rgba(107, 70, 193, 0.2) 0%, rgba(107, 70, 193, 0.06) 70%, transparent 100%)`,
-            }}
-          />
-          <motion.div
-            className="gradient-orb orb-3"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{
-              opacity: 1,
-              x: [0, 60, -100, 0],
-              y: [0, -80, 40, 0],
-              scale: [1.1, 0.9, 1.4, 1.1],
-            }}
-            transition={{
-              opacity: { duration: 0.5, delay: 0.4 },
-              x: { duration: 30, repeat: Infinity, ease: "easeInOut", delay: 10 },
-              y: { duration: 30, repeat: Infinity, ease: "easeInOut", delay: 10 },
-              scale: { duration: 30, repeat: Infinity, ease: "easeInOut", delay: 10 }
-            }}
-            style={{
-              background: `radial-gradient(circle, rgba(16, 185, 129, 0.18) 0%, rgba(16, 185, 129, 0.05) 70%, transparent 100%)`,
-            }}
-          />
-          
-          {/* Mouse-following gradient */}
-          <motion.div
-            className="mouse-gradient"
             initial={{ opacity: 0 }}
             animate={{
-              opacity: 0.6,
-              x: mousePos.x + '%',
-              y: mousePos.y + '%',
+              opacity: [0.3, 0.5, 0.3],
+              scale: [1, 1.05, 1],
             }}
-            transition={{ 
-              opacity: { duration: 0.5, delay: 0.6 },
-              x: { type: "spring", damping: 30, stiffness: 200 },
-              y: { type: "spring", damping: 30, stiffness: 200 }
+            transition={{
+              opacity: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+              scale: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+            }}
+            style={{
+              background: `radial-gradient(circle, rgba(0, 102, 255, 0.15) 0%, rgba(107, 70, 193, 0.08) 50%, transparent 80%)`,
             }}
           />
         </>
@@ -415,8 +357,8 @@ export default function Hero() {
                     src="/portfolio-SDE/images/DSC_6481.jpg"
                     alt="Sai Krishnan"
                     fill
+                    sizes="(max-width: 768px) 280px, 320px"
                     className="profile-image-modern"
-                    unoptimized
                     priority
                   />
                   <div className="image-overlay-modern" />

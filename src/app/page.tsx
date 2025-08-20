@@ -1,28 +1,47 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import dynamic from 'next/dynamic'
 import Header from '@/components/Header'
 import Hero from '@/components/Hero'
-import About from '@/components/About'
-import Skills from '@/components/Skills'
-import Projects from '@/components/Projects'
-import Experience from '@/components/Experience'
-import Contact from '@/components/Contact'
-import Footer from '@/components/Footer'
-import SectionDivider from '@/components/SectionDivider'
 import ScrollProgress from '@/components/ScrollProgress'
 import LoadingScreen from '@/components/LoadingScreen'
+
+// Dynamic imports for heavy components to improve bundle splitting
+const About = dynamic(() => import('@/components/About'), {
+  loading: () => <div className="min-h-screen flex items-center justify-center">Loading...</div>
+})
+
+const Skills = dynamic(() => import('@/components/Skills'), {
+  loading: () => <div className="min-h-screen flex items-center justify-center">Loading...</div>
+})
+
+const Projects = dynamic(() => import('@/components/Projects'), {
+  loading: () => <div className="min-h-screen flex items-center justify-center">Loading...</div>
+})
+
+const Experience = dynamic(() => import('@/components/Experience'), {
+  loading: () => <div className="min-h-screen flex items-center justify-center">Loading...</div>
+})
+
+const Contact = dynamic(() => import('@/components/Contact'), {
+  loading: () => <div className="min-h-screen flex items-center justify-center">Loading...</div>
+})
+
+const Footer = dynamic(() => import('@/components/Footer'), {
+  loading: () => <div className="h-20 bg-gray-800"></div>
+})
+
+const SectionDivider = dynamic(() => import('@/components/SectionDivider'), {
+  loading: () => <div className="h-4"></div>
+})
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    // Simulate initial loading time for better UX
-    const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 1500) // 1.5 seconds loading screen
-
-    return () => clearTimeout(timer)
+    // Remove artificial delay for better performance
+    setIsLoading(false)
   }, [])
 
   return (

@@ -1,6 +1,22 @@
 import type { Metadata } from 'next'
+import { Inter, Playfair_Display } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/contexts/ThemeContext'
+
+// Optimize font loading - reduce weights for performance
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['300', '400', '600'], // Reduced from 5 to 3 weights
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['400', '600'], // Reduced from 5 to 2 weights
+  variable: '--font-playfair',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://sairam960.github.io/portfolio-SDE'),
@@ -102,7 +118,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="smooth-scroll transition-colors duration-300">
+      <body className={`${inter.variable} ${playfair.variable} smooth-scroll transition-colors duration-300`}>
         <ThemeProvider>
           {children}
         </ThemeProvider>
