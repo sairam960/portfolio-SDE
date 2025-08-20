@@ -316,7 +316,7 @@ export default function Contact() {
                       animate={{
                         y: formData.name ? -25 : 0,
                         scale: formData.name ? 0.85 : 1,
-                        color: formData.name ? 'var(--color-primary)' : 'var(--color-gray-400)'
+                        color: formData.name ? 'var(--color-primary)' : 'var(--color-gray-600)'
                       }}
                       transition={{ duration: 0.2 }}
                     >
@@ -357,7 +357,7 @@ export default function Contact() {
                       animate={{
                         y: formData.email ? -25 : 0,
                         scale: formData.email ? 0.85 : 1,
-                        color: formData.email ? 'var(--color-secondary)' : 'var(--color-gray-400)'
+                        color: formData.email ? 'var(--color-secondary)' : 'var(--color-gray-600)'
                       }}
                       transition={{ duration: 0.2 }}
                     >
@@ -398,7 +398,7 @@ export default function Contact() {
                       animate={{
                         y: formData.message ? -25 : 0,
                         scale: formData.message ? 0.85 : 1,
-                        color: formData.message ? 'var(--color-accent)' : 'var(--color-gray-400)'
+                        color: formData.message ? 'var(--color-accent)' : 'var(--color-gray-600)'
                       }}
                       transition={{ duration: 0.2 }}
                     >
