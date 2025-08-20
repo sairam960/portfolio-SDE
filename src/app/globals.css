@@ -2196,7 +2196,6 @@ p {
     rgba(255, 255, 255, 0.8) 0%, 
     rgba(240, 249, 255, 0.7) 50%, 
     rgba(245, 243, 255, 0.8) 100%);
-  backdrop-filter: blur(10px);
   border: 1px solid rgba(0, 102, 255, 0.2);
   border-radius: 2rem;
   padding: 2.5rem;
@@ -4442,7 +4441,6 @@ p {
 
 /* Optimize Background Patterns */
 @supports (backdrop-filter: blur(10px)) {
-  .glassmorphism-card,
   .glassmorphism-card-enhanced {
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px);
@@ -4451,7 +4449,6 @@ p {
 
 /* Fallback for browsers without backdrop-filter */
 @supports not (backdrop-filter: blur(10px)) {
-  .glassmorphism-card,
   .glassmorphism-card-enhanced {
     background: rgba(255, 255, 255, 0.95);
   }
