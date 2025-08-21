@@ -4,7 +4,6 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import { motion, AnimatePresence, useInView, useAnimation, useScroll, useTransform, Variants } from 'framer-motion'
 import Image from 'next/image'
 import { projects } from '@/lib/data'
-import { Button, Card, Section, Container, SectionTitle, SectionSubtitle } from './ui'
 
 // Enhanced project type with additional features
 interface ProjectCardProps {
@@ -520,26 +519,19 @@ export default function Projects() {
   }
 
   return (
-    <Section 
-      id="projects" 
-      ref={sectionRef} 
-      variant="gradient" 
-      spacing="xl"
-      background
-      className="projects-section-modern"
-    >
-      <Container size="xl">
+    <section id="projects" ref={sectionRef} className="projects-section-modern text-gray-900 dark:text-white">
+      <div className="container-custom">
         {/* Header */}
         <motion.div 
-          className="text-center mb-16"
+          className="projects-header"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <SectionTitle className="projects-title">Featured Projects</SectionTitle>
-          <SectionSubtitle className="projects-subtitle">
+          <h2 className="projects-title">Featured Projects</h2>
+          <p className="projects-subtitle">
             A showcase of my technical expertise and creative problem-solving abilities
-          </SectionSubtitle>
+          </p>
         </motion.div>
 
         {/* Technology Filter Bar */}
@@ -552,15 +544,15 @@ export default function Projects() {
           {/* Technology Filter */}
           <div className="tech-filter">
             {allTechnologies.map((tech) => (
-              <Button
+              <motion.button
                 key={tech}
-                variant="filter"
-                size="sm"
-                isActive={selectedTech === tech}
+                className={`filter-btn ${selectedTech === tech ? 'active' : ''}`}
                 onClick={() => setSelectedTech(tech)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 {tech}
-              </Button>
+              </motion.button>
             ))}
           </div>
         </motion.div>
@@ -620,14 +612,14 @@ export default function Projects() {
             </a>
           </motion.div>
         )}
+      </div>
 
-        {/* Project Modal */}
-        <ProjectModal
-          project={selectedProject}
-          isOpen={isModalOpen}
-          onClose={closeModal}
-        />
-      </Container>
-    </Section>
+      {/* Project Modal */}
+      <ProjectModal
+        project={selectedProject}
+        isOpen={isModalOpen}
+        onClose={closeModal}
+      />
+    </section>
   )
 }
