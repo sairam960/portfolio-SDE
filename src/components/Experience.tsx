@@ -2,32 +2,27 @@
 
 import { experiences } from '@/lib/data'
 import { motion } from 'framer-motion'
+import { Section, Container, SectionTitle, SectionSubtitle } from './ui'
 
 /**
  * Accessible vertical timeline for experience section.
  */
 export default function Experience() {
   return (
-    <section id="experience" className="experience-section-modern text-gray-900 dark:text-white">
-      <div className="max-w-3xl mx-auto px-6">
-        <motion.h2
-          className="experience-title-modern"
+    <Section id="experience" variant="default" spacing="xl" className="experience-section-modern">
+      <Container size="md">
+        <motion.div
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.6 }}
           transition={{ duration: 0.7 }}
         >
-          Work Experience
-        </motion.h2>
-        <motion.p
-          className="experience-subtitle-modern"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.7 }}
-          transition={{ delay: 0.2, duration: 0.7 }}
-        >
-          My professional journey and the experiences that shaped my career in software development.
-        </motion.p>
+          <SectionTitle className="experience-title-modern">Work Experience</SectionTitle>
+          <SectionSubtitle className="experience-subtitle-modern">
+            My professional journey and the experiences that shaped my career in software development.
+          </SectionSubtitle>
+        </motion.div>
         <ol className="experience-timeline-modern">
           {experiences.map((exp, idx) => (
             <motion.li
@@ -74,7 +69,7 @@ export default function Experience() {
             </motion.li>
           ))}
         </ol>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

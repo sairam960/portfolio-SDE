@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import { motion, AnimatePresence, useInView, useAnimation, useScroll, useTransform, Variants } from 'framer-motion'
 import Image from 'next/image'
 import { projects } from '@/lib/data'
+import { Button, Card, Section, Container, SectionTitle, SectionSubtitle } from './ui'
 
 // Enhanced project type with additional features
 interface ProjectCardProps {
@@ -346,8 +347,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, onOpenModal, 
             </motion.a>
           )}
         </motion.div>
-      </div>
-    </motion.div>
+      </Container>
+    </Section>
   )
 }
 
@@ -519,19 +520,26 @@ export default function Projects() {
   }
 
   return (
-    <section id="projects" ref={sectionRef} className="projects-section-modern text-gray-900 dark:text-white">
-      <div className="container-custom">
+    <Section 
+      id="projects" 
+      ref={sectionRef} 
+      variant="gradient" 
+      spacing="xl"
+      background
+      className="projects-section-modern"
+    >
+      <Container size="xl">
         {/* Header */}
         <motion.div 
-          className="projects-header"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="projects-title">Featured Projects</h2>
-          <p className="projects-subtitle">
+          <SectionTitle className="projects-title">Featured Projects</SectionTitle>
+          <SectionSubtitle className="projects-subtitle">
             A showcase of my technical expertise and creative problem-solving abilities
-          </p>
+          </SectionSubtitle>
         </motion.div>
 
         {/* Technology Filter Bar */}
@@ -544,15 +552,15 @@ export default function Projects() {
           {/* Technology Filter */}
           <div className="tech-filter">
             {allTechnologies.map((tech) => (
-              <motion.button
+              <Button
                 key={tech}
-                className={`filter-btn ${selectedTech === tech ? 'active' : ''}`}
+                variant="filter"
+                size="sm"
+                isActive={selectedTech === tech}
                 onClick={() => setSelectedTech(tech)}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
               >
                 {tech}
-              </motion.button>
+              </Button>
             ))}
           </div>
         </motion.div>
@@ -612,14 +620,14 @@ export default function Projects() {
             </a>
           </motion.div>
         )}
-      </div>
 
-      {/* Project Modal */}
-      <ProjectModal
-        project={selectedProject}
-        isOpen={isModalOpen}
-        onClose={closeModal}
-      />
-    </section>
+        {/* Project Modal */}
+        <ProjectModal
+          project={selectedProject}
+          isOpen={isModalOpen}
+          onClose={closeModal}
+        />
+      </Container>
+    </Section>
   )
 }

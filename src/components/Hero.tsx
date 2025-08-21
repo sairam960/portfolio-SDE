@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-motion'
 import Image from 'next/image'
+import { Button, Section, Container, Typography } from './ui'
 
 // Typewriter Hook
 const useTypewriter = (text: string, speed: number = 100) => {
@@ -173,15 +174,16 @@ export default function Hero() {
 
   return (
     <>
-      <motion.section 
+      <Section
         ref={ref}
-        style={{ y, opacity }}
-        className="hero-section-modern text-gray-900 dark:text-white"
+        variant="hero"
         id="home"
+        style={{ y, opacity }}
+        className="hero-section-modern"
       >
         <GradientMeshBackground />
         
-        <div className="hero-container-modern">
+        <Container size="lg" className="hero-container-modern">
           <div className="hero-content-modern">
             {/* Text Content */}
             <motion.div 
@@ -249,82 +251,64 @@ export default function Hero() {
                 animate={titleComplete ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: 1.4, ease: "easeOut" }}
               >
-                <motion.button
-                  className="btn-primary-modern"
-                  whileHover={{ 
-                    scale: 1.05, 
-                    y: -3,
-                    boxShadow: '0 20px 40px rgba(14, 165, 233, 0.4)' 
-                  }}
-                  whileTap={{ scale: 0.98 }}
+                <Button
+                  variant="primary"
+                  size="lg"
                   onClick={() => scrollToSection('projects')}
                 >
-                  <span>View My Work</span>
+                  View My Work
                   <motion.svg 
-                    className="btn-icon-modern"
                     width="20" 
                     height="20" 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
                     whileHover={{ x: 5 }}
+                    className="ml-2"
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </motion.svg>
-                  <div className="btn-glow" />
-                </motion.button>
+                </Button>
 
-                <motion.button
-                  className="btn-outline-modern"
-                  whileHover={{ 
-                    scale: 1.05,
-                    y: -3,
-                    backgroundColor: 'rgba(107, 70, 193, 0.1)',
-                    borderColor: 'var(--color-secondary)'
-                  }}
-                  whileTap={{ scale: 0.98 }}
+                <Button
+                  variant="outline"
+                  size="lg"
                   onClick={() => {
                     window.open('/portfolio-SDE/resume/Sai_Krishnan_Resume.pdf', '_blank')
                   }}
                 >
-                  <span>View Resume</span>
+                  View Resume
                   <motion.svg 
-                    className="btn-icon-modern"
                     width="20" 
                     height="20" 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
                     whileHover={{ scale: 1.1 }}
+                    className="ml-2"
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </motion.svg>
-                </motion.button>
+                </Button>
 
-                <motion.button
-                  className="btn-outline-modern"
-                  whileHover={{ 
-                    scale: 1.05,
-                    y: -3,
-                    backgroundColor: 'rgba(0, 102, 255, 0.1)',
-                    borderColor: 'var(--color-primary)'
-                  }}
-                  whileTap={{ scale: 0.98 }}
+                <Button
+                  variant="outline"
+                  size="lg"
                   onClick={() => scrollToSection('contact')}
                 >
-                  <span>Get In Touch</span>
+                  Get In Touch
                   <motion.svg 
-                    className="btn-icon-modern"
                     width="20" 
                     height="20" 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
                     whileHover={{ rotate: 15 }}
+                    className="ml-2"
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                   </motion.svg>
-                </motion.button>
+                </Button>
               </motion.div>
             </motion.div>
 
@@ -435,8 +419,8 @@ export default function Hero() {
               </motion.div>
             </motion.div>
           </div>
-        </div>
-      </motion.section>
+        </Container>
+      </Section>
     </>
   )
 }
