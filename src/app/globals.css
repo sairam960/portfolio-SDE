@@ -4859,7 +4859,7 @@ p {
   pointer-events: none;
 }
 
-/* Footer Grid Layout Fix - Modern Justified Layout */
+/* Footer Grid Layout - Modern Equal Spacing */
 .footer-modern .grid {
   display: flex;
   flex-direction: column;
@@ -4870,8 +4870,9 @@ p {
   .footer-modern .grid.md\\:grid-cols-2 {
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: flex-start;
+    gap: 2rem;
   }
 }
 
@@ -4879,12 +4880,13 @@ p {
   .footer-modern .grid.lg\\:grid-cols-4 {
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: flex-start;
+    gap: 3rem;
   }
 }
 
-/* Modern footer sections with justified alignment */
+/* Modern footer sections with equal spacing and animations */
 .footer-brand-section,
 .footer-links-section,
 .footer-contact-section,
@@ -4897,20 +4899,62 @@ p {
   min-width: 0;
   justify-content: flex-start;
   gap: 1rem;
-  padding: 0 1rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateY(30px);
+  animation: footerSlideUp 0.8s ease-out forwards;
+}
+
+.footer-brand-section {
+  animation-delay: 0.1s;
+}
+
+.footer-links-section {
+  animation-delay: 0.2s;
+}
+
+.footer-contact-section {
+  animation-delay: 0.3s;
+}
+
+.footer-cta-section {
+  animation-delay: 0.4s;
+}
+
+.footer-brand-section:hover,
+.footer-links-section:hover,
+.footer-contact-section:hover,
+.footer-cta-section:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(0, 102, 255, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 102, 255, 0.1);
+}
+
+@keyframes footerSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (min-width: 1024px) {
-  .footer-brand-section {
-    flex: 2;
-    max-width: 350px;
-  }
-  
+  .footer-brand-section,
   .footer-links-section,
   .footer-contact-section,
   .footer-cta-section {
     flex: 1;
-    max-width: 200px;
+    max-width: 280px;
+    min-height: 320px;
   }
 }
 
@@ -4922,6 +4966,7 @@ p {
     flex: 1;
     min-width: calc(50% - 1rem);
     margin-bottom: 1.5rem;
+    max-width: none;
   }
 }
 
@@ -4988,6 +5033,18 @@ p {
 .footer-social-links {
   display: flex;
   gap: 1rem;
+  animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .social-link-footer {
