@@ -4859,24 +4859,32 @@ p {
   pointer-events: none;
 }
 
-/* Footer Grid Layout Fix */
+/* Footer Grid Layout Fix - Modern Justified Layout */
 .footer-modern .grid {
-  grid-template-columns: repeat(1, 1fr);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 @media (min-width: 768px) {
   .footer-modern .grid.md\\:grid-cols-2 {
-    grid-template-columns: repeat(2, 1fr);
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
   }
 }
 
 @media (min-width: 1024px) {
   .footer-modern .grid.lg\\:grid-cols-4 {
-    grid-template-columns: repeat(4, 1fr);
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
   }
 }
 
-/* Ensure equal height and spacing for footer sections */
+/* Modern footer sections with justified alignment */
 .footer-brand-section,
 .footer-links-section,
 .footer-contact-section,
@@ -4885,10 +4893,36 @@ p {
   z-index: 1;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  min-height: 300px;
+  flex: 1;
+  min-width: 0;
   justify-content: flex-start;
   gap: 1rem;
+  padding: 0 1rem;
+}
+
+@media (min-width: 1024px) {
+  .footer-brand-section {
+    flex: 2;
+    max-width: 350px;
+  }
+  
+  .footer-links-section,
+  .footer-contact-section,
+  .footer-cta-section {
+    flex: 1;
+    max-width: 200px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .footer-brand-section,
+  .footer-links-section,
+  .footer-contact-section,
+  .footer-cta-section {
+    flex: 1;
+    min-width: calc(50% - 1rem);
+    margin-bottom: 1.5rem;
+  }
 }
 
 /* Content distribution within sections */
@@ -5104,6 +5138,12 @@ p {
     padding: 2.5rem 0 2rem;
   }
   
+  .footer-modern .grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+  }
+  
   .footer-brand-section,
   .footer-links-section,
   .footer-contact-section,
@@ -5111,6 +5151,9 @@ p {
     text-align: center;
     min-height: auto;
     gap: 1rem;
+    max-width: none;
+    width: 100%;
+    padding: 0;
   }
   
   .footer-brand {
