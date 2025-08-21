@@ -347,8 +347,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, onOpenModal, 
             </motion.a>
           )}
         </motion.div>
-      </Container>
-    </Section>
+      </div>
+    </motion.div>
   )
 }
 
