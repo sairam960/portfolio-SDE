@@ -36,6 +36,15 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/sairam960/crimeAnalyticsMGPD',
     liveUrl: '#',
     imageUrl: '/portfolio-SDE/images/crime-data.png'
+  },
+  {
+    id: '5',
+    title: 'Inc 5000 Company Data Analysis',
+    description: 'This project presents a comprehensive analysis of Inc. 5000 companies, exploring growth patterns, industry distribution, geographic concentration, and performance metrics.',
+    technologies: ['Python', 'pandas', 'NumPy', 'Seaborn', 'Matplotlib'],
+    githubUrl: 'https://github.com/sairam960/Inc5000',
+    liveUrl: '#',
+    imageUrl: '/portfolio-SDE/images/inc5000.png'
   }
 
 ]
