@@ -46,6 +46,15 @@ export const projects: Project[] = [
     liveUrl: '#',
     imageUrl: '/portfolio-SDE/images/inc5000.png'
   }
+  // {
+  //   id: '6',
+  //   title: 'Real-Time Chat Application',
+  //   description: 'A modern real-time chat application built with React and Socket.io, featuring message encryption, user authentication, and multiple chat rooms with live notifications.',
+  //   technologies: ['React', 'Socket.io', 'Node.js', 'MongoDB', 'Express'],
+  //   githubUrl: 'https://github.com/sairam960/chat-app',
+  //   liveUrl: '#',
+  //   imageUrl: '/portfolio-SDE/images/chat-app.png'
+  // }
 
 ]
 

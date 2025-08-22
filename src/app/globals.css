@@ -433,13 +433,14 @@ p {
   box-shadow: 0 4px 15px rgba(249, 115, 22, 0.5);
 }
 
-/* Projects Grid - Masonry Layout */
+/* Projects Grid - Uniform Layout */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2rem;
   position: relative;
   z-index: 1;
+  grid-auto-rows: auto;
 }
 
 /* Project Cards with Glassmorphism */
@@ -455,13 +456,6 @@ p {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
-.project-card-large {
-  grid-row: span 2;
-}
-
-.project-card-small {
-  grid-row: span 1;
-}
 
 /* Advanced Project Cards */
 .project-card-advanced {
@@ -659,9 +653,6 @@ p {
   border-radius: 1.5rem 1.5rem 0 0;
 }
 
-.project-card-large .project-image-container {
-  height: 250px;
-}
 
 .project-image-modern {
   transition: all 0.4s ease;
@@ -1914,10 +1905,6 @@ p {
     gap: 1.5rem;
   }
 
-  .project-card-large,
-  .project-card-small {
-    grid-row: span 1;
-  }
 
   .projects-filters {
     margin-bottom: 2rem;

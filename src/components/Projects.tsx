@@ -91,7 +91,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, onOpenModal, 
   return (
     <motion.div
       ref={cardRef}
-      className={`project-card-advanced ${index % 2 === 0 ? 'project-card-large' : 'project-card-small'}`}
+      className="project-card-advanced"
       variants={cardVariants}
       initial="hidden"
       animate={controls}
