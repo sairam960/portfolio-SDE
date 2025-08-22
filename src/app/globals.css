@@ -440,7 +440,8 @@ p {
   gap: 2rem;
   position: relative;
   z-index: 1;
-  grid-auto-rows: auto;
+  grid-auto-rows: 1fr;
+  align-items: stretch;
 }
 
 /* Project Cards with Glassmorphism */
@@ -470,6 +471,9 @@ p {
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
   transform-style: preserve-3d;
   perspective: 1000px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .dark .project-card-advanced {
@@ -758,6 +762,10 @@ p {
   z-index: 3;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(8px);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .project-title-modern {

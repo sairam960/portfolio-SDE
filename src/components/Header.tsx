@@ -4,6 +4,15 @@ import { useState, useEffect, useRef } from 'react'
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion'
 import ThemeToggle from './ThemeToggle'
 
+// Calendly TypeScript declarations
+declare global {
+  interface Window {
+    Calendly: {
+      initPopupWidget: (options: { url: string }) => void;
+    }
+  }
+}
+
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
@@ -75,6 +84,17 @@ export default function Header() {
         top: offsetPosition,
         behavior: 'smooth'
       })
+    }
+  }
+
+  const handleCalendlyClick = () => {
+    if (typeof window !== 'undefined' && window.Calendly) {
+      window.Calendly.initPopupWidget({
+        url: 'https://calendly.com/ftjsearch/30min'
+      });
+    } else {
+      // Fallback to opening Calendly in new tab if widget fails to load
+      window.open('https://calendly.com/ftjsearch/30min', '_blank');
     }
   }
 
@@ -222,7 +242,7 @@ export default function Header() {
                 transition={{ duration: 0.5, delay: 0.8 }}
               >
                 <motion.button
-                  onClick={() => scrollToSection('contact')}
+                  onClick={handleCalendlyClick}
                   className="cta-button-modern"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}

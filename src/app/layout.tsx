@@ -111,12 +111,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Calendly widget styles */}
+        <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+        
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(structuredData),
           }}
         />
+        
+        {/* Calendly widget script */}
+        <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
       </head>
       <body className={`${inter.variable} ${playfair.variable} smooth-scroll transition-colors duration-300`}>
         <ThemeProvider>
