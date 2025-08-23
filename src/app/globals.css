@@ -1501,11 +1501,12 @@ p {
   font-size: clamp(3rem, 8vw, 6rem);
   font-weight: 800;
   margin-bottom: 1.5rem;
-  line-height: 0.9;
+  line-height: 1.1;
   color: var(--color-gray-800);
   background-clip: text;
   background-size: 200% 200%;
   animation: gradientShift 6s ease-in-out infinite;
+  letter-spacing: -0.02em;
 }
 
 .dark .hero-title-modern {
