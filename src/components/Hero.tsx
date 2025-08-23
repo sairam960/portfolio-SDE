@@ -2,7 +2,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-motion'
 import Image from 'next/image'
-import { useTheme } from '@/contexts/ThemeContext'
 
 // Typewriter Hook
 const useTypewriter = (text: string, speed: number = 100) => {
@@ -120,7 +119,6 @@ const SkillPills = () => {
 }
 
 export default function Hero() {
-  const { isDark } = useTheme()
   const { scrollY } = useScroll()
   const y = useTransform(scrollY, [0, 500], [0, 150])
   const opacity = useTransform(scrollY, [0, 300], [1, 0])
@@ -406,50 +404,34 @@ export default function Hero() {
                       </svg>
                     )
                   }
-                ].map((social, index) => {
-                  // Theme-aware hover colors
-                  const getHoverColors = () => {
-                    if (isDark) {
-                      return {
-                        backgroundColor: social.color,
-                        color: 'white'
-                      }
-                    } else {
-                      return {
-                        backgroundColor: social.color,
-                        color: 'white'
-                      }
-                    }
-                  }
-
-                  return (
-                    <motion.a
-                      key={social.label}
-                      href={social.href}
-                      target={social.href.startsWith('mailto:') ? undefined : '_blank'}
-                      rel={social.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
-                      className="social-link-modern"
-                      aria-label={social.label}
-                      initial={{ opacity: 0, y: 30, scale: 0 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      transition={{ 
-                        delay: 2.2 + index * 0.1,
-                        type: "spring",
-                        stiffness: 200,
-                        damping: 20
-                      }}
-                      whileHover={{ 
-                        scale: 1.2, 
-                        y: -5,
-                        boxShadow: `0 10px 30px ${social.color}33`,
-                        ...getHoverColors()
-                      }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      {social.icon}
-                    </motion.a>
-                  )
-                })}
+                ].map((social, index) => (
+                  <motion.a
+                    key={social.label}
+                    href={social.href}
+                    target={social.href.startsWith('mailto:') ? undefined : '_blank'}
+                    rel={social.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+                    className="social-link-modern"
+                    aria-label={social.label}
+                    initial={{ opacity: 0, y: 30, scale: 0 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ 
+                      delay: 2.2 + index * 0.1,
+                      type: "spring",
+                      stiffness: 200,
+                      damping: 20
+                    }}
+                    whileHover={{ 
+                      scale: 1.2, 
+                      y: -5,
+                      boxShadow: `0 10px 30px ${social.color}33`,
+                      backgroundColor: social.color,
+                      color: 'white'
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {social.icon}
+                  </motion.a>
+                ))}
               </motion.div>
             </motion.div>
           </div>
