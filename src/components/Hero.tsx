@@ -415,12 +415,23 @@ export default function Hero() {
                 ].map((social, index) => {
                   // Theme-aware hover colors
                   const getHoverStyles = () => {
-                    return {
-                      scale: 1.2, 
-                      y: -5,
-                      boxShadow: `0 10px 30px ${social.color}33`,
-                      backgroundColor: social.color,
-                      color: 'white'
+                    if (isDark) {
+                      return {
+                        scale: 1.2, 
+                        y: -5,
+                        boxShadow: `0 10px 30px ${social.color}40`,
+                        backgroundColor: social.color,
+                        color: '#ffffff',
+                        border: `2px solid ${social.color}`
+                      }
+                    } else {
+                      return {
+                        scale: 1.2, 
+                        y: -5,
+                        boxShadow: `0 10px 30px ${social.color}30`,
+                        backgroundColor: social.color,
+                        color: '#ffffff'
+                      }
                     }
                   }
 
