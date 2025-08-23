@@ -2567,8 +2567,6 @@ p {
   display: none; /* Chrome, Safari and Opera */
 }
 
-/* Hexagonal skill cards removed - using rectangular design */
-
 /* Rectangular Skill Cards - Compact Design */
 .skill-card-rectangular {
   position: relative;
@@ -2663,7 +2661,6 @@ p {
   background: rgba(255, 255, 255, 0.95);
 }
 
-/* Hexagonal progress styles removed - not used */
 
 /* Enhanced Category Filter */
 .category-filter-enhanced {
@@ -2674,7 +2671,6 @@ p {
   margin-bottom: 3rem;
 }
 
-/* Hexagonal filter buttons removed - using rectangular design */
 
 .filter-active-indicator {
   position: absolute;
@@ -4452,7 +4448,6 @@ p {
   /* Enhance border contrast */
   .glassmorphism-card,
   .glassmorphism-card-enhanced,
-  .skill-card-hexagonal,
   .project-card-modern,
   .project-card-advanced,
   .experience-card,
@@ -4464,8 +4459,7 @@ p {
   /* Improve button contrast */
   .btn-primary-modern,
   .btn-outline-modern,
-  .contact-submit-btn-enhanced,
-  .filter-btn-hexagonal {
+  .contact-submit-btn-enhanced {
     background: var(--color-black) !important;
     color: var(--color-white) !important;
     border: 2px solid var(--color-black) !important;
@@ -4488,7 +4482,6 @@ p {
 
 /* Improve keyboard navigation */
 .nav-link-modern:focus-visible,
-.filter-btn-hexagonal:focus-visible,
 .project-card-modern:focus-visible,
 .project-card-advanced:focus-visible,
 .form-input-enhanced:focus-visible,
@@ -4500,7 +4493,6 @@ p {
 
 /* Dark mode focus states */
 .dark .nav-link-modern:focus-visible,
-.dark .filter-btn-hexagonal:focus-visible,
 .dark .project-card-modern:focus-visible,
 .dark .project-card-advanced:focus-visible,
 .dark .form-input-enhanced:focus-visible,
@@ -4569,7 +4561,6 @@ p {
 .hero-section-modern,
 .gradient-mesh-container,
 .floating-orb,
-.skill-card-hexagonal,
 .project-card-advanced,
 .experience-card-enhanced,
 .glassmorphism-card-enhanced {
@@ -4609,7 +4600,6 @@ p {
   }
   
   /* Simplify hover effects on touch devices */
-  .skill-card-hexagonal:hover,
   .project-card-advanced:hover,
   .experience-card-enhanced:hover {
     transform: translateY(-5px) scale(1.02);
