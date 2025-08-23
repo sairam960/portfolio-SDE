@@ -20,28 +20,8 @@ const nextConfig = {
     optimizePackageImports: ['framer-motion'],
   },
   
-  // Security headers
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'X-Frame-Options',
-            value: 'DENY',
-          },
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          {
-            key: 'Referrer-Policy',
-            value: 'strict-origin-when-cross-origin',
-          },
-        ],
-      },
-    ]
-  },
+  // Security headers removed - incompatible with output: 'export'
+  // These should be handled by the web server serving the static files
 }
 
 module.exports = nextConfig

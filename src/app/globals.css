@@ -4854,18 +4854,21 @@ p {
   pointer-events: none;
 }
 
-/* Footer Grid Layout - Modern Equal Spacing */
+/* Footer Grid Layout - Modern Equal Spacing - 1x4 Row Format */
 .footer-modern .grid {
   display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
 }
 
 @media (min-width: 768px) {
   .footer-modern .grid.md\\:grid-cols-2 {
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: flex-start;
     gap: 2rem;
   }
@@ -4875,9 +4878,9 @@ p {
   .footer-modern .grid.lg\\:grid-cols-4 {
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: flex-start;
-    gap: 3rem;
+    gap: 2rem;
   }
 }
 
@@ -5191,20 +5194,23 @@ p {
   }
   
   .footer-modern .grid {
-    flex-direction: column;
-    align-items: center;
-    gap: 2.5rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
   }
   
   .footer-brand-section,
   .footer-links-section,
   .footer-contact-section,
   .footer-cta-section {
-    text-align: center;
+    text-align: left;
     min-height: auto;
     gap: 1rem;
     max-width: none;
-    width: 100%;
+    flex: 1;
+    min-width: 180px;
     padding: 0;
   }
   

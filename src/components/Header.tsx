@@ -72,7 +72,7 @@ export default function Header() {
       window.removeEventListener('mousemove', handleMouseMove)
       window.removeEventListener('mouseleave', handleMouseLeave)
     }
-  }, [cursorX, cursorY, cursorVisible])
+  }, [cursorX, cursorY])
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
