@@ -166,10 +166,13 @@ export default function Hero() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
     if (element) {
-      // More robust and smooth across all Next.js deployment types
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      // Optionally update hash for accessibility
-      window.history.replaceState(null, '', `#${sectionId}`)
+      const headerOffset = 100
+      const elementPosition = element.offsetTop
+      const offsetPosition = elementPosition - headerOffset
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      })
     }
   }
 
