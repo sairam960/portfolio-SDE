@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-motion'
 import Image from 'next/image'
+import { useTheme } from '@/contexts/ThemeContext'
 
 // Typewriter Hook
 const useTypewriter = (text: string, speed: number = 100) => {
@@ -119,6 +120,7 @@ const SkillPills = () => {
 }
 
 export default function Hero() {
+  const { isDark } = useTheme()
   const { scrollY } = useScroll()
   const y = useTransform(scrollY, [0, 500], [0, 150])
   const opacity = useTransform(scrollY, [0, 300], [1, 0])
@@ -254,7 +256,9 @@ export default function Hero() {
                   whileHover={{ 
                     scale: 1.05, 
                     y: -3,
-                    boxShadow: '0 20px 40px rgba(14, 165, 233, 0.4)' 
+                    boxShadow: isDark 
+                      ? '0 20px 40px rgba(14, 165, 233, 0.3)' 
+                      : '0 20px 40px rgba(14, 165, 233, 0.4)'
                   }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => scrollToSection('projects')}
@@ -279,7 +283,9 @@ export default function Hero() {
                   whileHover={{ 
                     scale: 1.05,
                     y: -3,
-                    backgroundColor: 'rgba(107, 70, 193, 0.1)',
+                    backgroundColor: isDark 
+                      ? 'rgba(107, 70, 193, 0.15)' 
+                      : 'rgba(107, 70, 193, 0.1)',
                     borderColor: 'var(--color-secondary)'
                   }}
                   whileTap={{ scale: 0.98 }}
@@ -306,7 +312,9 @@ export default function Hero() {
                   whileHover={{ 
                     scale: 1.05,
                     y: -3,
-                    backgroundColor: 'rgba(0, 102, 255, 0.1)',
+                    backgroundColor: isDark 
+                      ? 'rgba(0, 102, 255, 0.15)' 
+                      : 'rgba(0, 102, 255, 0.1)',
                     borderColor: 'var(--color-primary)'
                   }}
                   whileTap={{ scale: 0.98 }}
@@ -404,34 +412,41 @@ export default function Hero() {
                       </svg>
                     )
                   }
-                ].map((social, index) => (
-                  <motion.a
-                    key={social.label}
-                    href={social.href}
-                    target={social.href.startsWith('mailto:') ? undefined : '_blank'}
-                    rel={social.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
-                    className="social-link-modern"
-                    aria-label={social.label}
-                    initial={{ opacity: 0, y: 30, scale: 0 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    transition={{ 
-                      delay: 2.2 + index * 0.1,
-                      type: "spring",
-                      stiffness: 200,
-                      damping: 20
-                    }}
-                    whileHover={{ 
+                ].map((social, index) => {
+                  // Theme-aware hover colors
+                  const getHoverStyles = () => {
+                    return {
                       scale: 1.2, 
                       y: -5,
                       boxShadow: `0 10px 30px ${social.color}33`,
                       backgroundColor: social.color,
                       color: 'white'
-                    }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    {social.icon}
-                  </motion.a>
-                ))}
+                    }
+                  }
+
+                  return (
+                    <motion.a
+                      key={social.label}
+                      href={social.href}
+                      target={social.href.startsWith('mailto:') ? undefined : '_blank'}
+                      rel={social.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+                      className="social-link-modern"
+                      aria-label={social.label}
+                      initial={{ opacity: 0, y: 30, scale: 0 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      transition={{ 
+                        delay: 2.2 + index * 0.1,
+                        type: "spring",
+                        stiffness: 200,
+                        damping: 20
+                      }}
+                      whileHover={getHoverStyles()}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      {social.icon}
+                    </motion.a>
+                  )
+                })}
               </motion.div>
             </motion.div>
           </div>
