@@ -2594,6 +2594,18 @@ p {
   transform: translateY(-4px);
 }
 
+/* Dark mode styles for skill cards */
+.dark .skill-card-rectangular {
+  background: rgba(31, 41, 55, 0.95);
+  border: 1px solid rgba(75, 85, 99, 0.4);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.dark .skill-card-rectangular:hover {
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+  border-color: rgba(99, 102, 241, 0.5);
+}
+
 /* Circular Progress for Skills */
 .circular-progress {
   width: 60px;
@@ -2724,6 +2736,15 @@ p {
   color: var(--color-gray-500);
   font-size: 0.75rem;
   line-height: 1.3;
+}
+
+/* Dark mode styles for skill text */
+.dark .skill-name {
+  color: var(--color-gray-100);
+}
+
+.dark .skill-description {
+  color: var(--color-gray-400);
 }
 
 .skill-progress {
