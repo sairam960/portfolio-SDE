@@ -101,6 +101,10 @@ export function useResumeAccess(): UseResumeAccessReturn {
           setError('Request timed out. Please try again.')
         } else if (err.message.includes('Failed to fetch')) {
           setError('Network error. Please check your connection and try again.')
+        } else if (err.message.includes('CORS') || err.message.includes('Access-Control-Allow-Origin')) {
+          setError('Cross-origin request blocked. Please ensure the Google Apps Script is properly configured with CORS headers.')
+        } else if (err.message.includes('preflight')) {
+          setError('Request blocked by CORS policy. The server needs to handle OPTIONS requests properly.')
         } else {
           setError(err.message)
         }
