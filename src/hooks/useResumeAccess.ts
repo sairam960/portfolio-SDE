@@ -14,7 +14,7 @@ interface UseResumeAccessReturn {
 }
 
 // Replace this with your actual Google Apps Script web app URL
-const GOOGLE_SCRIPT_URL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL || 'YOUR_GOOGLE_SCRIPT_URL_HERE'
+const GOOGLE_SCRIPT_URL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbwQ-IVJaH23K4F2TPQZOKzZrCHkebP3YQcDYnO6I9GQLwDEI53cPPMeREiipOwD6Oujmg/exec'
 
 export function useResumeAccess(): UseResumeAccessReturn {
   const [isLoading, setIsLoading] = useState(false)
