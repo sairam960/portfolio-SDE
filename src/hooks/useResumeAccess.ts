@@ -14,7 +14,7 @@ interface UseResumeAccessReturn {
 }
 
 // Get Google Apps Script URL from environment variables (with fallback for production)
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxdusIld1Ied6-gIhBVRM9G86kQ4Dy46AD0D85MF5aFOQuu_W6lpAuYTmKFthUttqVtdg/exec'
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzMOOtPE2em3iH195EdUvXjAHjLWmkNvN8Kq8BoYGfAJRwqaE0UfUG70NxGFCnV7IADbg/exec'
 
 export function useResumeAccess(): UseResumeAccessReturn {
   const [isLoading, setIsLoading] = useState(false)
