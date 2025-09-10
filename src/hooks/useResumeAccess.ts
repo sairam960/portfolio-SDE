@@ -13,8 +13,8 @@ interface UseResumeAccessReturn {
   isSuccess: boolean
 }
 
-// Replace this with your actual Google Apps Script web app URL
-const GOOGLE_SCRIPT_URL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbwQ-IVJaH23K4F2TPQZOKzZrCHkebP3YQcDYnO6I9GQLwDEI53cPPMeREiipOwD6Oujmg/exec'
+// Get Google Apps Script URL from environment variables
+const GOOGLE_SCRIPT_URL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL
 
 export function useResumeAccess(): UseResumeAccessReturn {
   const [isLoading, setIsLoading] = useState(false)
@@ -27,6 +27,11 @@ export function useResumeAccess(): UseResumeAccessReturn {
     setIsSuccess(false)
 
     try {
+      // Check if URL is configured
+      if (!GOOGLE_SCRIPT_URL) {
+        throw new Error('Google Apps Script URL not configured. Please check environment variables.')
+      }
+
       // Basic client-side validation
       if (!data.name.trim() || !data.email.trim()) {
         throw new Error('Name and email are required')
@@ -37,14 +42,16 @@ export function useResumeAccess(): UseResumeAccessReturn {
         throw new Error('Please enter a valid email address')
       }
 
-      // Prepare the payload
+      // Prepare the payload - simplified structure
       const payload = {
         name: data.name.trim(),
         email: data.email.trim().toLowerCase(),
-        timestamp: new Date().toISOString(),
         userAgent: navigator.userAgent,
         referrer: document.referrer || 'Direct'
       }
+
+      console.log('Submitting to:', GOOGLE_SCRIPT_URL)
+      console.log('Payload:', payload)
 
       // Submit to Google Apps Script
       const response = await fetch(GOOGLE_SCRIPT_URL, {
@@ -53,8 +60,9 @@ export function useResumeAccess(): UseResumeAccessReturn {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(payload),
+        mode: 'cors',
         // Add timeout to prevent hanging
-        signal: AbortSignal.timeout(10000) // 10 second timeout
+        signal: AbortSignal.timeout(15000) // 15 second timeout
       })
 
       if (!response.ok) {
@@ -62,6 +70,7 @@ export function useResumeAccess(): UseResumeAccessReturn {
       }
 
       const result = await response.json()
+      console.log('Response:', result)
 
       if (result.status === 'error') {
         throw new Error(result.message || 'Submission failed')
@@ -71,6 +80,7 @@ export function useResumeAccess(): UseResumeAccessReturn {
         throw new Error('Unexpected response from server')
       }
 
+      console.log('Data successfully saved to Google Sheets')
       setIsSuccess(true)
       
       // Log success for analytics (optional)
