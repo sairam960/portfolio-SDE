@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react'
 import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-motion'
 import Image from 'next/image'
 import { useTheme } from '@/contexts/ThemeContext'
+import ResumeModal from './ResumeModal'
 
 // Typewriter Hook
 const useTypewriter = (text: string, speed: number = 100) => {
@@ -137,6 +138,7 @@ export default function Hero() {
   
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isHovering, setIsHovering] = useState(false)
+  const [showResumeModal, setShowResumeModal] = useState(false)
 
   const handleMouseMove = (e: React.MouseEvent) => {
     const rect = e.currentTarget.getBoundingClientRect()
@@ -292,9 +294,8 @@ export default function Hero() {
                     borderColor: 'var(--color-secondary)'
                   }}
                   whileTap={{ scale: 0.98 }}
-                  onClick={() => {
-                    window.open('/portfolio-SDE/resume/Sai_Krishnan_Resume.pdf', '_blank')
-                  }}
+                  onClick={() => setShowResumeModal(true)}
+                  aria-label="View Resume - requires contact information"
                 >
                   <span>View Resume</span>
                   <motion.svg 
@@ -465,6 +466,16 @@ export default function Hero() {
             </motion.div>
           </div>
         </div>
+
+        {/* Resume Access Modal */}
+        <ResumeModal
+          isOpen={showResumeModal}
+          onClose={() => setShowResumeModal(false)}
+          onSuccess={() => {
+            // Optional: Track successful resume access
+            console.log('Resume access granted')
+          }}
+        />
       </motion.section>
     </>
   )

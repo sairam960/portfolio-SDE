@@ -5731,3 +5731,275 @@ p {
   outline-color: #60a5fa !important;
   box-shadow: 0 0 0 6px rgba(96, 165, 250, 0.3) !important;
 }
+
+/* ===================================
+   Resume Modal Styles (WCAG Compliant)
+   =================================== */
+
+/* Modal Backdrop */
+.resume-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.dark .resume-modal-backdrop {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+/* Modal Content */
+.resume-modal-content {
+  background: var(--bg-primary);
+  border-radius: 1.5rem;
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-color);
+}
+
+.dark .resume-modal-content {
+  background: var(--bg-secondary);
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Modal Header */
+.resume-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 2rem 1rem 2rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.resume-modal-title {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.resume-modal-close {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.resume-modal-close:hover {
+  background: var(--color-gray-100);
+  color: var(--text-primary);
+}
+
+.dark .resume-modal-close:hover {
+  background: var(--color-gray-800);
+}
+
+.resume-modal-close:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Modal Body */
+.resume-modal-body {
+  padding: 1rem 2rem 2rem 2rem;
+}
+
+.resume-modal-description {
+  color: var(--text-secondary);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  margin: 0 0 2rem 0;
+}
+
+/* Form Styles */
+.resume-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.required-asterisk {
+  color: var(--color-red-500);
+  font-weight: var(--font-weight-bold);
+}
+
+.form-input {
+  padding: 0.875rem 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 0.75rem;
+  font-size: var(--text-base);
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  transition: all 0.2s ease;
+  min-height: 48px; /* WCAG touch target minimum */
+}
+
+.dark .form-input {
+  background: var(--bg-secondary);
+  border-color: var(--color-gray-700);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.1);
+}
+
+.form-input::placeholder {
+  color: var(--text-tertiary);
+}
+
+.form-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.form-input-error {
+  border-color: var(--color-red-500);
+}
+
+.form-input-error:focus {
+  border-color: var(--color-red-500);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.form-error {
+  color: var(--color-red-600);
+  font-size: var(--text-sm);
+  margin-top: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.dark .form-error {
+  color: var(--color-red-400);
+}
+
+.form-success {
+  color: var(--color-green-600);
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  padding: 0.875rem 1rem;
+  border-radius: 0.75rem;
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dark .form-success {
+  color: var(--color-green-400);
+  background: rgba(34, 197, 94, 0.1);
+  border-color: rgba(34, 197, 94, 0.2);
+}
+
+/* Modal Actions */
+.resume-modal-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.resume-modal-actions .btn-outline-modern,
+.resume-modal-actions .btn-primary-modern {
+  flex: 1;
+  justify-content: center;
+  min-height: 48px; /* WCAG touch target minimum */
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 640px) {
+  .resume-modal-content {
+    margin: 1rem;
+    max-height: calc(100vh - 2rem);
+  }
+  
+  .resume-modal-header {
+    padding: 1.5rem 1.5rem 1rem 1.5rem;
+  }
+  
+  .resume-modal-body {
+    padding: 1rem 1.5rem 1.5rem 1.5rem;
+  }
+  
+  .resume-modal-title {
+    font-size: var(--text-xl);
+  }
+  
+  .resume-modal-actions {
+    flex-direction: column;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .resume-modal-content {
+    border: 2px solid var(--text-primary);
+  }
+  
+  .form-input {
+    border-width: 2px;
+  }
+  
+  .form-input:focus {
+    border-width: 3px;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .resume-modal-backdrop,
+  .resume-modal-content,
+  .loading-spinner {
+    animation: none;
+    transition: none;
+  }
+}
