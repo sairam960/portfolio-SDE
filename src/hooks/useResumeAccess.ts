@@ -53,15 +53,17 @@ export function useResumeAccess(): UseResumeAccessReturn {
       console.log('Submitting to:', GOOGLE_SCRIPT_URL)
       console.log('Payload:', payload)
 
-      // Submit to Google Apps Script
-      const response = await fetch(GOOGLE_SCRIPT_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
-        mode: 'cors',
-        // Add timeout to prevent hanging
+      // Submit to Google Apps Script using GET with URL parameters (CORS-friendly)
+      const searchParams = new URLSearchParams({
+        name: payload.name,
+        email: payload.email,
+        userAgent: payload.userAgent,
+        referrer: payload.referrer,
+        method: 'POST' // Signal that this is a form submission
+      })
+
+      const response = await fetch(`${GOOGLE_SCRIPT_URL}?${searchParams.toString()}`, {
+        method: 'GET', // Use GET to avoid CORS preflight
         signal: AbortSignal.timeout(15000) // 15 second timeout
       })
 
